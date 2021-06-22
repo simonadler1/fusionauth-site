@@ -13,6 +13,9 @@ In this guide you will find a video demonstration, a list of each template avail
 
 * <<Example Video>>
 * <<Create a Theme>>
+** <<Form Fields>>
+** <<Templates>>
+** <<Helpers>>
 * <<Preview a Theme>>
 * <<Example Code>>
 * <<Template Variables>>
@@ -252,6 +255,11 @@ This page is used if the user initiates a SAML logout. This page causes the user
 
 In addition to the pages listed above, FusionAuth has a template that contains a number of macros used in all of the page templates. This template is located at `../_helpers.ftl` and it contains a number of FreeMarker macros. The rest of the pages use these macros to generate various pieces of the HTML. The macros contained in `_helpers.ftl` are:
 
+* <<Section Helpers>>
+* <<Social (alternative) Login Helpers>>
+* <<Alert and Error Helpers>>
+* <<Form Helpers>>
+
 === Section Helpers
 
 * `html`
@@ -415,7 +423,7 @@ Navigate to [breadcrumb]#Customizations -> Themes#. Choose your theme, then clic
 
 image::theme-preview-button.png[Preview your theme,width=1200,role=shadowed bottom-cropped]
 
-This will open a new tab. Click on any of the pages you've modifed in the left hand navigation, for example [field]#OAuth register#, and you'll see the page as it would be rendered. 
+This will open a new tab. Click on any of the pages you've modifed in the left hand navigation, for example [field]#OAuth register#, and you'll see the page as it would be rendered.
 
 == Example Code
 
@@ -465,6 +473,42 @@ Once you make these changes, they will take effect on all of the pages listed ab
 Each template has different variables that are available to it. These variables can be used in the template to help with rendering the HTML. There are also a couple of common variables that are available in all of the pages. The common variables and the page specific variables are all listed below:
 
 By default FusionAuth will provide HTML escaping on all values rendered in HTML, this protects you from script injection attacks. If you find a value that is being incorrectly escaped you may need to utilize the FreeMarker built in for no-escape `?no_esc`.
+
+** <<Common Variables>>
+** <<Index>>
+** <<Account edit>>
+** <<Account index>>
+** <<Account two-factor disable>>
+** <<Account two-factor enable>>
+** <<Account two-factor index>>
+** <<Email verification complete>>
+** <<Email verification re-sent>>
+** <<Email verification required>>
+** <<Email verification>>
+** <<OAuth Authorize>>
+** <<OAuth child registration not allowed>>
+** <<OAuth child registration not allowed complete>>
+** <<OAuth complete registration>>
+** <<OAuth device>>
+** <<OAuth device complete>>
+** <<OAuth error>>
+** <<OAuth logout>>
+** <<OAuth passwordless>>
+** <<OAuth register>>
+** <<OAuth two-factor>>
+** <<OAuth two-factor methods>>
+** <<OAuth wait>>
+** <<Change password form>>
+** <<Change password complete>>
+** <<Forgot password>>
+** <<Forgot password sent>>
+** <<Verify registration complete>>
+** <<Verify registration re-sent>>
+** <<Verify registration required>>
+** <<Verify registration>>
+** <<SAML logout>>
+* <<Handling Failures>>
+* <<Upgrading>>
 
 === Common Variables
 
@@ -1260,6 +1304,6 @@ A set of URLs associated with all of the applications the user is registered for
 
 include::docs/v1/tech/themes/_theme-troubleshooting.adoc[]
 
-== Upgrading 
+== Upgrading
 
 include::docs/v1/tech/installation-guide/_theme_upgrade.adoc[]
