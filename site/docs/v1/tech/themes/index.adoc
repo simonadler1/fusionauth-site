@@ -245,7 +245,7 @@ This page is used when a user clicks the URL from the application specific verif
 +
 [uri]#/registration/verify#
 
-[field]#SAML logout# [required]#Required#:: [since]#Since 1.25.0#::
+[field]#SAML logout# [required]#Required#  [since]#Since 1.25.0#::
 This page is used if the user initiates a SAML logout. This page causes the user to be logged out of all associated applications via a front-channel mechanism before being redirected.
 +
 [uri]#/samlv2/logout#
