@@ -89,6 +89,10 @@ For lists:
 - multi-factor authentication
 - multi-tenancy/multi-tenant
 
+Whenever you reference seeking support, point community users to the forum https://fusionauth.io/community/forum/ and users with a paid contract to https://account.fusionauth.io/account/support. Here's some sample text:
+
+If you're running into issues, please either post to the [forum](https://fusionauth.io/community/forum/) for community support, or, if you have an edition with a support contract, open a [support ticket](https://account.fusionauth.io/account/support).
+
 ## Git
 
 * Open a PR with changes. Tag someone to review it.
