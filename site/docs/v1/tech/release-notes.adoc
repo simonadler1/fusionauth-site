@@ -31,8 +31,6 @@ Looking for release notes older than 1.23.0? Look in the link:/docs/v1/tech/arch
 == Version 1.30.0
 _August 12th, 2021_
 
-_Note, release notes in progress&hellip;_
-
 include::docs/v1/tech/__database-migration-warning.adoc[]
 
 === Fixed
