@@ -7,24 +7,21 @@ description: Learn how FusionAuth provides and manages JSON Web Tokens.
 
 == Overview
 
-[WARNING.warning]
-====
-As of June 2021, this document is slightly out of date. Please see https://github.com/FusionAuth/fusionauth-site/issues/723[this issue] for more details.
-====
-
 JSON Web Tokens (or JWT for short - pronounced "jot") is a standard defined as link:https://tools.ietf.org/html/rfc7519[RFC 7519] that
 provides a portable unit of identity. FusionAuth implements the JWT specification and can provide JWTs as part of the authentication workflows.
 
-After a User is authenticated via the link:/docs/v1/tech/apis/login/[Login API] or link:/docs/v1/tech/oauth/[OAuth], FusionAuth creates a JWT and returns
-it to the caller. This JWT will be cryptographically signed to allow other applications to verify that it was created by FusionAuth.
+After a User is authenticated via the link:/docs/v1/tech/apis/login/[Login API] or link:/docs/v1/tech/oauth/[OAuth], FusionAuth creates a JWT and returns it to the caller. This JWT will be cryptographically signed to allow other applications to verify that the token was created by FusionAuth.
 
-If you are using OAuth grants for authentication, with the exception of the JWT signing configuration, most of this tutorial is aimed at those using the Login API directly.
+[NOTE.note]
+====
+With the exception of the JWT signing configuration, this tutorial covers using the link:/docs/v1/tech/apis/login[Login API] directly. If you are using OAuth grants for authentication, please review the link:/docs/v1/tech/oauth/[example OAuth grants].
+====
 
 == Configuring JWTs in FusionAuth
 
 FusionAuth provides the ability to configure JWT handling. By navigating to [breadcrumb]#Settings -> Tenants# in FusionAuth and selecting the JWT tab, you will see the tenant JWT configuration settings. The following is an example screenshot of the tenant JWT configuration:
 
-image::core-concepts/tenant-configuration-jwt.png[Tenant JWT Configuration,width=1200,role=top-cropped bottom-cropped]
+image::core-concepts/tenant-configuration-jwt.png[Tenant JWT Configuration,width=1200]
 
 === Form Fields
 
