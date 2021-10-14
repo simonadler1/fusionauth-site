@@ -16,11 +16,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
+  gem "jekyll-algolia", "~> 1.0"
   gem "jekyll-asciidoc", "2.1.1"
+  gem "jekyll-environment-variables"
   gem "jekyll-feed", "0.13.0"
   gem "jekyll-paginate-v2", "3.0.0"
-  gem "jekyll-environment-variables"
-  gem "jekyll-algolia", "~> 1.0"
   gem "jekyll-redirect-from"
 end
 

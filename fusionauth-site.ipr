@@ -147,6 +147,8 @@
       <inspection_tool class="scwbasic-protection-set_XXEXMLInputFactorySetfeaturestofalse" enabled="true" level="SENSEI ERROR" enabled_by_default="true" />
       <inspection_tool class="scwjava_CollectionsDonotexposeinternalLists" enabled="true" level="SENSEI MARKED INFO" enabled_by_default="true" />
       <inspection_tool class="scwjava_CollectionsDonotexposeinternalSets" enabled="true" level="SENSEI MARKED INFO" enabled_by_default="true" />
+      <inspection_tool class="scwjava_CommandInjectionUntrusteddatainProcessBuildercommand" enabled="true" level="SENSEI ERROR" enabled_by_default="true" />
+      <inspection_tool class="scwjava_CommandInjectionUntrusteddatainProcessBuildercommand-Add" enabled="true" level="SENSEI ERROR" enabled_by_default="true" />
       <inspection_tool class="scwjava_Createprivateconstructorforutilityclassallfieldsmethodsarestatic" enabled="true" level="SENSEI INFO" enabled_by_default="true" />
       <inspection_tool class="scwjava_Donotcompareclassestypesbytheirname" enabled="true" level="SENSEI WARNING" enabled_by_default="true" />
       <inspection_tool class="scwjava_Donotcompareclassestypesbytheirnameliteral" enabled="true" level="SENSEI WARNING" enabled_by_default="true" />
@@ -1376,13 +1378,6 @@
       <codeStyleSettings language="LESS">
         <indentOptions>
           <option name="CONTINUATION_INDENT_SIZE" value="4" />
-          <option name="TAB_SIZE" value="2" />
-        </indentOptions>
-      </codeStyleSettings>
-      <codeStyleSettings language="PHP">
-        <indentOptions>
-          <option name="INDENT_SIZE" value="2" />
-          <option name="CONTINUATION_INDENT_SIZE" value="2" />
           <option name="TAB_SIZE" value="2" />
         </indentOptions>
       </codeStyleSettings>

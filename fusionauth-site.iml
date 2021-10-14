@@ -45,6 +45,8 @@
     <orderEntry type="library" scope="PROVIDED" name="jekyll-environment-variables (v1.0.1, rbenv: 2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jekyll-feed (v0.13.0, rbenv: 2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jekyll-paginate-v2 (v3.0.0, rbenv: 2.7.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jekyll-postcss (v0.5.0, rbenv: 2.7.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jekyll-postcss-v2 (v1.0.1, rbenv: 2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jekyll-redirect-from (v0.16.0, rbenv: 2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jekyll-sass-converter (v2.1.0, rbenv: 2.7.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jekyll-watch (v2.2.1, rbenv: 2.7.0) [gem]" level="application" />

@@ -1,0 +1,41 @@
+<header class="left-0 sticky top-0">
+  <div class="bg-gray-900 text-white text-sm w-full">
+    <nav class="container mx-auto p-2 lg:p-2.5">
+      <ul class="flex items-center w-full">
+        <li class="lg:flex-grow"><a href="/resources/auth0-migration/"><span class="text-gray-300">Worried about Okta's plans for Auth0?</span> <span class="hidden lg:inline">Read More</span> <i class="fal fa-long-arrow-right"></i></a></li>
+        <li class="hidden lg:block px-2"><a href="/download/" class="inline-flex items-center"><i class="fal fa-rocket-launch text-lg pr-3"></i> Get Started</a></li>
+        <li class="hidden lg:block px-2"><a href="#" class="inline-flex items-center"><i class="fal fa-search text-lg pr-3"></i> Search</a></li>
+        <li class="hidden lg:block px-2"><a href="#" class="inline-flex items-center"><i class="fal fa-user-circle text-lg pr-3"></i> Login</a></li>
+        <li class="hidden lg:block pl-4"><a href="#" class="bg-orange font-extrabold px-4 py-2 rounded-sm text-2xs tracking-wide uppercase">Contact Sales</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="scroll-header" class="w-full {% if include.heroHeader %}text-black{% endif %} transition duration-500 ease-in-out">
+    <nav class="container mx-auto p-2 lg:p-2.5">
+      <ul class="flex items-center w-full">
+        <li class="flex-grow"><img src="/assets/img/logo-gray.svg" class="h-10"/></li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="#" class="{% if page.url contains '/features' %}active{% endif %}">Product <i class="fal fa-angle-down fa-fw"></i></a>
+        </li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="/pricing/" class="{% if page.url contains '/pricing/' %}active{% endif %}">Developers <i class="fal fa-angle-down fa-fw"></i></a>
+        </li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="/docs/" class="{% if page.url contains '/docs/' %}active{% endif %}">Resources <i class="fal fa-angle-down fa-fw"></i></a>
+        </li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="/download/" class="{% if page.url contains '/download/' %}active{% endif %}">Why FusionAuth <i class="fal fa-angle-down fa-fw"></i></a>
+        </li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="#" class="{% if page.url contains '/resources' || page.url contains '/blog' || page.url contains '/community' || page.url contain '/customers-partners' || page.url contains '/upgrade/' %}active{% endif %}">About Us <i class="fal fa-angle-down fa-fw"></i></a>
+        </li>
+        <li class="font-medium hidden lg:block pl-8 pt-2">
+          <a href="#" class="{% if page.url contains '/learn' %}active{% endif %}">Pricing</a>
+        </li>
+        <li class="block lg:hidden pt-1">
+          <a href="#"><i class="fal fa-bars fa-fw font-medium text-lg"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
