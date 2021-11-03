@@ -168,6 +168,10 @@ The exact duration of the deployment process depends on system load as well as t
 
 image::installation-guides/cloud/deployments-active.png[Deployment tab when the provisioning finished,width=1200,role=bottom-cropped]
 
+==== Activate Reactor
+
+After your deployment has been provisioned, you will want to access the FusionAuth UI (described below) and activate Reactor to enable any paid edition features.  Additional information about doing this can be found link:https://fusionauth.io/docs/v1/tech/reactor/#activate-reactor[here].
+
 ==== Accessing the FusionAuth UI
 
 Log in to the deployment's administrative user interface by clicking on the deployment's URL, such as `\https://piedpiper-dev.fusionauth.io`.
@@ -203,18 +207,18 @@ If your deployment is not running the latest version of FusionAuth, you may upgr
 
 [NOTE]
 ====
-Upgrade management is only available if the deployment is not currently running the latest available FusionAuth version. 
+Upgrade management is only available if the deployment is not currently running the latest available FusionAuth version.
 ====
 
 There will be downtime of between 5 minutes and 60 minutes. The exact downtime duration depends on the type of deployment, amount of data in your system, and database changes required by the version upgrade. Consult the link:/docs/v1/tech/release-notes/[relevant release notes] for functional changes as well.
 
 Due to the downtime, it is recommended that you schedule the upgrade for a low traffic period. Test the upgrade process on development or test servers first.
 
-It is a good idea to run the latest released version of FusionAuth, which has the latest bug fixes, security updates and features. However, you will not be forced to upgrade on a certain schedule. 
+It is a good idea to run the latest released version of FusionAuth, which has the latest bug fixes, security updates and features. However, you will not be forced to upgrade on a certain schedule.
 
 [NOTE]
 ====
-The upgrading described in this section only updates the version of FusionAuth. 
+The upgrading described in this section only updates the version of FusionAuth.
 
 If you are looking to modify other attributes of your deployment, such as the region it is running in, the deployment size, or the service tier, review the <<Modifying Deployments>> section.
 ====
@@ -270,7 +274,7 @@ After the deployment is completely removed, it will have a "Destroyed" state on 
 
 === Migrating a Deployment
 
-You can migrate your user data to a FusionAuth Cloud deployment or from FusionAuth Cloud to a self-hosted FusionAuth instance. 
+You can migrate your user data to a FusionAuth Cloud deployment or from FusionAuth Cloud to a self-hosted FusionAuth instance.
 
 If you are interested in migrating from an auth system other than FusionAuth, you're looking for our link:/docs/v1/tech/guides/migration/[Migration Guide].
 
@@ -292,7 +296,7 @@ After your data is uploaded, upgrade your deployment to any subsequent FusionAut
 .Migration checklist
 [cols="1,10"]
 |===
-| Done? 
+| Done?
 | Task
 
 | +++<i class="far fa-square"></i>+++
@@ -302,7 +306,7 @@ After your data is uploaded, upgrade your deployment to any subsequent FusionAut
 | Found FusionAuth version for local instance.
 
 | +++<i class="far fa-square"></i>+++
-| Created a new deployment. Instructions: <<Creating a Deployment>>. 
+| Created a new deployment. Instructions: <<Creating a Deployment>>.
 
 | +++<i class="far fa-square"></i>+++
 | Ensured the FusionAuth Cloud deployment and the local instance are running the same version of FusionAuth.
@@ -321,11 +325,11 @@ After your data is uploaded, upgrade your deployment to any subsequent FusionAut
 
 ==== Migrating Away From FusionAuth Cloud
 
-To migrate from FusionAuth Cloud to a self-hosted instance, please request a database export, as documented in <<Accessing User Data>>. After you have the data, install it in a PostgreSQL database and configure your self-hosted instance to point to that database. 
+To migrate from FusionAuth Cloud to a self-hosted instance, please request a database export, as documented in <<Accessing User Data>>. After you have the data, install it in a PostgreSQL database and configure your self-hosted instance to point to that database.
 
-Ensure your self-hosted instance uses the same FusionAuth and database versions as those used by your Cloud deployment. You can view your FusionAuth version in the administrative user interface. 
+Ensure your self-hosted instance uses the same FusionAuth and database versions as those used by your Cloud deployment. You can view your FusionAuth version in the administrative user interface.
 
-To find your deployment's database version: 
+To find your deployment's database version:
 
 * If you are running a version of FusionAuth before 1.30.2, https://account.fusionauth.io/account/support[open a support ticket].
 * If running a version >= 1.30.2, navigate to [breadcrumb]#System -> About# to view the version.
@@ -353,7 +357,7 @@ No data loss should occur and your configuration will be preserved.
 
 === Custom Domains
 
-If you are on the HA Cloud and want a custom domain name such as `auth.example.com`, log into your portal, select the deployment menu (the three ... under "Actions") and choose the [field]#Custom URL(s)# option. 
+If you are on the HA Cloud and want a custom domain name such as `auth.example.com`, log into your portal, select the deployment menu (the three ... under "Actions") and choose the [field]#Custom URL(s)# option.
 
 Enter your desired custom URLs, such as `login.piedpiper.com` and follow the instructions.
 
@@ -407,7 +411,7 @@ Please link:/contact/[contact us] to learn more about these options.
 
 == SLAs and Availability
 
-We know that availability of your auth system is critical. Below are some of the steps FusionAuth takes to ensure that FusionAuth Cloud systems are available. 
+We know that availability of your auth system is critical. Below are some of the steps FusionAuth takes to ensure that FusionAuth Cloud systems are available.
 
 You can find more information about service level agreements (SLAs) in the link:/license/[FusionAuth license] and link:/license-faq/[license FAQ], including uptime numbers and definitions of downtime.
 
@@ -454,7 +458,7 @@ When you are load testing against FusionAuth Cloud instances:
 
 Please don't use a FusionAuth Cloud Basic deployment to load test. Instances on this tier of FusionAuth Cloud run on a single compute node, so the node is running FusionAuth, Elasticsearch and a PostgreSQL database. The node is therefore very resource constrained, and attempting to run load tests on this type of system is not recommended. The numbers you get from this type of test will not be valuable to you in planning your production deployment.
 
-Testing on a Business Cloud or High-Availability Cloud plan will provide more useful results. If you cannot achieve your target request per second with a standard setup, you can create a deployment with larger node sizes. You can spin up a deployment, apply your configuration, perform load testing, and tear it down. You'll only be charged for the time the instance is running. 
+Testing on a Business Cloud or High-Availability Cloud plan will provide more useful results. If you cannot achieve your target request per second with a standard setup, you can create a deployment with larger node sizes. You can spin up a deployment, apply your configuration, perform load testing, and tear it down. You'll only be charged for the time the instance is running.
 
 == Limits
 

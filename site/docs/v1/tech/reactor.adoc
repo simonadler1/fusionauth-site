@@ -23,6 +23,10 @@ A paid edition of FusionAuth is required to enable these features. Learn more ab
 == Activate Reactor
 Once a license is purchased, to activate your instance and enable Reactor, log into your link:https://account.fusionauth.io/account[Account] and copy your License Id.
 
+You will want to choose a non-production license id for a development or stage deployment, and a production license id for your main production deployment.
+
+image:[Get License Id, width=1200]
+
 Then in your FusionAuth instance navigate to [breadcrumb]#Reactor# and enter your License Id under *Start the Reactor*.
 
 [NOTE]
