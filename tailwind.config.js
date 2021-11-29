@@ -87,8 +87,9 @@ module.exports = {
       }
     },
     fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
-      serif: ['Georgia', 'serif'],
+      'hack': ['Hack'],
+      'sans': ['Montserrat', 'sans-serif'],
+      'serif': ['Georgia', 'serif'],
     },
     extend: {
       fontSize: {
