@@ -13,7 +13,7 @@
     </style>
   </head>
 <body>
-{% include _header.liquid heroHeader=false %}
+{% include _developer-header.liquid heroHeader=false %}
 <main>
   <section class="white docs navigable">
     <div class="container">
@@ -481,16 +481,13 @@
             <div>
               <h3>Feedback</h3>
               <h4>How helpful was this page?</h4>
-              <p>
-		<div class="rw-ui-container" data-title="{{ page.url }}"></div>
-	      </p>
+		          <div class="rw-ui-container" data-title="{{ page.url }}"></div>
               <h4>See a problem?</h4>
-	      <p>
-		<a href="https://github.com/FusionAuth/fusionauth-site/issues">File an issue in our docs repo</a>
-	      </p>
+      	      <p>
+		            <a href="https://github.com/FusionAuth/fusionauth-site/issues">File an issue in our docs repo</a>
+	            </p>
             </div>
             {% endif %}
-
             <div id="scroll-top">
               <div><a href="#"><i class="fad fa-chevron-circle-up"></i></a></div>
             </div>
