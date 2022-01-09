@@ -37,7 +37,7 @@
   {% endif %}
 </head>
 <body>
-{% include _developer-header.liquid heroHeader=page.heroHeader %}
+{% include _header.liquid hero=page.heroHeader section="developer"%}
 <main>
   {% if page.markdown == 1 %}
     {{ content | markdownify }}

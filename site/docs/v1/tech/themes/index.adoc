@@ -169,6 +169,6 @@ include::docs/v1/tech/installation-guide/_theme-upgrade.adoc[]
 
 ++++
 {% capture relatedTag %}feature-themes{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 

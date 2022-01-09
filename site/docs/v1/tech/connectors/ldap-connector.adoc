@@ -119,5 +119,5 @@ video::Cqd7EgK4ess[youtube,width=560,height=315]
 
 ++++
 {% capture relatedTag %}feature-connectors{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++

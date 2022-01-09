@@ -78,7 +78,7 @@ link:/resources/breached-password-detection-white-paper/[Get the Breached Passwo
 
 ++++
 {% capture relatedTag %}feature-breached-password-detection{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 == Advanced Registration Forms
@@ -126,7 +126,7 @@ Basic registration forms have a subset of the functionality of advanced registra
 
 ++++
 {% capture relatedTag %}feature-advanced-registration-forms{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 == Connectors
@@ -157,7 +157,7 @@ Identity Providers also allow you to authenticate users against data sources ext
 
 ++++
 {% capture relatedTag %}feature-connectors{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 == Entity Management
@@ -185,5 +185,5 @@ Detailed documentation on the proper configuration can be found below.
 
 ++++
 {% capture relatedTag %}feature-entity-management{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++

@@ -1,5 +1,5 @@
 ---
-layout: default-plain
+layout: developer
 title: FusionAuth Customer License Agreement
 description: The FusionAuth Customer License Agreement
 ---

@@ -182,6 +182,6 @@ The JSON event to send to the webhook. This is a generated example and it may be
 
 ++++
 {% capture relatedTag %}feature-webhooks{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 

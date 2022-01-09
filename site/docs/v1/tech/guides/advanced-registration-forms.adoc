@@ -708,6 +708,6 @@ After a user signs up with Facebook, they'll be dropped back into the registrati
 
 ++++
 {% capture relatedTag %}feature-advanced-registration-forms{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 

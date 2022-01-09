@@ -43,7 +43,7 @@ Tutorials from the blog:
 ++++
 {% capture relatedTag %}tutorial-feature{% endcapture %}
 {% capture noheader %}true{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 ==== FusionAuth Paid Features
@@ -53,7 +53,7 @@ Here are tutorials about FusionAuth reactor features available with a paid editi
 ++++
 {% capture relatedTag %}tutorial-reactor-feature{% endcapture %}
 {% capture noheader %}true{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 === Integration Tutorials
@@ -63,7 +63,7 @@ Here are tutorials about integrating FusionAuth with other systems.
 ++++
 {% capture relatedTag %}tutorial-integration{% endcapture %}
 {% capture noheader %}true{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 
 Bonus link: link:/docs/v1/tech/core-concepts/integration-points/[Integration Points]
@@ -75,6 +75,6 @@ Here are all the tutorials:
 ++++
 {% capture relatedTag %}tutorial{% endcapture %}
 {% capture noheader %}true{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 

@@ -131,6 +131,6 @@ How can you decide between them? While they each have strengths, these questions
 
 ++++
 {% capture relatedTag %}feature-connectors{% endcapture %}
-{% include _doc_related_posts.liquid %}
+{% include _doc-related-posts.liquid %}
 ++++
 

@@ -13,9 +13,9 @@
         "url": "https://fusionauth.io",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://fusionauth.io/assets/img/fusionauth-logo-grey-orange.png",
-          "width": "1800",
-          "height": "448"
+          "url": "https://fusionauth.io/assets/img/logo-blog-gray.svg",
+          "width": "615",
+          "height": "103"
         },
         "address": {
           "@type": "PostalAddress",
@@ -35,28 +35,15 @@
       }
     </script>
   {% endif %}
-
-  {% if page.bloghomepage %}
-    <link rel="alternate" type="application/rss+xml" title="FusionAuth Blog Posts" href="{{ site.url }}/blog/feed.xml"/>
-  {% endif %}
 </head>
 <body>
-<!-- End Google Tag Manager (noscript) -->
-{% include _header.liquid heroHeader=page.heroHeader %}
+{% include _header.liquid hero=page.heroHeader section="blog" %}
 <main>
-  <section class="white">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          {% if page.markdown == 1 %}
-            {{ content | markdownify }}
-          {% else %}
-            {{ content }}
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </section>
+  {% if page.markdown == 1 %}
+    {{ content | markdownify }}
+  {% else %}
+    {{ content }}
+  {% endif %}
 </main>
 {% include _footer.liquid %}
 </body>
