@@ -40,7 +40,7 @@ defaults:
       image: share/default.png
 
 # Build settings
-permalink: pretty
+permalink: date
 markdown: kramdown
 highlighter: rouge
 plugins:
@@ -69,7 +69,7 @@ pagination:
   collection: 'posts'
   enabled: true
   per_page: 5
-  permalink: '/page:num/'
+  permalink: '/page:num'
   sort_reverse: true
   trail:
     before: 3
