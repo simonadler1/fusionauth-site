@@ -38,7 +38,7 @@ Below assumes both FusionAuth App and FusionAuth Search will be uninstalled and 
     ** `sudo rpm -i <file_to_be_installed>.rpm`
     ** link:/direct-download/[Direct download packages/rpm link]
     * If in a Development Environment, FastPath installation is also an option.
-    **  link:/docs/v1/tech/installation-guide/fast-path/#fast-path-install[Fast Path Install]
+    **  link:/docs/v1/tech/installation-guide/fast-path#fast-path-install[Fast Path Install]
 
 [WARNING]
 ====

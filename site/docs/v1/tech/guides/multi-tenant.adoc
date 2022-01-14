@@ -53,7 +53,7 @@ There are many reasons why you might be interested in a multi-tenant FusionAuth 
 * To easily manage multiple developer environments. Having each developer use a tenant on a dedicated development server allows developers free reign to add, remove and modify configuration, while keeping them relatively isolated from each other.
 * Per-client custom tenant level settings are needed. Examples of such settings include password rules, the issuer of JWTs, or webhook transaction levels.
 
-FusionAuth's performant, lightweight multi-tenancy can help with any of these scenarios. If you want to learn more about FusionAuth tenants, there's an entire link:/docs/v1/tech/core-concepts/tenants/[Tenant core concepts section].
+FusionAuth's performant, lightweight multi-tenancy can help with any of these scenarios. If you want to learn more about FusionAuth tenants, there's an entire link:/docs/v1/tech/core-concepts/tenants[Tenant core concepts section].
 
 == Levels of Isolation
 
@@ -247,7 +247,7 @@ Here's what the [breadcrumb]#OAuth# tab will look like:
 
 image::guides/multi-tenant/setting-up-the-control-plane-application.png[Setting up the control plane application in FusionAuth.,width=1200]
 
-Below, basic self service registration is enabled. Doing this will allow a user to sign up for the control plane application themselves. If you do not enable this, create the users in some other fashion using the link:/docs/v1/tech/apis/users/[User API].
+Below, basic self service registration is enabled. Doing this will allow a user to sign up for the control plane application themselves. If you do not enable this, create the users in some other fashion using the link:/docs/v1/tech/apis/users[User API].
 
 image::guides/multi-tenant/allowing-self-service-registration-on-the-control-plane-application.png[Allow registration on the control plane application in FusionAuth.,width=1200]
 

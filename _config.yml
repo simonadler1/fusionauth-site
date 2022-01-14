@@ -40,7 +40,7 @@ defaults:
       image: share/default.png
 
 # Build settings
-permalink: date
+permalink: /:categories/:year/:month/:day/:title
 markdown: kramdown
 highlighter: rouge
 plugins:
