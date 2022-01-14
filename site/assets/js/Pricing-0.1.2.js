@@ -63,25 +63,25 @@ FusionAuth.Account.PriceCalculator.prototype = {
       return 0;
     }
 
-    var supportPrice = 0;
+    var editionPrice = 0;
     var mau = this.monthlyActiveUserSlider.getValue();
-    var planTiers = Object.values(this.priceModel.support.tierPricing[plan]);
+    var planTiers = Object.values(this.priceModel.edition.tierPricing[plan]);
 
     planTiers.forEach(function(tier) {
       var adjustment = tier.minimumUserCount === 0 ? 0 : 1;
       if (mau > tier.minimumUserCount) {
         // MAU is past this tier so add ppu times total users in tier
         if (mau > tier.maximumUserCount && tier.maximumUserCount !== -1) {
-          supportPrice += tier.pricePerUnit * (tier.maximumUserCount - tier.minimumUserCount + adjustment);
+          editionPrice += tier.pricePerUnit * (tier.maximumUserCount - tier.minimumUserCount + adjustment);
         }
         // MAU is inside this tier so add ppu for users in this tier
         if (mau <= tier.maximumUserCount || tier.maximumUserCount === -1) {
-          supportPrice += tier.pricePerUnit * (mau - tier.minimumUserCount + 1);
+          editionPrice += tier.pricePerUnit * (mau - tier.minimumUserCount + 1);
         }
       }
     });
 
-    return supportPrice / this.priceModel.support.usersPerUnit;
+    return editionPrice / this.priceModel.edition.usersPerUnit;
   },
 
   _handlePriceModelResponse: function(xhr) {
@@ -128,8 +128,8 @@ FusionAuth.Account.PriceCalculator.prototype = {
         var hostingType = FusionAuth.Account.hostingTypes[hIndex];
         var edition = FusionAuth.Account.editions[eIndex];
         var hostingPrice = this._calculateHostingPrice(hostingType);
-        var supportPrice = this._calculateEditionPrice(edition);
-        var price = hostingPrice + supportPrice;
+        var editionPrice = this._calculateEditionPrice(edition);
+        var price = hostingPrice + editionPrice;
         price = Math.floor(price / 5) * 5;
         var text = price === 0 ? 'FREE' : new Intl.NumberFormat('en').format(price);
 
