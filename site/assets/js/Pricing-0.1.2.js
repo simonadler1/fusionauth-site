@@ -25,6 +25,10 @@ FusionAuth.Account.PriceCalculator = function() {
       .addEventListener('mouseup', this._handleSliderChange);
   this.monthlyActiveUserSliderLabel = Prime.Document.queryById('monthly-active-users-value');
 
+  this.frequencyToggle = Prime.Document.queryById('frequency-toggle')
+      .addEventListener('change', this._handleFrequencyChange);
+  this.monthly = true;
+
   // Fetch the pricing model
   this.priceModel = null;
   new Prime.Ajax.Request(FusionAuth.accountURL + '/ajax/edition/price-model', 'GET')
@@ -34,7 +38,8 @@ FusionAuth.Account.PriceCalculator = function() {
 
   // Save off the original href's and text for the pricing buttons
   Prime.Document.query('.main-pricing-section a.pricing').each(function(e) {
-    e.setAttribute('href-orig', e.getAttribute('href'));
+    var href = e.getAttribute('href').replace('#', FusionAuth.accountURL);
+    e.setAttribute('href-orig', href);
     e.setAttribute('html-orig', e.getHTML());
   });
 };
@@ -64,24 +69,33 @@ FusionAuth.Account.PriceCalculator.prototype = {
     }
 
     var editionPrice = 0;
-    var mau = this.monthlyActiveUserSlider.getValue();
+    var mau = parseInt(this.monthlyActiveUserSlider.getValue());
     var planTiers = Object.values(this.priceModel.edition.tierPricing[plan]);
 
+    var monthly = this.monthly;
     planTiers.forEach(function(tier) {
+      var base = monthly ? tier.pricePerUnit : tier.annualPricePerUnit;
       var adjustment = tier.minimumUserCount === 0 ? 0 : 1;
       if (mau > tier.minimumUserCount) {
         // MAU is past this tier so add ppu times total users in tier
         if (mau > tier.maximumUserCount && tier.maximumUserCount !== -1) {
-          editionPrice += tier.pricePerUnit * (tier.maximumUserCount - tier.minimumUserCount + adjustment);
+          editionPrice += base * (tier.maximumUserCount - tier.minimumUserCount + adjustment);
         }
+
         // MAU is inside this tier so add ppu for users in this tier
         if (mau <= tier.maximumUserCount || tier.maximumUserCount === -1) {
-          editionPrice += tier.pricePerUnit * (mau - tier.minimumUserCount + 1);
+          editionPrice += base * (mau - tier.minimumUserCount + 1);
         }
       }
     });
 
-    return editionPrice / this.priceModel.edition.usersPerUnit;
+    var monthlyPrice = editionPrice / this.priceModel.edition.usersPerUnit;
+    return monthlyPrice;
+  },
+
+  _handleFrequencyChange: function() {
+    this.monthly = !this.frequencyToggle.isChecked();
+    this._updatePrices();
   },
 
   _handlePriceModelResponse: function(xhr) {
@@ -104,7 +118,6 @@ FusionAuth.Account.PriceCalculator.prototype = {
     var left = (ratio * (width - 30)) - 49;
     this.monthlyActiveUserSliderLabel.setLeft(left);
     this._updatePrices();
-    this._updateButtons();
   },
 
   _updateButtons: function() {
@@ -140,6 +153,8 @@ FusionAuth.Account.PriceCalculator.prototype = {
         }
       }
     }
+
+    this._updateButtons();
   }
 }
 
