@@ -57,7 +57,7 @@ FusionAuth.Account.PriceCalculator.prototype = {
     } else if (type === 'business-cloud') {
       price = this.priceModel.ec2['medium'] + this.priceModel.rds['medium'];
     } else if (type === 'ha-cloud') {
-      price = (2 * this.priceModel.ec2['medium']) + this.priceModel.elb.base + this.priceModel.rds['medium'];
+      price = (2 * this.priceModel.ec2['medium']) + this.priceModel.elb.base + (this.priceModel.rds['medium'] * 2);
     }
 
     return price;
@@ -70,11 +70,10 @@ FusionAuth.Account.PriceCalculator.prototype = {
 
     var editionPrice = 0;
     var mau = parseInt(this.monthlyActiveUserSlider.getValue());
-    var planTiers = Object.values(this.priceModel.edition.tierPricing[plan]);
-
-    var monthly = this.monthly;
-    planTiers.forEach(function(tier) {
-      var base = monthly ? tier.pricePerUnit : tier.annualPricePerUnit;
+    var tierPricing = this.priceModel.edition.tierPricing[plan];
+    var tiers = [tierPricing.base, tierPricing.tier2, tierPricing.tier3, tierPricing.tier4];
+    tiers.forEach(function(tier) {
+      var base = tier.pricePerUnit;
       var adjustment = tier.minimumUserCount === 0 ? 0 : 1;
       if (mau > tier.minimumUserCount) {
         // MAU is past this tier so add ppu times total users in tier
@@ -90,6 +89,9 @@ FusionAuth.Account.PriceCalculator.prototype = {
     });
 
     var monthlyPrice = editionPrice / this.priceModel.edition.usersPerUnit;
+    if (!this.monthly) {
+      monthlyPrice = monthlyPrice - (monthlyPrice * tierPricing.annualDiscountPercentage);
+    }
     return monthlyPrice;
   },
 
@@ -109,8 +111,11 @@ FusionAuth.Account.PriceCalculator.prototype = {
   },
 
   _handleSliderChange: function() {
-    var mau = this.monthlyActiveUserSlider.getValue();
+    var mau = parseInt(this.monthlyActiveUserSlider.getValue());
     var mauText = new Intl.NumberFormat('en').format(mau);
+    if (mau === 1000000) {
+      mauText += "+";
+    }
     this.monthlyActiveUserSliderLabel.setTextContent(mauText);
 
     var width = this.monthlyActiveUserSlider.getWidth();
@@ -121,21 +126,28 @@ FusionAuth.Account.PriceCalculator.prototype = {
   },
 
   _updateButtons: function() {
-    var mau = this.monthlyActiveUserSlider.getValue();
-    if (parseInt(mau) === 1000000) {
-      Prime.Document.query('.main-pricing-section a.pricing').each(function(e) {
-        e.setAttribute('href', '/contact');
-        e.setHTML('Contact sales');
+    var mau = parseInt(this.monthlyActiveUserSlider.getValue());
+    if (mau === 1000000 || !this.monthly) {
+      Prime.Document.query('.pricing-table a.pricing').each(function(e) {
+        e.setAttribute('href', '/contact')
+            .setHTML('Contact sales');
       });
     } else {
-      Prime.Document.query('.main-pricing-section a.pricing').each(function(e) {
-        e.setAttribute('href', e.getAttribute('href-orig'));
-        e.setHTML(e.getAttribute('html-orig'));
+      Prime.Document.query('.pricing-table a.pricing').each(function(e) {
+        e.setAttribute('href', e.getAttribute('href-orig'))
+            .setHTML(e.getAttribute('html-orig'));
+      });
+    }
+
+    if (mau > 10000) {
+      Prime.Document.query('.starter-button').each(function(e) {
+        e.setAttribute('href', 'javascript:void(0)').setHTML('Not available');
       });
     }
   },
 
   _updatePrices: function() {
+    var mau = parseInt(this.monthlyActiveUserSlider.getValue());
     for (var hIndex in FusionAuth.Account.hostingTypes) {
       for (var eIndex in FusionAuth.Account.editions) {
         var hostingType = FusionAuth.Account.hostingTypes[hIndex];
@@ -149,7 +161,11 @@ FusionAuth.Account.PriceCalculator.prototype = {
         var name = hostingType + "-" + edition.toLowerCase();
         var amount = Prime.Document.queryById(name);
         if (amount !== null) {
-          amount.setHTML(text);
+          if (edition === 'Starter' && mau > 10000) {
+            amount.setHTML('--');
+          } else {
+            amount.setHTML(text);
+          }
         }
       }
     }
