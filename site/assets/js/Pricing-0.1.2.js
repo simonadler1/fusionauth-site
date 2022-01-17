@@ -53,7 +53,7 @@ FusionAuth.Account.PriceCalculator.prototype = {
     var price = 0;
 
     if (type === 'basic-cloud') {
-      price = this.priceModel.ec2['medium'];
+      price = this.priceModel.ec2['medium'] / 2;
     } else if (type === 'business-cloud') {
       price = this.priceModel.ec2['medium'] + this.priceModel.rds['medium'];
     } else if (type === 'ha-cloud') {
@@ -68,31 +68,22 @@ FusionAuth.Account.PriceCalculator.prototype = {
       return 0;
     }
 
-    var editionPrice = 0;
     var mau = parseInt(this.monthlyActiveUserSlider.getValue());
-    var tierPricing = this.priceModel.edition.tierPricing[plan];
-    var tiers = [tierPricing.base, tierPricing.tier2, tierPricing.tier3, tierPricing.tier4];
-    tiers.forEach(function(tier) {
-      var base = tier.pricePerUnit;
-      var adjustment = tier.minimumUserCount === 0 ? 0 : 1;
-      if (mau > tier.minimumUserCount) {
-        // MAU is past this tier so add ppu times total users in tier
-        if (mau > tier.maximumUserCount && tier.maximumUserCount !== -1) {
-          editionPrice += base * (tier.maximumUserCount - tier.minimumUserCount + adjustment);
-        }
-
-        // MAU is inside this tier so add ppu for users in this tier
-        if (mau <= tier.maximumUserCount || tier.maximumUserCount === -1) {
-          editionPrice += base * (mau - tier.minimumUserCount + 1);
-        }
-      }
-    });
-
-    var monthlyPrice = editionPrice / this.priceModel.edition.usersPerUnit;
-    if (!this.monthly) {
-      monthlyPrice = monthlyPrice - (monthlyPrice * tierPricing.annualDiscountPercentage);
+    var edition = this.priceModel.edition.tierPricing[plan];
+    var increments = mau / 10000;
+    var price;
+    if (increments < 10) {
+      price = edition.base.pricePerUnit + (edition.tier2.pricePerUnit * (increments - 1));
+    } else if (increments < 100) {
+      price = edition.base.pricePerUnit + (edition.tier2.pricePerUnit * 9) + (edition.tier3.pricePerUnit * (increments - 10));
+    } else {
+      price = edition.base.pricePerUnit + (edition.tier2.pricePerUnit * 9) + (edition.tier3.pricePerUnit * 90) + (edition.tier4.pricePerUnit * (increments - 100));
     }
-    return monthlyPrice;
+
+    if (!this.monthly) {
+      price = Math.floor(price - (price * edition.annualDiscountPercentage));
+    }
+    return price;
   },
 
   _handleFrequencyChange: function() {
@@ -141,7 +132,7 @@ FusionAuth.Account.PriceCalculator.prototype = {
 
     if (mau > 10000) {
       Prime.Document.query('.starter-button').each(function(e) {
-        e.setAttribute('href', 'javascript:void(0)').setHTML('Not available');
+        e.setHTML('Not available');
       });
     }
   },
