@@ -152,8 +152,18 @@ FusionAuth.Account.PriceCalculator.prototype = {
         var name = hostingType + "-" + edition.toLowerCase();
         var amount = Prime.Document.queryById(name);
         if (amount !== null) {
-          if (edition === 'Starter' && mau > 10000) {
-            amount.setHTML('--');
+          if (edition === 'Starter') {
+            if (mau > 10000) {
+              amount.setHTML('--');
+              Prime.Document.query('.pricing-table-item.starter').each(function(e) {
+                e.setOpacity(0.50).setStyle('pointer-events', 'none');
+              });
+            } else {
+              amount.setHTML(text);
+              Prime.Document.query('.pricing-table-item.starter').each(function(e) {
+                e.setOpacity(1.0).setStyle('pointer-events', 'all');
+              });
+            }
           } else {
             amount.setHTML(text);
           }
