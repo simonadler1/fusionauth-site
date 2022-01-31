@@ -21,7 +21,6 @@ group :jekyll_plugins do
   gem "jekyll-paginate-v2", "3.0.0"
   gem "jekyll-environment-variables"
   gem "jekyll-algolia", "~> 1.0"
-  gem "jekyll-redirect-from"
 end
 
 # For the docs

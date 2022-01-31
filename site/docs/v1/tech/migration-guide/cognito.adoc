@@ -2,9 +2,6 @@
 layout: doc
 title: Migration From Amazon Cognito
 description: How to migrate your users to FusionAuth from Amazon Cognito.
-redirect_from:
- - /cognito/
- - /cognito
 ---
 :page-liquid:
 

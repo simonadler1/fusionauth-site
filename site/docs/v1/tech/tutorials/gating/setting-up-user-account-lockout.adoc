@@ -2,9 +2,6 @@
 layout: doc
 title: Setting Up User Account Lockout
 description: Learn how to set up account locking rules.
-redirect_from:
-  - /docs/v1/tech/tutorials/setting-up-user-account-lockout/
-  - /docs/v1/tech/tutorials/setting-up-user-account-lockout
 ---
 
 == Locking User Accounts Based on Failed Authentication Attempts

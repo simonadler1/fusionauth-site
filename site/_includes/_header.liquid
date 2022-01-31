@@ -8,34 +8,7 @@
       </header>
       <ul>
         <li><a href="/">Back to site</a></li>
-        <li class="dropdown">
-          <a href="#" class="{% if page.url contains '/learn' %}active{% endif %}">Expert Advice <i class="fal fa-angle-down fa-fw orange"></i></a>
-          <div class="super-dropdown animate">
-            <div class="container">
-              <div class="col-xs-12 col-lg-4 promo animate">
-                <img src="/assets/img/expert-advice.svg" alt="Expert Advice for Developers">
-                <p>
-                  Learn everything you need to know about authentication, authorization, identity, and access management from our team of industry experts.
-                </p>
-              </div>
-              <div class="col-xs-12 col-lg-4 items animate">
-                <ul>
-                  <li><a href="/learn/expert-advice/authentication/"><img src="/assets/img/header/expert-advice-authentication.svg" alt="Authentication"/>&nbsp;&nbsp;&nbsp;Authentication</a></li>
-                  <li><a href="/learn/expert-advice/ciam/"><img src="/assets/img/header/expert-advice-ciam.svg" alt="CIAM"/>&nbsp;&nbsp;&nbsp;CIAM</a></li>
-                  <li><a href="/learn/expert-advice/identity-basics/"><img src="/assets/img/header/expert-advice-identity-basics.svg" alt="Identity Basics"/>&nbsp;&nbsp;&nbsp;Identity Basics</a></li>
-                  <li><a href="/learn/expert-advice/oauth/"><img src="/assets/img/header/expert-advice-oauth.svg" alt="OAuth"/>&nbsp;&nbsp;&nbsp;OAuth</a></li>
-                </ul>
-              </div>
-              <div class="col-xs-12 col-lg-4 items animate">
-                <ul>
-                  <li><a href="/learn/expert-advice/security/"><img src="/assets/img/header/expert-advice-security.svg" alt="Security"/>&nbsp;&nbsp;&nbsp;Security</a></li>
-                  <li><a href="/learn/expert-advice/tokens/"><img src="/assets/img/header/expert-advice-tokens.svg" alt="Tokens"/>&nbsp;&nbsp;&nbsp;Tokens</a></li>
-                  <li><a href="/learn/expert-advice/dev-tools/"><img src="/assets/img/header/expert-advice-dev-tools.svg" alt="Dev Tools"/>&nbsp;&nbsp;&nbsp;Dev Tools</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
+        <li><a href="/learn/expert-advice/" class="{% if page.url contains '/learn' %}active{% endif %}">Expert Advice</a></li>
         <li><a href="/blog/"{% if page.url contains '/blog/' %} class="active"{% endif %}>Blog</a></li>
         <li><a href="/docs/"{% if page.url contains '/docs/' %} class="active"{% endif %}>Developers</a></li>
         <li><a href="/download">Downloads</a></li>

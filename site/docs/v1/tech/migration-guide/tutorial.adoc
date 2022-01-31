@@ -2,9 +2,6 @@
 layout: doc
 title: Migration Tutorial
 description: Learn how to migrate users from an existing database into FusionAuth
-redirect_from:
- - /docs/v1/tech/tutorials/migrate-users/
- - /docs/v1/tech/tutorials/migrate-users
 ---
 
 == Overview

@@ -146,27 +146,28 @@ FusionAuth.Account.PriceCalculator.prototype = {
         var hostingPrice = this._calculateHostingPrice(hostingType);
         var editionPrice = this._calculateEditionPrice(edition);
         var price = hostingPrice + editionPrice;
-        price = Math.floor(price / 5) * 5;
+        price = Math.floor(price);
         var text = price === 0 ? 'FREE' : new Intl.NumberFormat('en').format(price);
-
         var name = hostingType + "-" + edition.toLowerCase();
         var amount = Prime.Document.queryById(name);
-        if (amount !== null) {
-          if (edition === 'Starter') {
-            if (mau > 10000) {
-              amount.setHTML('--');
-              Prime.Document.query('.pricing-table-item.starter').each(function(e) {
-                e.setOpacity(0.50).setStyle('pointer-events', 'none');
-              });
-            } else {
-              amount.setHTML(text);
-              Prime.Document.query('.pricing-table-item.starter').each(function(e) {
-                e.setOpacity(1.0).setStyle('pointer-events', 'all');
-              });
-            }
+        if (amount === null) {
+          continue;
+        }
+
+        if (edition === 'Starter') {
+          if (mau > 10000) {
+            amount.setHTML('--');
+            Prime.Document.query('.pricing-table-item.starter').each(function(e) {
+              e.setOpacity(0.50).setStyle('pointer-events', 'none');
+            });
           } else {
             amount.setHTML(text);
+            Prime.Document.query('.pricing-table-item.starter').each(function(e) {
+              e.setOpacity(1.0).setStyle('pointer-events', 'all');
+            });
           }
+        } else {
+          amount.setHTML(text);
         }
       }
     }

@@ -2,8 +2,6 @@
 layout: doc
 title: Monitoring FusionAuth
 description: Understand how your installation is operating by monitoring it.
-redirect_from:
-  - docs/v1/tech/installation-guide/monitor/
 ---
 
 == Overview

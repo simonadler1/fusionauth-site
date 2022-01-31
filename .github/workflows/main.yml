@@ -4,7 +4,7 @@ name: deploy_website
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ brianp/new-website-2022 ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,13 +20,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        name: Cache savant build
-        with: 
-          path: |
-            ~/dev
-            ~/.savant/cache
-          key: ${{ runner.os }}-${{ hashFiles('**/.github/scripts/setup.sh') }}-${{ hashFiles('**/.savant/plugins/*') }}-${{ hashFiles('**/build.savant') }}
       - uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
@@ -35,16 +28,18 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          ruby-version: '2.7.0'
+          ruby-version: '2.7.5'
       # Runs a set of commands using the runners shell
       - env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_ACCESS_KEY }}
           ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          JEKYLL_ENV: production
         name: Deploy website
         run: |
-          .github/scripts/setup.sh
-          bundle exec jekyll build || true # have to do this first or we miss files and the savant push barfs. Never want to fail.
-          sleep 1
-          ~/dev/savant/current/bin/sb push
+          bundle exec jekyll build --trace
+          # bundle exec jekyll algolia
+          bundle exec s3_website push
+          aws cloudfront update-function --name fusionauth-website-request-handler --function-code src/cloudfront/request-handler.js
+          # aws cloudfront publish-function --name fusionauth-website-request-handler
         shell: bash

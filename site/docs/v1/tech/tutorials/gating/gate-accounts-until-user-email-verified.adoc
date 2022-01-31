@@ -2,9 +2,6 @@
 layout: doc
 title: Gate Users Until They Verify Their Email
 description: How to gate users' email accounts until verified.
-redirect_from:
- - /docs/v1/tech/tutorials/gate-accounts-until-verified/
- - /docs/v1/tech/tutorials/gate-accounts-until-verified
 ---
 
 == Overview
