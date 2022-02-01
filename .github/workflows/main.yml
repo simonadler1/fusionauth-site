@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
@@ -41,6 +41,7 @@ jobs:
           #bundle exec jekyll build --trace
           #bundle exec jekyll algolia
           #bundle exec s3_website push
+          aws --version
           aws cloudfront describe-function --name fusionauth-website-request-handler
           echo "CLOUDFRONT_FUNCTION_ETAG=$(aws cloudfront describe-function --name fusionauth-website-request-handler --query 'ETag' --output text)" >> ${GITHUB_ENV}
           echo "CLOUDFRONT_FUNCTION_ETAG=$(aws cloudfront describe-function --name fusionauth-website-request-handler --query 'ETag' --output text)"
