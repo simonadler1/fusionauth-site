@@ -54,9 +54,9 @@ jobs:
         run: |
           bundle exec jekyll build || true
           bundle exec jekyll build --trace
-          bundle exec jekyll algolia
+          #bundle exec jekyll algolia
           bundle exec s3_website push
           CLOUDFRONT_FUNCTION_ETAG=$(aws cloudfront describe-function --name fusionauth-website-request-handler --query 'ETag' --output text)
           aws cloudfront update-function --name fusionauth-website-request-handler --function-code fileb://src/cloudfront/request-handler.js --function-config Comment="Request handler for the FusionAuth website",Runtime="cloudfront-js-1.0" --if-match ${CLOUDFRONT_FUNCTION_ETAG}
-          aws cloudfront publish-function --name fusionauth-website-request-handler
+          aws cloudfront publish-function --name fusionauth-website-request-handler --if-match ${CLOUDFRONT_FUNCTION_ETAG}
         shell: bash
