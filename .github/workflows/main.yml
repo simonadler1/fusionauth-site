@@ -42,7 +42,7 @@ jobs:
           #bundle exec jekyll algolia
           #bundle exec s3_website push
           aws --version
-          aws cloudfront describe-function --name fusionauth-website-request-handler
+          aws --debug cloudfront describe-function --name fusionauth-website-request-handler
           echo "CLOUDFRONT_FUNCTION_ETAG=$(aws cloudfront describe-function --name fusionauth-website-request-handler --query 'ETag' --output text)" >> ${GITHUB_ENV}
           echo "CLOUDFRONT_FUNCTION_ETAG=$(aws cloudfront describe-function --name fusionauth-website-request-handler --query 'ETag' --output text)"
           echo ${CLOUDFRONT_FUNCTION_ETAG}
