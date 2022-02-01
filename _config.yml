@@ -47,7 +47,6 @@ plugins:
  - jekyll-asciidoc
  - jekyll-feed
  - jekyll-paginate-v2
- - jekyll-postcss
 exclude:
  - docs/src/templates
 asciidoctor:

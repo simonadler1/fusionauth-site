@@ -4,7 +4,7 @@
 <head>
   {% include _head.liquid %}
   <script type="application/ld+json">
-    {
+    [{
       "@context": "https://schema.org",
       "@type": "Article",
       "mainEntityOfPage": {
@@ -28,9 +28,7 @@
       },
       "datePublished": "{{ page.date }}",
       "dateModified": "{{ page.dateModified }}"
-    }
-  </script>
-  <script type="application/ld+json">
+    },
     {
       "@context": "https://schema.org/",
       "@type": "BreadcrumbList",
@@ -50,7 +48,7 @@
         "name": "{{ page.title }}",
         "item": "https://fusionauth.io{{ page.url | remove: '.html' }}"
       }]
-    }
+    }]
   </script>
 </head>
 <body>

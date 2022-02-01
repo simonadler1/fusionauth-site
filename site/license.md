@@ -1,5 +1,5 @@
 ---
-layout: developer
+layout: developer-container
 title: FusionAuth Customer License Agreement
 description: The FusionAuth Customer License Agreement
 ---

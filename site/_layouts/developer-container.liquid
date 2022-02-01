@@ -7,11 +7,15 @@
 <body>
 {% include _header.liquid hero=page.heroHeader section="developer"%}
 <main>
-  {% if page.markdown == 1 %}
-    {{ content | markdownify }}
-  {% else %}
-    {{ content }}
-  {% endif %}
+  <section class="white">
+    <div class="container">
+      {% if page.markdown == 1 %}
+        {{ content | markdownify }}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </div>
+  </section>
 </main>
 {% include _footer.liquid %}
 </body>
