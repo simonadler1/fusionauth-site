@@ -13,6 +13,16 @@ function handler(event) {
   }
 
   var uri = request.uri;
+  if (uri.endsWith('.html')) {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved',
+      headers: {
+        'location': { value: uri.substring(0, uri.length - 5) }
+      }
+    };
+  }
+
   if (uri.endsWith('/') && removeSlash(uri)) {
     return {
       statusCode: 301,
@@ -34,12 +44,7 @@ function handler(event) {
     };
   }
 
-  var slashIndex = request.uri.lastIndexOf('/');
-  var dotIndex = request.uri.indexOf('.', slashIndex);
-  console.log(slashIndex + '-' + dotIndex);
-  if (slashIndex < request.uri.length - 1 && dotIndex < 0) {
-    request.uri = request.uri + '.html';
-  }
+  request.uri = calculateURI(uri);
   return request;
 }
 
@@ -47,6 +52,7 @@ function removeSlash(uri) {
   var indexPages = {
     '/': true,
     '/blog/': true,
+    '/community/forum/': true,
     '/docs/': true,
     '/docs/v1/tech/': true,
     '/docs/v1/tech/account-management/': true,
@@ -79,6 +85,7 @@ function removeSlash(uri) {
     '/docs/v1/tech/themes/': true,
     '/docs/v1/tech/tutorials/': true,
     '/docs/v1/tech/tutorials/two-factor/': true,
+    '/learn/expert-advice/': true,
     '/learn/expert-advice/authentication/': true,
     '/learn/expert-advice/ciam/': true,
     '/learn/expert-advice/dev-tools/': true,
@@ -108,7 +115,6 @@ function calculateRedirect(uri) {
     '/docs/v1/tech/tutorials/setting-up-user-account-lockout': '/docs/v1/tech/tutorials/gating/setting-up-user-account-lockout',
     '/docs/v1/tech/tutorials/two-factor/authenticator-app': '/docs/v1/tech/tutorials/two-factor/authenticator-app-pre-1-26',
     '/docs/v1/tech/tutorials/two-factor/twilio-push': '/docs/v1/tech/tutorials/two-factor/twilio-push-pre-1-26',
-
     '/features/architecture': '/platform/built-for-developers',
     '/features/advanced-registration-forms': '/platform/customizable',
     '/features/breached-password-detection': '/features/authentication',
@@ -130,5 +136,21 @@ function calculateRedirect(uri) {
     '/upgrade/from-saas': '/compare'
   }
   return redirects.hasOwnProperty(uri) ? redirects[uri] : null;
+}
+
+function calculateURI(uri) {
+  var s3Prefixes = ['/assets/', '/blog/', '/docs/', '/learn', '/legal/', '/resources/'];
+  for (var i = 0; i < s3Prefixes.length; i++) {
+    if (uri.startsWith(s3Prefixes[i])) {
+      var slashIndex = uri.lastIndexOf('/');
+      var dotIndex = uri.indexOf('.', slashIndex);
+      if (slashIndex < uri.length - 1 && dotIndex < 0) {
+        uri = uri + '.html';
+      }
+      return uri;
+    }
+  }
+
+  return uri;
 }
 
