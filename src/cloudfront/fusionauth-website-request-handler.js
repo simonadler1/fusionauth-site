@@ -1,7 +1,19 @@
 function handler(event) {
   var request = event.request;
   var headers = request.headers;
-  // Basic fusionauth:rocks
+
+  // Handle WWW redirect
+  if (headers.host.value === 'www.fusionauth.io') {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved',
+      headers: {
+        'location': { value: 'https://fusionauth.io' }
+      }
+    };
+  }
+
+  // Basic fusionauth:rocks for dev-time to prevent bots from indexing
   if (headers.host.value !== 'fusionauth.io' && (!headers.authorization || headers.authorization.value !== 'Basic ZnVzaW9uYXV0aDpyb2Nrcw==')) {
     return {
       statusCode: 401,
