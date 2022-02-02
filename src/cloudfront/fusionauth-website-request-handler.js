@@ -2,7 +2,7 @@ function handler(event) {
   var request = event.request;
   var headers = request.headers;
   // Basic fusionauth:rocks
-  if (headers.host.value === 'fusionauth.dev' && (!headers.authorization || headers.authorization.value !== 'Basic ZnVzaW9uYXV0aDpyb2Nrcw==')) {
+  if (headers.host.value !== 'fusionauth.io' && (!headers.authorization || headers.authorization.value !== 'Basic ZnVzaW9uYXV0aDpyb2Nrcw==')) {
     return {
       statusCode: 401,
       statusDescription: 'Unauthorized',
@@ -78,7 +78,7 @@ function removeSlash(uri) {
     '/docs/v1/tech/integrations/': true,
     '/docs/v1/tech/lambdas/': true,
     '/docs/v1/tech/messengers/': true,
-    '/docs/v1/tech/migration-guide': true,
+    '/docs/v1/tech/migration-guide/': true,
     '/docs/v1/tech/oauth/': true,
     '/docs/v1/tech/plugins/': true,
     '/docs/v1/tech/samlv2/': true,
