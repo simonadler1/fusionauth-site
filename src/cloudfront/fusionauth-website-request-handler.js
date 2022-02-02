@@ -135,7 +135,6 @@ function calculateRedirect(uri) {
     '/features/password-control': '/features/passwordless',
     '/features/scalability': '/platform/scalable',
     '/features/security-data-compliance': '/security-data-compliance',
-    '/features/single-sign-on': '/features/single-sign-on',
     '/features/user-experience': '/platform/customizable',
     '/features/user-management-reporting': '/features/user-management',
     '/kubernetes': '/docs/v1/tech/installation-guide/kubernetes',
