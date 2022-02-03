@@ -142,6 +142,7 @@ function calculateRedirect(uri) {
     '/learn/expert-advice/identity-basics/common-authentication-implementation-risks': '/learn/expert-advice/authentication/common-authentication-implementation-risks',
     '/learn/expert-advice/identity-basics/making-sure-your-auth-system-scales': '/learn/expert-advice/ciam/making-sure-your-auth-system-scales',
     '/learn/expert-advice/identity-basics/value-standards-compliant-authentication': '/learn/expert-advice/oauth/value-standards-compliant-authentication',
+    '/resources/auth0-migration': '/auth0-migration',
     '/upgrade/from-homegrown': '/compare',
     '/upgrade/from-open-source': '/compare',
     '/upgrade/from-saas': '/compare'
