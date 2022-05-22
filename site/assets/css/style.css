@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2022, Inversoft Inc., All Rights Reserved
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply font-sans;
+    }
+}
+
+@layer components {
+    .closed {
+        @apply opacity-0 !important;
+    }
+
+    [data-popper-placement^='right'] > [data-popper-arrow] {
+        left: -4px;
+    }
+
+    [data-popper-placement^='left'] > [data-popper-arrow] {
+        right: -4px;
+    }
+
+    [data-popper-placement^='top'] > [data-popper-arrow] {
+        bottom: -4px;
+    }
+
+    [data-popper-placement^='bottom'] > [data-popper-arrow] {
+        top: -4px;
+    }
+
+    [data-popper-arrow] {
+        display: block;
+        height: 8px;
+        width: 8px;
+    }
+
+    [data-popper-arrow]::before {
+        @apply bg-gray-500;
+        content: "";
+        height: 8px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: rotate(45deg);
+        width: 8px;
+        z-index: -1;
+    }
+}
+

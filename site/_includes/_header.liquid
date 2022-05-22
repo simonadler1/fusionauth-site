@@ -1,41 +1,32 @@
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P7VLHG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P7VLHG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="page-header {% if include.hero == false %}gray-fixed{% endif %}">
-  <div class="container">
-    <a href="/docs/"><img src="/assets/img/logo-{{ include.section }}-white.svg" alt="FusionAuth {{ include.section }} image" class="logo"></a>
-    <nav>
-      <header>
-        <a href="/docs/"><img src="/assets/img/logo-{{ include.section }}-gray.svg" alt="FusionAuth {{ include.section }} logo" class="logo"></a>
-        <a href="#" class="menu-close gray-light button square"><i class="fal fa-times fa-fw fa-2x"></i></a>
-      </header>
-      <ul>
-        <li><a href="/">Back to site</a></li>
-        <li><a href="/learn/expert-advice/" class="{% if page.url contains '/learn' %}active{% endif %}">Expert Advice</a></li>
-        <li><a href="/blog/"{% if page.url contains '/blog/' %} class="active"{% endif %}>Blog</a></li>
-        <li><a href="/docs/"{% if page.url contains '/docs/' %} class="active"{% endif %}>Developers</a></li>
-        <li><a href="/download">Downloads</a></li>
-        <li class="search">
-          <a href="#" class="search"><i class="fal fa-search fa-fw"></i></a>
+<header class="bg-gray-700 font-semibold sticky text-sm top-0 w-full z-40">
+  <div class="flex items-center justify-between max-h-[60px] max-w-8xl mx-auto px-3 py-3 relative lg:py-0">
+    <a href="/docs/"><img src="/assets/img/logo-developer-white.svg" alt="FusionAuth Developer logo" class="h-12"></a>
+    <a href="#" class="text-white hover:text-indigo-300 lg:hidden"><i class="fa far fa-moon-stars fa-fw"></i></a>
+    <a href="#" id="mobile-nav-button" class="p-1 rounded text-white hover:text-indigo-300 lg:hidden"><i class="fal fa-bars fa-fw fa-2x"></i></a>
+    <nav id="nav" class="bg-transparent hidden text-right lg:block">
+      <ul class="flex gap-4 items-center justify-end py-4 w-full">
+        <li><a class="block text-white hover:text-indigo-300" href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}">Back to site</a></li>
+        <li><a class="block text-white hover:text-indigo-300" href="/docs/">Docs</a></li>
+        <li><a class="block text-white hover:text-indigo-300" href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}/download">Downloads</a></li>
+        <li><a class="block text-white hover:text-indigo-300" href="{% if jekyll.environment == 'development' %}https://account-local.fusionauth.io{% else %}https://account.fusionauth.io{% endif %}/account/"><i class="block far fa-user fa-fw"></i></a></li>
+        <li class="relative">
+          <div id="theme-control" data-widget="action-menu">
+            <button class="block text-lg text-white hover:text-indigo-300"><i class="fa far fa-moon fa-fw"></i></button>
+            <ul class="absolute bg-white border border-gray-200 hidden mt-8 rounded-lg shadow-lg text-gray-600 text-left top-full w-36 z-50 dark:bg-gray-800 dark:text-gray-100">
+              <!-- Preload bg-gray-100 text-indigo-300 text-indigo-500 -->
+              <li class="rounded-t-lg hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#light" class="flex items-center px-3 py-1"><i class="fa far fa-sun-bright text-gray-400 text-lg mr-2"></i> <span>Light</span></a></li>
+              <li class="hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#dark" class="flex items-center px-3 py-1"><i class="fa far fa-moon text-gray-400 text-lg mr-2"></i> <span>Dark</span></a></li>
+              <li class="rounded-b-lg hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#system" class="flex items-center px-3 py-1"><i class="fa far fa-computer-classic text-gray-400 text-lg mr-2"></i> <span>System</span></a></li>
+            </ul>
+          </div>
         </li>
-        <li>
-          <a href="{% if jekyll.environment == 'development' %}https://account-local.fusionauth.io{% else %}https://account.fusionauth.io{% endif %}/account/" class="account">
-            <span>Account</span>
-            <i class="fal fa-user-circle fa-2x fa-fw"></i>
-          </a>
+        <li class="ml-3">
+          <a href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}/contact" class="align-top border duration-200 inline-flex font-semibold inline-block items-center justify-between rounded px-4 py-1 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-white border-indigo-600 text-indigo-600 hover:bg-indigo-700 hover:text-white">Contact sales</a>
         </li>
-        <li><a href="/contact" class="white button">Contact sales</a></li>
       </ul>
     </nav>
-    <a href="#" class="search mobile"><i class="fal fa-search fa-fw"></i></a>
-    <a href="#" class="menu-open button square"><i class="fal fa-bars fa-fw fa-2x"></i></a>
-  </div>
-  <div id="search-bar">
-    <div id="search-box" class="container">
-      <div id="search-input"></div>
-      <a href="#" class="search-close"><i class="far fa-times fa-fw fa-2x"></i></a>
-      <div id="search-results"></div>
-    </div>
   </div>
 </header>

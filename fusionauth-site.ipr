@@ -1476,6 +1476,7 @@
         </indentOptions>
       </codeStyleSettings>
       <codeStyleSettings language="JavaScript">
+        <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
         <indentOptions>
           <option name="INDENT_SIZE" value="2" />
           <option name="TAB_SIZE" value="2" />
@@ -1560,11 +1561,6 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="Java 17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="SwUserDefinedSpecifications">
-    <option name="specTypeByUrl">
-      <map />
-    </option>
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
