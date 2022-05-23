@@ -17,7 +17,7 @@ If you're looking for employee login or a replacement for Active Directory - you
 
 Legacy identity technologies have complex hierarchy and cryptic terminology like realms, principals, subjects and distinguished names. In order to simplify something perceived to be complex, the best approach is to go back to the basics, to the atomic elements and throw everything else away.
 
-When we built FusionAuth we took the back to basics approach. We identified two atomic elements of identify, Users and Applications. Everyone has Users, and Users need to be authenticated to Applications. For this reason FusionAuth is built upon four core elements:
+When we built FusionAuth we took the back to basics approach. We identified two atomic elements of identity, Users and Applications. Everyone has Users and Users need to be authenticated to Applications. For this reason FusionAuth is built upon four core elements:
 
 * Users - someone that can log into things
 * Applications - things that Users log into

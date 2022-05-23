@@ -7,7 +7,6 @@ class FusionAuthActionMenu {
   constructor() {
     document.addEventListener('click', this._handleClick.bind(this));
     document.addEventListener('keydown', this._handleKeyDown.bind(this));
-    document.addEventListener('mousemove', this._handleMouseMove.bind(this));
   }
 
   closeAllMenus(ignore) {
@@ -20,19 +19,6 @@ class FusionAuthActionMenu {
                  .classList.replace('-rotate-180', 'rotate-0');
               }
             });
-  }
-
-  _clearMenuItemBackgrounds(menuItems) {
-    menuItems.querySelectorAll('li')
-             .forEach(e => {
-               e.classList.replace('bg-gray-100', 'bg-white');
-               e.classList.replace('border-gray-400', 'border-transparent');
-             });
-  }
-
-  _determineBackground(li) {
-    const hoverBg = Array.from(li.classList.values()).find(clz => clz.startsWith('hover:bg'));
-    return hoverBg ? hoverBg.substring(6) : null;
   }
 
   _elements(element) {
@@ -68,7 +54,8 @@ class FusionAuthActionMenu {
         } else {
           elements.icon.classList.replace('-rotate-180', 'rotate-0');
         }
-        elements.menuItems.classList.toggle('hidden');
+
+        this._toggle(elements);
       }
     }
   }
@@ -90,7 +77,7 @@ class FusionAuthActionMenu {
       event.stopPropagation();
       event.preventDefault();
       if (elements.menuItems.classList.contains('hidden')) {
-        elements.menuItems.classList.toggle('hidden');
+        this._toggle(elements);
       } else {
         this._highlightSiblingMenuItem(elements, true);
       }
@@ -98,7 +85,7 @@ class FusionAuthActionMenu {
       event.stopPropagation();
       event.preventDefault();
       if (elements.menuItems.classList.contains('hidden')) {
-        elements.menuItems.classList.toggle('hidden');
+        this._toggle(elements);
       } else {
         this._highlightSiblingMenuItem(elements, false);
       }
@@ -106,7 +93,7 @@ class FusionAuthActionMenu {
       event.stopPropagation();
       event.preventDefault();
       if (elements.menuItems.classList.contains('hidden')) {
-        elements.menuItems.classList.toggle('hidden');
+        this._toggle(elements);
       } else {
         const selected = this._locateSelected(elements);
         if (selected !== null) {
@@ -125,15 +112,6 @@ class FusionAuthActionMenu {
     }
   }
 
-  _handleMouseMove(event) {
-    const elements = this._elements(event.target);
-    if (elements === null) {
-      return;
-    }
-
-    this._clearMenuItemBackgrounds(elements.menuItems);
-  }
-
   _highlightSiblingMenuItem(elements, next) {
     var selected = this._locateSelected(elements);
     this._unselectMenuItems(elements);
@@ -145,21 +123,27 @@ class FusionAuthActionMenu {
       selected = next ? elements.menuItems.firstElementChild : elements.menuItems.lastElementChild;
     }
 
-    selected.classList.add(this._determineBackground(selected));
+    const bg = FusionAuthUtils.findClass(selected, 'bg', 'hover:');
+    selected.classList.add(bg);
   }
 
   _locateSelected(elements) {
     const selected = Array.from(elements.menuItems.querySelectorAll('li'))
                           .find(li => {
-                            const bg = this._determineBackground(li);
+                            const bg = FusionAuthUtils.findClass(li, 'bg', 'hover:');
                             return li.classList.contains(bg);
                           });
     return selected ? selected : null; // Fix undefined
   }
 
+  _toggle(elements) {
+    this._unselectMenuItems(elements);
+    elements.menuItems.classList.toggle('hidden');
+  }
+
   _unselectMenuItems(elements) {
     elements.menuItems.querySelectorAll('li').forEach(li => {
-      const bg = this._determineBackground(li);
+      const bg = FusionAuthUtils.findClass(li, 'bg', '', false); // Any bg classes will be found
       li.classList.remove(bg);
     })
   }

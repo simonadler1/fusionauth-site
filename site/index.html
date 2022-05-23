@@ -1,9 +1,111 @@
----
-layout: developer-container
-title: For testing only
-description: For testing only
----
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>{{ page.title | strip_html }} - FusionAuth</title>
+  <meta name="twitter:description" content="{{ page.description | strip_html | replace: '"', "'" }}">
+  <meta name="twitter:creator" content="@FusionAuth">
+  <meta name="twitter:site" content="@FusionAuth">
+  <meta name="twitter:title" content="{{ page.title | strip_html | replace: '"', "'" }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fusionauth.io/assets/img/{{ page.image }}">
+  <meta property="og:site_name" content="FusionAuth">
+  <meta property="og:url" content="https://fusionauth.io{{ page.url | remove: '.html' }}">
+  <meta property="og:description" content="{{ page.description | strip_html  }}">
+  <meta property="og:title" content="{{ page.title | strip_html | replace: '"', "'" }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://fusionauth.io/assets/img/{{ page.image }}">
+  <meta name="description" content="{{ page.description | strip_html | replace: '"', "'" }}">
+
+  <!-- Browser address color -->
+  <meta name="theme-color" content="#334155">
+
+  <!-- Favicons
+       You can check if this is working using this site https://realfavicongenerator.net/
+       Questions about icon names and sizes? https://realfavicongenerator.net/faq#.XrBnPJNKg3g -->
+
+  <!-- Apple & iOS -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-icon-180x180.png">
+
+  <!--  Android icons -->
+  <link rel="manifest" href="/assets/img/manifest.json">
+
+  <!--  IE 11+ configuration -->
+  <meta name="msapplication-config" content="/assets/img/browserconfig.xml" />
+
+  <!--  Windows 8 compatible -->
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/img/ms-icon-144x144.png">
+
+  <!-- Standard Favicon Fare -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="128" href="/assets/img/favicon-128.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/fontawesome-6.0.0.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:700&display=swap">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fusionauth.io{{ page.url | replace: 'index.html', '' | replace: '.html', '' }}">
+
+  <!-- Scripts -->
+  <script src="/assets/js/Utils-0.1.0.js" defer></script>
+  <script src="/assets/js/ActionMenu-0.1.0.js" defer></script>
+  <script src="/assets/js/MobileNav-0.1.0.js" defer></script>
+  <script src="/assets/js/Theme-0.1.0.js" defer></script>
+</head>
+<body>
+<header class="bg-gray-700 sticky top-0 w-full">
+  <div class="flex font-semibold items-center justify-between max-w-8xl relative z-10 lg:mx-auto lg:static lg:z-auto">
+    <div class="bg-gray-700 flex items-center justify-between pl-3 py-2 w-full lg:pl-0">
+      <a href="/docs/"><img src="/assets/img/logo-developer-white.svg" alt="FusionAuth Developer logo" class="h-12"></a>
+      <a href="#" id="mobile-nav-button" class="p-1 rounded text-sm text-white hover:text-indigo-300 lg:hidden"><i class="fal fa-bars fa-fw fa-2x"></i></a>
+    </div>
+
+    <nav id="nav" class="absolute bg-gray-700 duration-500 h-screen left-0 pt-10 text-left top-0 transition-all translate-y-[-100vh] w-full -z-10 lg:h-auto lg:pt-0 lg:static lg:text-right lg:translate-y-0 lg:z-auto">
+      <ul class="py-4 w-full z-0 lg:flex lg:gap-4 lg:h-full lg:items-center lg:justify-end">
+        <li class="border-b border-gray-500 lg:border-0"><a class="block px-5 py-4 text-lg text-white hover:text-indigo-300 lg:px-0 lg:py-0 lg:text-sm" href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}">Back to site</a></li>
+        <li class="border-b border-gray-500 lg:border-0"><a class="block px-5 py-4 text-lg text-white hover:text-indigo-300 lg:px-0 lg:py-0 lg:text-sm" href="/docs/">Docs</a></li>
+        <li class="border-b border-gray-500 lg:border-0"><a class="block px-5 py-4 text-lg text-white hover:text-indigo-300 lg:px-0 lg:py-0 lg:text-sm" href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}/download">Downloads</a></li>
+        <li class="hidden lg:border-l lg:border-gray-500 lg:block">&nbsp;</li>
+        <li class="border-b border-gray-500 lg:border-0"><a class="block px-5 py-5 text-lg text-white hover:text-indigo-300 lg:px-0 lg:py-0 lg:text-sm" href="{% if jekyll.environment == 'development' %}https://account-local.fusionauth.io{% else %}https://account.fusionauth.io{% endif %}/account/"><i class="far fa-user fa-fw hidden lg:block"></i><span class="lg:hidden">My account</span></a></li>
+        <li class="border-b border-gray-500 lg:border-0">
+          <div id="theme-control" data-widget="action-menu" class="relative">
+            <button class="block px-5 py-4 text-lg text-white hover:text-indigo-300 lg:px-0 lg:py-0"><i class="fa far fa-moon fa-fw hidden lg:block"></i><span class="lg:hidden">Change theme</span></button>
+            <ul class="absolute bg-white border border-gray-200 hidden left-5 mt-8 rounded-lg shadow-lg text-gray-600 text-left top-5 w-36 z-50 dark:bg-gray-800 dark:text-gray-100 lg:left-0 lg:top-full">
+              <!-- Preload bg-gray-100 bg-gray-600 text-indigo-300 text-indigo-500 -->
+              <li class="rounded-t-lg hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#light" class="flex items-center px-3 py-1"><i class="fa far fa-sun-bright text-gray-400 text-lg mr-2"></i> <span>Light</span></a></li>
+              <li class="hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#dark" class="flex items-center px-3 py-1"><i class="fa far fa-moon text-gray-400 text-lg mr-2"></i> <span>Dark</span></a></li>
+              <li class="rounded-b-lg hover:bg-gray-100 dark:hover:bg-gray-600"><a href="#system" class="flex items-center px-3 py-1"><i class="fa far fa-computer-classic text-gray-400 text-lg mr-2"></i> <span>System</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="px-5 py-4 lg:px-0 lg:py-0">
+          <a href="{% if jekyll.environment == 'development' %}https://webflow.fusionauth.dev{% else %}https://fusionauth.io{% endif %}/contact" class="align-top border duration-200 inline-flex font-semibold inline-block items-center justify-between rounded px-4 py-1 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-white border-indigo-600 text-indigo-600 hover:bg-indigo-700 hover:text-white">Contact sales</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 This page is for testing in development only.<br/>
 <a href='/blog/'>Go to the blog</a><br/>
 <a href='/docs/v1/tech/'>Go to the docs</a><br/>
+</body>
+</html>

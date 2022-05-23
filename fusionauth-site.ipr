@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CopyrightManager" default="Inversoft">
+    <copyright>
+      <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;)&amp;#36;today.year, Inversoft Inc., All Rights Reserved" />
+      <option name="myName" value="Inversoft" />
+    </copyright>
+  </component>
   <component name="FlexmarkProjectSettings">
     <FlexmarkHtmlSettings flexmarkSpecExampleRendering="0" flexmarkSpecExampleRenderHtml="false">
       <flexmarkSectionLanguages>
