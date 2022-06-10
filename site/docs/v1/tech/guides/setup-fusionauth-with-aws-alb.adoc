@@ -1,0 +1,40 @@
+---
+layout: doc
+title: Using OIDC, AWS ALB and FusionAuth together
+description: Learn how to protect server resources using the OIDC protocol, an AWS ALB, and FusionAuth.
+---
+
+:sectnumlevels: 0
+:page-liquid:
+
+=== Overview
+
+Ths purpose of this guide, is to set up a server resource, and protect it using an AWS ALB with an OIDC handshake.  Users will attempt to access our server running a tomcat example page at `app.appdomain.io`.  However, before the user can obtain access, they will be redirected to a FusionAuth login page.
+
+++++
+{% plantuml source: _diagrams/docs/guides/aws-alb-oidc-diagram.plantuml, alt: "ALB and OIDC with FusionAuth Process Overview." %}
+++++
+
+=== Make a target
+
+In this guide our target will be an Amazon EC2 instance running a Tomcat test page. In a real world application, this might be your application to be protected by the OIDC protocol.
+
+=== Add the target to a newly target group
+
+In this example, our Tomcat test server will return a `403` status code.  If this was a real world application, a response code of `2XX` may be typical.  In this screenshot, we are going to update the expected response codes to `200-499`
+
+=== Set up CNAME that points to the load balancer
+
+The first step is to set up DNS entry.  This could an A record or this could a CNAME that points to your load balancer.  AWS Route53 allows you to set up a DNS relationship between you domain (in this case `app.fusionauth.io` and our loadbalancer)
+
+=== Create a load balancer
+
+- Set up a blanket 503 rule
+- Setup Listeners
+
+=== Create a target Group and a target
+
+=== Add to the load balancer, the
+
+=== A note about TLS deceleration
+

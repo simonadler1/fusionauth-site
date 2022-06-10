@@ -1,0 +1,19 @@
+@startuml
+  !include ../../_config.plantuml
+
+participant "Incoming Web Request" as IWR
+participant "AWS ALB" as AWSALB
+
+IWR ->> AWSALB: Hey! I would like to "talk" \nto your protected server \n(on port 443)
+Note left of AWSALB: (auth incomplete)
+loop Have they completed\nOIDC handshake?
+  IWR ->> IWR : redirect
+end
+AWSALB -->> FusionAuth: FusionAuth...\nIs this user "OK"\nto login in?\n(OIDC)
+FusionAuth -->> AWSALB: Yep! Looks Good. (OIDC)
+AWSALB ->> TargetGroup: AWS Session Established\n(OIDC Handshake)\nSending user request on port 80
+Note left of TargetGroup: (auth complete)
+TargetGroup->>Target: User request
+Note left of Target: (auth complete)
+
+@enduml
