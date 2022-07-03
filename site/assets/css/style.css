@@ -6,48 +6,112 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        @apply font-sans;
-    }
+  html {
+    @apply font-sans;
+  }
 }
 
 @layer components {
-    .closed {
-        @apply opacity-0 !important;
-    }
+  .closed {
+    @apply opacity-0 !important;
+  }
 
-    [data-popper-placement^='right'] > [data-popper-arrow] {
-        left: -4px;
-    }
+  [data-popper-placement^='right'] > [data-popper-arrow] {
+    left: -4px;
+  }
 
-    [data-popper-placement^='left'] > [data-popper-arrow] {
-        right: -4px;
-    }
+  [data-popper-placement^='left'] > [data-popper-arrow] {
+    right: -4px;
+  }
 
-    [data-popper-placement^='top'] > [data-popper-arrow] {
-        bottom: -4px;
-    }
+  [data-popper-placement^='top'] > [data-popper-arrow] {
+    bottom: -4px;
+  }
 
-    [data-popper-placement^='bottom'] > [data-popper-arrow] {
-        top: -4px;
-    }
+  [data-popper-placement^='bottom'] > [data-popper-arrow] {
+    top: -4px;
+  }
 
-    [data-popper-arrow] {
-        display: block;
-        height: 8px;
-        width: 8px;
-    }
+  [data-popper-arrow] {
+    display: block;
+    height: 8px;
+    width: 8px;
+  }
 
-    [data-popper-arrow]::before {
-        @apply bg-gray-500;
-        content: "";
-        height: 8px;
-        left: 0;
-        position: absolute;
-        top: 0;
-        transform: rotate(45deg);
-        width: 8px;
-        z-index: -1;
-    }
+  [data-popper-arrow]::before {
+    @apply bg-gray-500;
+    content: "";
+    height: 8px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+    width: 8px;
+    z-index: -1;
+  }
+
+  /*.highlight pre { background-color: #272822; }*/
+  /*.highlight .tok-hll { background-color: #272822; }*/
+  .highlight .tok-c { @apply text-gray-200; } /* Comment */
+  .highlight .tok-err { @apply bg-red-900 text-red-500; } /* Error */
+  .highlight .tok-k { @apply text-blue-300; } /* Keyword */
+  .highlight .tok-l { @apply text-indigo-300; } /* Literal */
+  .highlight .tok-n { @apply text-gray-100; } /* Name */
+  .highlight .tok-o { @apply text-gray-100; } /* Operator */
+  .highlight .tok-p { @apply text-gray-100; } /* Punctuation */
+  .highlight .tok-cm { @apply text-gray-200; } /* Comment.Multiline */
+  .highlight .tok-cp { @apply text-gray-200; } /* Comment.Preproc */
+  .highlight .tok-c1 { @apply text-gray-200; } /* Comment.Single */
+  .highlight .tok-cs { @apply text-gray-200; } /* Comment.Special */
+  .highlight .tok-ge { font-style: italic } /* Generic.Emph */
+  .highlight .tok-gs { font-weight: bold } /* Generic.Strong */
+  .highlight .tok-kc { @apply text-blue-300; } /* Keyword.Constant */
+  .highlight .tok-kd { @apply text-blue-300; } /* Keyword.Declaration */
+  .highlight .tok-kn { @apply text-gray-100; } /* Keyword.Namespace */
+  .highlight .tok-kp { @apply text-blue-300; } /* Keyword.Pseudo */
+  .highlight .tok-kr { @apply text-blue-300; } /* Keyword.Reserved */
+  .highlight .tok-kt { @apply text-blue-300; } /* Keyword.Type */
+  .highlight .tok-ld { @apply text-green-300; } /* Literal.Date */
+  .highlight .tok-m { @apply text-indigo-300; } /* Literal.Number */
+  .highlight .tok-s { @apply text-green-300; } /* Literal.String */
+  .highlight .tok-na { @apply text-gray-100; } /* Name.Attribute */
+  .highlight .tok-nb { @apply text-gray-100; } /* Name.Builtin */
+  .highlight .tok-nc { @apply text-gray-100; } /* Name.Class */
+  .highlight .tok-no { @apply text-blue-300; } /* Name.Constant */
+  .highlight .tok-nd { @apply text-gray-100; } /* Name.Decorator */
+  .highlight .tok-ni { @apply text-gray-100; } /* Name.Entity */
+  .highlight .tok-ne { @apply text-gray-100; } /* Name.Exception */
+  .highlight .tok-nf { @apply text-gray-100; } /* Name.Function */
+  .highlight .tok-nl { @apply text-gray-100; } /* Name.Label */
+  .highlight .tok-nn { @apply text-gray-100; } /* Name.Namespace */
+  .highlight .tok-nx { @apply text-gray-100; } /* Name.Other */
+  .highlight .tok-py { @apply text-gray-100; } /* Name.Property */
+  .highlight .tok-nt { @apply text-gray-100; } /* Name.Tag */
+  .highlight .tok-nv { @apply text-gray-100; } /* Name.Variable */
+  .highlight .tok-ow { @apply text-gray-100; } /* Operator.Word */
+  .highlight .tok-w { @apply text-gray-100; } /* Text.Whitespace */
+  .highlight .tok-mf { @apply text-indigo-300; } /* Literal.Number.Float */
+  .highlight .tok-mh { @apply text-indigo-300; } /* Literal.Number.Hex */
+  .highlight .tok-mi { @apply text-indigo-300; } /* Literal.Number.Integer */
+  .highlight .tok-mo { @apply text-indigo-300; } /* Literal.Number.Oct */
+  .highlight .tok-sb { @apply text-green-300; } /* Literal.String.Backtick */
+  .highlight .tok-sc { @apply text-green-300; } /* Literal.String.Char */
+  .highlight .tok-sd { @apply text-green-300; } /* Literal.String.Doc */
+  .highlight .tok-s2 { @apply text-green-300; } /* Literal.String.Double */
+  .highlight .tok-se { @apply text-green-300; } /* Literal.String.Escape */
+  .highlight .tok-sh { @apply text-green-300; } /* Literal.String.Heredoc */
+  .highlight .tok-si { @apply text-green-300; } /* Literal.String.Interpol */
+  .highlight .tok-sx { @apply text-green-300; } /* Literal.String.Other */
+  .highlight .tok-sr { @apply text-green-300; } /* Literal.String.Regex */
+  .highlight .tok-s1 { @apply text-green-300; } /* Literal.String.Single */
+  .highlight .tok-ss { @apply text-green-300; } /* Literal.String.Symbol */
+  .highlight .tok-bp { @apply text-gray-100; } /* Name.Builtin.Pseudo */
+  .highlight .tok-vc { @apply text-gray-100; } /* Name.Variable.Class */
+  .highlight .tok-vg { @apply text-gray-100; } /* Name.Variable.Global */
+  .highlight .tok-vi { @apply text-gray-100; } /* Name.Variable.Instance */
+  .highlight .tok-il { @apply text-indigo-300; } /* Literal.Number.Integer.Long */
+  .highlight .tok-gh { @apply text-gray-100; } /* Generic Heading & Diff Header */
+  .highlight .tok-gu { @apply text-gray-200; } /* Generic.Subheading & Diff Unified/Comment? */
+  .highlight .tok-gd { @apply text-gray-100; } /* Generic.Deleted & Diff Deleted */
+  .highlight .tok-gi { @apply text-gray-100; } /* Generic.Inserted & Diff Inserted */
 }
-

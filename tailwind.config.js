@@ -5,7 +5,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
-    './site/**/*.{adoc,html,js,liquid,md}'
+    './site/**/*.{adoc,html,js,liquid,md,haml}'
   ],
   darkMode: 'class',
   theme: {
@@ -18,11 +18,11 @@ module.exports = {
         light: '#e6e7e8',
         dark: '#3e4e50'
       },
+      blue: colors.blue,
       gray: colors.slate,
       green: colors.teal,
       indigo: colors.indigo,
-      blue: colors.blue,
-      sky: colors.sky,
+      purple: colors.purple,
       orange: {
         50: '#fff7ed',
         100: '#ffedd5',
@@ -36,6 +36,7 @@ module.exports = {
         900: '#7c2d12',
       },
       red: colors.rose,
+      sky: colors.sky,
       white: colors.white
     },
     extend: {

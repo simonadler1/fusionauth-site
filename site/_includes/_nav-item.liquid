@@ -1,7 +1,15 @@
-<!-- Dark:  text-100 bg-700
-     Light: text-800 bg-white
-     Menu dark:  text-200 bg-700 border-400 (hover text-100 border-100)
-     Menu light: text-700 bg-white border-300 (hover text-900 border-900)
--->
+{% comment %}
+bg-white
+bg-700
+border-300
+border-900
+text-100
+text-200
+text-700
+text-800
+text-900
+border-100
+border-400
+{% endcomment %}
 {% assign url = include.url | append: ".html" %}
-<li><a href="{{ include.url }}" class="border-l -ml-px pl-4 {% if page.url == url or page.url == include.url %}border-indigo-500 font-semibold text-indigo-500 dark:border-indigo-300 dark:text-indigo-300{% else %}border-transparent dark:hover:text-gray-100 dark:hover:border-gray-100 hover:border-gray-900 hover:text-gray-900{% endif %}">{%  if include.icon %}<i class="fal fa-fw fa-{{ include.icon }}"></i>{% endif %} {{ include.title }}</a></li>
+<li><a href="{{ include.url }}" class="border-l -ml-px pl-4 {% if page.url == url or page.url == include.url %}border-indigo-500 font-semibold text-indigo-500 dark:border-indigo-300 dark:text-indigo-300{% else %}border-transparent dark:hover:text-gray-100 dark:hover:border-gray-100 hover:border-gray-900 hover:text-gray-900{% endif %}">{% if include.icon %}<i class="fal fa-fw fa-{{ include.icon }}"></i>{% endif %} {{ include.title }}</a></li>

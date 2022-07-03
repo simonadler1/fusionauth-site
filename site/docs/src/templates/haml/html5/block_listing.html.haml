@@ -1,6 +1,6 @@
-%div{:id=>@id, :class=>['listingblock', role]}
+%div{:id=>@id, :class=>["bg-gray-900 my-5 rounded-lg", role]}
   -if title?
-    .caption=captioned_title
+    %div{:class=>"border-b border-b-blue-300 pl-5 py-2 text-blue-300 text-xs"}=captioned_title
   - nowrap = !(@document.attr? :prewrap) || (option? :nowrap)
   - if @style == 'source'
     - code_lang = attr :language, nil, false
@@ -25,10 +25,10 @@
         - nowrap = false
     - pre_class << 'nowrap' if nowrap
     - if ! (@document.attr? :code_id).nil?
-      %pre{:class=>pre_class, :lang=>pre_lang}
+      %pre{:class=>[pre_class, "m-0 p-5"], :lang=>pre_lang}
         %code{:id=>(@document.attr :code_id), :class=>code_class, 'data-lang'=>code_lang}=content
     - else
-      %pre{:class=>pre_class, :lang=>pre_lang}
+      %pre{:class=>[pre_class, "m-0 p-5"], :lang=>pre_lang}
         %code{:class=>code_class, 'data-lang'=>code_lang}=content
   - else
-    %pre{:class=>('nowrap' if nowrap)}=content
+    %pre{:class=>[("whitespace-nowrap" if nowrap), "m-0 p-5"]}=content

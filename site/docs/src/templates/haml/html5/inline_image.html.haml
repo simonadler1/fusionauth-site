@@ -1,6 +1,6 @@
 -#%span{:class=>[@type, role], :style=>((attr? :float) ? "float: #{attr :float}" : nil)}<
 - if @type == 'icon' && (@document.attr? :icons, 'font')
-  - style_class = ["fa-#{@target}"]
+  - style_class = ["fa-#{@target} fa-fw"]
   - style_class << "#{attr :type}" if attr? :type
   - style_class << "fal" unless attr? :type
   - style_class << "fa-#{attr :size}" if attr? :size
@@ -9,9 +9,9 @@
   - style_class << "#{attr :role}" if attr? :role
   - if attr? :link
     %a.image{:href=>(attr :link), :target=>(attr :window)}
-      %i{:class=>style_class, :title=>(attr :title)}
+      %i{:class=>[style_class, "mr-2"], :title=>(attr :title)}
   - else
-    %i{:class=>style_class, :title=>(attr :title)}
+    %i{:class=>[style_class, "mr-2"], :title=>(attr :title)}
 - elsif @type == 'icon' && !(@document.attr? :icons)
   - if attr? :link
     %a.image{:href=>(attr :link), :target=>(attr :window)}

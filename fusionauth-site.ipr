@@ -833,6 +833,13 @@
         <option name="EXPR_CASE_THEN_WRAP" value="true" />
         <option name="PRIMARY_KEY_NAME_TEMPLATE" value="{table}_{columns}_pk" />
       </SybaseCodeStyleSettings>
+      <codeStyleSettings language="CSS">
+        <indentOptions>
+          <option name="INDENT_SIZE" value="2" />
+          <option name="CONTINUATION_INDENT_SIZE" value="4" />
+          <option name="TAB_SIZE" value="2" />
+        </indentOptions>
+      </codeStyleSettings>
       <codeStyleSettings language="ECMA Script Level 4">
         <indentOptions>
           <option name="INDENT_SIZE" value="2" />

@@ -6,18 +6,19 @@
     {% include _head.liquid %}
     <script src="/assets/js/Documentation-0.1.0.js" defer></script>
   </head>
-<body class="bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-100">
+<body class="bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200">
 {% include _header.liquid hero=false section="developer" %}
-<!-- Dark:  text-100 bg-700
-     Light: text-800 bg-white
-     Menu dark:  text-200 bg-700 border-400 (hover text-100 border-100)
-     Menu light: text-700 bg-white border-300 (hover text-900 border-900)
--->
 <main class="max-w-8xl mx-auto">
-  <aside class="border-b border-gray-500 relative w-full z-10 lg:fixed lg:overflow-y-auto lg:border-transparent lg:bottom-0 lg:px-4 lg:top-28 lg:w-72" data-widget="nav">
+  <aside class="border-b border-gray-500 relative w-full z-10 lg:fixed lg:overflow-y-auto lg:border-transparent lg:bottom-0 lg:px-4 lg:text-sm lg:top-28 lg:w-72" data-widget="nav">
     <a href="#" class="bg-white flex items-center justify-between p-3 dark:bg-gray-800 lg:hidden" data-widget-button="nav"><span>Navigate to...</span><i class="fas fa-chevron-down fa-fw"></i></a>
     <nav class="absolute bg-white border-t border-gray-500 duration-500 h-screen left-0 overflow-y-scroll pt-28 text-left top-[-60px] transition-all translate-y-[-100vh] w-full -z-10 dark:bg-gray-800 lg:border-transparent lg:h-auto lg:pt-0 lg:static lg:transition-none lg:translate-y-0 lg:z-auto">
-      <ul class="border-l border-gray-300 ml-6 space-y-4 text-gray-700 dark:border-gray-400 dark:text-gray-300 lg:ml-0">
+      <ul class="ml-6 mt-1 space-y-4 text-gray-700 dark:text-gray-300 lg:ml-0">
+        {% include _nav-area.liquid url="/docs/v1/tech/" icon="home" title="Getting Started" color="indigo" %}
+        {% include _nav-area.liquid url="/docs/v1/tech/guides/" icon="book" title="Guides" color="blue" %}
+        {% include _nav-area.liquid url="/docs/v1/tech/apis/" icon="code" title="APIs" color="red" %}
+        {% include _nav-area.liquid url="/docs/v1/tech/tutorials/" icon="box" title="Tutorials" color="orange" %}
+      </ul>
+      <ul class="border-l border-gray-300 ml-6 mt-10 space-y-4 text-gray-700 dark:border-gray-400 dark:text-gray-300 lg:ml-0">
         {% include _nav-item.liquid url="/docs/v1/tech/" icon="home" title="Welcome" %}
         {% include _nav-item.liquid url="/docs/v1/tech/getting-started" icon="road" title="Getting started" %}
         {% include _nav-item.liquid url="/docs/v1/tech/5-minute-setup-guide" icon="stopwatch" title="5-minute setup guide" %}
@@ -486,8 +487,8 @@
     </nav>
   </aside>
   <div class="px-4 py-10 lg:ml-72 xl:mr-72">
-    <article>
-      <h1>{{ page.title }}</h1>
+    <article class="max-w-none prose dark:prose-invert hover:prose-a:border-b-2 prose-a:border-b prose-a:border-b-blue-400 prose-a:font-semibold prose-a:no-underline prose-pre:bg-transparent">
+      <h1 class="font-semibold text-3xl">{{ page.title }}</h1>
       {% if page.markdown == 1 %}
         {{ content | markdownify }}
       {% else %}
@@ -511,7 +512,7 @@
     </article>
   </div>
 </main>
-{% include _footer.liquid %}
-{% include _hubspot.liquid %}
+{% comment %}{% include _footer.liquid %}{% endcomment %}
+{% comment %}{% include _hubspot.liquid %}{% endcomment %}
 </body>
 </html>
