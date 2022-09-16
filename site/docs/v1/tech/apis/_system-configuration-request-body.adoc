@@ -70,6 +70,9 @@ A hexadecimal color to override the default menu font color in the user interfac
 [quote]
 Example: `FFFFFF` would set the menu font color to white.
 
+[field]#systemConfiguration.webhookEventLogConfiguration.numberOfDaysToRetain# [type]#[Integer]# [optional]#Optional# [default]#defaults to `30`# [since]#Available since 1.38.1#::
+The number of days to retain webhook event log records.
+
 [source,json]
 .Example Request JSON
 ----

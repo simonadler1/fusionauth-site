@@ -1,0 +1,251 @@
+---
+layout: doc
+title: Webhook Event Logs
+description: The APIs for searching the webhook event logs
+---
+
+== Overview
+
+[NOTE.since]
+====
+This API has been available since 1.38.1
+====
+
+The Webhook Event Log contains a record of all events with enabled webhooks.
+
+This page contains the APIs that are used to retrieve Webhook Event Logs. Here are the APIs:
+
+* <<Retrieve a Webhook Event Log>>
+* <<Search Webhook Event Logs>>
+
+== Retrieve a Webhook Event Log
+
+=== Request
+
+[.api-authentication]
+link:/docs/v1/tech/apis/authentication#api-key-authentication[icon:lock[type=fas]] Retrieve a Webhook Event Log by Id
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/api/system/webhook-event-log/`\{logId\}`#
+--
+
+==== Request Parameters
+
+[.api]
+[field]#logId# [type]#[Long]# [required]#Required#::
+The unique Id of the Webhook Event Log to retrieve.
+
+=== Response
+
+include::docs/v1/tech/apis/_standard-get-response-codes.adoc[]
+
+==== Response Body
+
+[.api]
+[field]#webhookEventLog.id# [type]#[Long]#::
+The Webhook Event Log unique Id.
+
+[field]#webhookEventLog.insertInstant# [type]#[Long]#::
+The link:/docs/v1/tech/reference/data-types#instants[instant] when the Webhook Event Log was created.
+
+[field]#webhookEventLog.event# [type]#[Event]#::
+The event Object.
+
+[field]#webhookEventLog.eventType# [type]#[String]#::
++
+The possible event types are:
++
+include::docs/v1/tech/apis/_event-types.adoc[]
+
+[field]#webhookEventLog.failCount# [type]#[Int]#::
+The number of webhook calls that have failed for this event.
+
+[field]#webhookEventLog.lastAttemptInstant# [type]#[Long]#::
+The link:/docs/v1/tech/reference/data-types#instants[instant] the last time any webhook was called for this event.
+
+[field]#webhookEventLog.successCount# [type]#[Int]#::
+The number of webhook calls that have succeeded for this event.
+
+[field]#webhookEventLog.webhookEventResult# [type]#[String]#::
+The result of the Event.  Will always show successful for non-transactional events. Otherwise, it is dependent on the transactional configuration of the event for the tenant. Possible values are:
++
+* `Failed`
+* `Succeeded`
+* `Running`
+
+[source,json]
+.Example JSON Response
+----
+include::docs/src/json/webhook-event-logs/response.json[]
+----
+
+== Search Webhook Event Logs
+
+=== Request
+
+[.api-authentication]
+link:/docs/v1/tech/apis/authentication#api-key-authentication[icon:lock[type=fas]] Searches the Webhook Event Logs using the given search criteria
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/api/system/webhook-event-log/search``?message=\{message\}&start=\{start\}&end=\{end\}&type=\{type\}``#
+--
+
+When calling the API using a `GET` request you will send the search criteria on the URL using request parameters. In order to simplify the example URL above, not every possible parameter is shown, however using the provided pattern you may add any of the documented request parameters to the URL.
+
+==== Request Parameters
+
+[.api]
+[field]#end# [type]#[Long]# [optional]#Optional#::
+The end link:/docs/v1/tech/reference/data-types#instants[instant] of the date/time range to search within.
+
+[field]#eventType# [type]#[String]# [optional]#Optional#::
+The event type to search for. The possible event types are:
++
+include::docs/v1/tech/apis/_event-types.adoc[]
+
+[field]#webhookEventResult# [type]#[String]# [optional]#Optional#::
+The result of the Event to search for. Possible values are:
++
+* `Failed`
+* `Succeeded`
+* `Running`
+
+[field]#message# [type]#[String]# [optional]#Optional#::
+The string to search for in the Webhook Event Log event data. This can contain wildcards using the asterisk or percent characters (* or %).
+
+[field]#numberOfResults# [type]#[Integer]# [optional]#Optional# [default]#defaults to `25`#::
+The number of results to return from the search.
+
+[field]#orderBy# [type]#[String]# [optional]#Optional# [default]#defaults to `insertInstant DESC`#::
+The database column to order the search results on plus the order direction.
++
+The columns you can use for this are:
++
+* `id` - the Webhook Event Log Id
+* `insertInstant` - the link:/docs/v1/tech/reference/data-types#instants[instant] when the Webhook Event Log was created
+* `linkedEntity` - the Id of the user or group that the event was related to
+* `eventType` - the type of the event
+* `webhookEventResult` - the result of the event
+
++
+For example, to order the results by the insert instant in a descending order, the value would be provided as `insertInstant DESC`. The final string is optional can be set to `ASC` or `DESC`.
+
+[field]#start# [type]#[Long]# [optional]#Optional#::
+The start link:/docs/v1/tech/reference/data-types#instants[instant] of the date/time range to search within.
+
+[field]#startRow# [type]#[Integer]# [optional]#Optional# [default]#defaults to `0`#::
+The offset row to return results from. If the search has 200 records in it and this is 50, it starts with row 50.
+
+[.api-authentication]
+link:/docs/v1/tech/apis/authentication#api-key-authentication[icon:lock[type=fas]] Searches the Webhook Event Logs using the given search criteria
+[.endpoint]
+.URI
+--
+[method]#POST# [uri]#/api/system/wehook-event-log/search#
+--
+
+When calling the API using a `POST` request you will send the search criteria in a JSON request body.
+
+==== Request Body
+
+[.api]
+[field]#search.end# [type]#[Long]# [optional]#Optional#::
+The end link:/docs/v1/tech/reference/data-types#instants[instant] of the date/time range to search within.
+
+[field]#eventType# [type]#[String]# [optional]#Optional#::
+The event type to search for. The possible event types are:
++
+include::docs/v1/tech/apis/_event-types.adoc[]
+
+[field]#webhookEventResult# [type]#[String]# [optional]#Optional#::
+The result of the Event to search for. Possible values are:
++
+* `Failed`
+* `Succeeded`
+* `Running`
+
+[field]#search.message# [type]#[String]# [optional]#Optional#::
+The string to search for in the Webhook Event Log event data. This can contain wildcards using the asterisk or percent characters (* or %).
+
+[field]#search.numberOfResults# [type]#[Integer]# [optional]#Optional# [default]#defaults to `25`#::
+The number of results to return from the search.
+
+[field]#search.orderBy# [type]#[String]# [optional]#Optional# [default]#defaults to `insertInstant DESC`#::
+The database column to order the search results on plus the order direction.
++
+The columns you can use for this are:
++
+* `id` - the Webhook Event Log Id
+* `insertInstant` - the link:/docs/v1/tech/reference/data-types#instants[instant] when the Webhook Event Log was created
+* `linkedEntity` - the Id of the user or group that the event was related to
+* `eventType` - the type of the event
+* `webhookEventResult` - the result of the event
++
+For example, to order the results by the insert instant in a descending order, the value would be provided as `insertInstant DESC`. The final string is optional can be set to `ASC` or `DESC`.
+
+[field]#search.start# [type]#[Long]# [optional]#Optional#::
+The start link:/docs/v1/tech/reference/data-types#instants[instant] of the date/time range to search within.
+
+[field]#search.startRow# [type]#[Integer]# [optional]#Optional# [default]#defaults to `0`#::
+The offset row to return results from. If the search has 200 records in it and this is 50, it starts with row 50.
+
+[source,json]
+.Example JSON Request
+----
+include::docs/src/json/webhook-event-logs/search-request.json[]
+----
+
+=== Response
+
+The response for this API contains the Event Logs matching the search criteria in paginated format.
+
+include::docs/v1/tech/apis/_standard-get-response-codes.adoc[]
+
+==== Response Body
+
+[.api]
+[field]#wenhookEventLogs# [type]#[Array]#::
+The list of Event Logs returned by the search.
+
+[.api]
+[field]#webhookEventLogs``[x]``.id# [type]#[Long]#::
+The Webhook Event Log unique Id.
+
+[field]#webhookEventLogs``[x]``.insertInstant# [type]#[Long]#::
+The link:/docs/v1/tech/reference/data-types#instants[instant] when the Webhook Event Log was created.
+
+[field]#webhookEventLogs``[x]``.event# [type]#[Event]#::
+The event Object.
+
+[field]#webhookEventLogs``[x]``.eventType# [type]#[String]#::
++
+The possible event types are:
++
+include::docs/v1/tech/apis/_event-types.adoc[]
+
+[field]#webhookEventLogs``[x]``.failCount# [type]#[Int]#::
+The number of webhook calls that have failed for this event.
+
+[field]#webhookEventLogs``[x]``.lastAttemptInstant# [type]#[Long]#::
+The link:/docs/v1/tech/reference/data-types#instants[instant] the last time any webhook was called for this event.
+
+[field]#webhookEventLogs``[x]``.successCount# [type]#[Int]#::
+The number of webhook calls that have succeeded for this event.
+
+[field]#webhookEventLogs``[x]``.webhookEventResult# [type]#[String]#::
+The result of the Event.  Will always show successful for non-transactional events. Otherwise, it is dependent on the transactional configuration of the event for the tenant. Possible values are:
++
+* `Failed`
+* `Succeeded`
+* `Running`
+
+[field]#total# [type]#[Integer]#::
+The total number of Webhook Event Logs matching the search criteria. Use this value along with the [field]#numberOfResults# and [field]#startRow# in the Search request to perform pagination.
+
+[source,json]
+.Example JSON Response
+----
+include::docs/src/json/webhook-event-logs/search-response.json[]
+----

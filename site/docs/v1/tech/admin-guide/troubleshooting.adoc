@@ -83,7 +83,18 @@ While not limited to, generally speaking, the event log will contain events or e
 - SMTP connection issues
 - Lambda invocation errors
 - External identity provider failures or configuration issues
-- Failure to deliver a webhook event
+- Failure to deliver a webhook event.
+
+=== Webhook Event Log
+
+[NOTE.since]
+====
+Available since 1.38.1
+====
+
+The webhook event log is a FusionAuth message store designed to capture all events that have webhooks enabled and the result of all attempts to call the webhook URL.
+
+The webhook event log may contain helpful details to indicate the cause of any failures when calling a webhook or to identify which webhooks were called for each event. It's also helpful when diagnosing any performance issues that may be caused by the time taken to receive a response from a webhook for transactional events. See [breadcrumb]#System -> Webhook Event Log# to view this log.
 
 == Enabling Debugging
 

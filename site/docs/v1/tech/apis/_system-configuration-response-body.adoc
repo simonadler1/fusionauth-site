@@ -67,6 +67,9 @@ A URL of a logo to override the default FusionAuth logo in the user interface.
 [field]#systemConfiguration.uiConfiguration.menuFontColor# [type]#[String]#::
 A hexadecimal color to override the default menu font color in the user interface.
 
+[field]#systemConfiguration.webhookEventLogConfiguration.numberOfDaysToRetain# [type]#[Integer]# [optional]#Optional# [default]#defaults to `30`# [since]#Available since 1.38.1#::
+The number of days to retain webhook event log records.
+
 [source,json]
 .Example Response JSON
 ----
