@@ -1176,6 +1176,7 @@ that if a user is using a refresh token they will be forced to re-authenticate w
 ====
 
 
+
 === Request
 
 [.api-authentication]
@@ -1274,7 +1275,7 @@ The User's new password.
 This field is marked optional because it is only required when the user has enabled two-factor authentication, and a `trustChallenge` was provided on the Two-Factor Start API request. When a user has enabled two-factor authentication this field becomes required if a `trustChallenge` was provided on the Two-Factor Start API request. When required, this value must be equal to the value provided to the Two-Factor Start API.
 
 [field]#trustToken# [type]#[String]# [optional]#Optional# [since]#Available since 1.33.0#::
-This field is marked optional, because it is only required when the user has enabled two-factor authentication. When a user has enabled two-factor authentication this field becomes required when attempting to change a password using the `changePasswordId`.
+This field is marked optional, because it is only required when the user has enabled two-factor authentication. When a user has enabled two-factor authentication this field becomes required when attempting to change a password using the `changePasswordId` or `loginId`.
 
 [source,json]
 .Example JSON Request
