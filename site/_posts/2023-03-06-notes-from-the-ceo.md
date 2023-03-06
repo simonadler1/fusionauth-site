@@ -31,7 +31,7 @@ We've also launched a new free trial. Now you can test out FusionAuth with a fre
 
 We are launching a new React SDK for a simpler method of getting FusionAuth running for React apps. Soon, you'll be able to install FusionAuth locally, install the React SDK, and be up and running in literally minutes.
 
-We launched our Digital Ocean Marketplace listing that will make it simple to run FusionAuth on DO. We are excited to see what the passionate community Digital Ocean has built creates on top of FusionAuth. And to expand our partnership with Digital Ocean in the future to make it even simpler to use FusionAuth.
+We launched our DigitalOcean Marketplace listing that will make it simple to run FusionAuth on DO. We are excited to see what the passionate community DigitalOcean has built creates on top of FusionAuth. And to expand our partnership with DigitalOcean in the future to make it even simpler to use FusionAuth.
 
 Our AWS Marketplace is coming soon as well. The initial launch will allow customers to include FusionAuth on their AWS bill. We'll also be launching additional AWS integrations this year as well.
 
