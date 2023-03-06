@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Notes from the CEO - developers rule
+title: Notes from the CEO - 2023 Plans
 description: The first in a series of blog posts from our CEO and founder, Brian Pontarelli, about our plans for 2023.
 author: Brian Pontarelli
 category: blog
@@ -23,13 +23,13 @@ Last year we struggled to maintain the notion that we exist to support developer
 
 While we succeeded in our growth plans and had the best year in company history, something was missing. 
 
-## Plans for 2023
+## What's the plan?
 
 This year we've decided to get back to basics and re-embrace our developer roots. You might have already noticed that our website is slowly changing. We are changing our messaging back so that it tells developers what we actually do (plus we are going a bit darker with our colors as well 😎).
 
 We've also launched a new free trial. Now you can test out FusionAuth with a free Starter license and a Basic deployment in FusionAuth Cloud. This is still a 14-day free trial, but later this year we are hoping to launch a completely free tier of FusionAuth Cloud as well.
 
-We are launching a new React SDK and a simpler method of getting FusionAuth running. Soon, you'll be able to install FusionAuth locally, install the React SDK, and be up and running in literally minutes.
+We are launching a new React SDK for a simpler method of getting FusionAuth running for React apps. Soon, you'll be able to install FusionAuth locally, install the React SDK, and be up and running in literally minutes.
 
 We launched our Digital Ocean Marketplace listing that will make it simple to run FusionAuth on DO. We are excited to see what the passionate community Digital Ocean has built creates on top of FusionAuth. And to expand our partnership with Digital Ocean in the future to make it even simpler to use FusionAuth.
 
