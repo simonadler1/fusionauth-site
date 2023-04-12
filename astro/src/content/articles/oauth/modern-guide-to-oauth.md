@@ -3,7 +3,7 @@ title: The Modern Guide to OAuth
 description: Not just another OAuth tutorial. This guide walks you through all of the real use-cases of OAuth in clear and simple detail. 
 author: Brian Pontarelli and Dan Moore
 section: OAuth
-image: articles/modern-guide-to-oauth/expert-advice-the-modern-guide-to-oauth-header-image.png
+image: articles/modern-guide-oauth/expert-advice-the-modern-guide-to-oauth-header-image.png
 date: 2022-10-10
 dateModified: 2023-03-24
 ---
@@ -15,37 +15,6 @@ Well, yes and no. This guide is different than most of the others out there beca
 If that sounds good to you, keep reading! 
 
 We do cover a lot, so here's a handy table of contents to let you jump directly to a section if you'd like.
-
-* [OAuth overview](#oauth-overview)
-* [OAuth modes](#oauth-modes)
-  * [Local login and registration](#local-login-and-registration)
-  * [Third-party login and registration](#third-party-login-and-registration)
-  * [First-party login and registration](#first-party-login-and-registration)
-  * [Enterprise login and registration](#enterprise-login-and-registration)
-  * [Third-party service authorization](#third-party-service-authorization)
-  * [First-party service authorization](#first-party-service-authorization)
-  * [Machine-to-machine authorization](#machine-to-machine-authorization)
-  * [Device login and registration](#device-login-and-registration)
-  * [Which OAuth mode is right for you?](#which-oauth-mode-is-right-for-you)
-* [OAuth Grants](#oauth-grants)
-  * [Authorization Code grant](#authorization-code-grant)
-    * [Login/register buttons](#loginregister-buttons)
-    * [Authorize endpoint parameters](#authorize-endpoint-parameters)
-    * [Logging in](#logging-in)
-    * [Redirect and retrieve the tokens](#redirect-and-retrieve-the-tokens)
-    * [Tokens](#tokens)
-    * [User and token information](#user-and-token-information)
-    * [Local login and registration with the Authorization Code grant](#local-login-and-registration-with-the-authorization-code-grant)
-    * [Third-party login and registration (also Enterprise login and registration) with the Authorization Code grant](#third-party-login-and-registration-also-enterprise-login-and-registration-with-the-authorization-code-grant)
-    * [Third-party authorization with the Authorization Code grant](#third-party-authorization-with-the-authorization-code-grant)
-    * [First-party login and registration and first-party service authorization](#first-party-login-and-registration-and-first-party-service-authorization)
-  * [Implicit grant in OAuth 2.0](#implicit-grant-in-oauth-20)
-  * [Resource Owner's Password Credentials grant](#resource-owners-password-credentials-grant)
-  * [Client Credentials grant](#client-credentials-grant)
-  * [Device grant](#device-grant)
-* [Conclusion](#conclusion)
-
-{% include marketing/_modern-guide.liquid %}
 
 ## OAuth overview
 
@@ -115,7 +84,7 @@ So, how does this work in practice? Let's take a look at the steps for a fictiti
 
 That's it. The user feels like they are registering and logging into TWGTL directly, but in fact, TWGTL is delegating this functionality to the OAuth server. The user is none-the-wiser so this is why we call this mode *Local login and registration*.
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/login-screen-local-mode.png" alt="I bet your login screen will be much prettier." class="img-fluid" figure=false %}
+![I bet your login screen will be much prettier.](/img/articles/oauth/modern-guide-oauth/login-screen-local-mode.png)
 
 #### An aside about this mode and mobile applications
 
@@ -137,7 +106,7 @@ For example, Facebook will present a screen asking the user to share their email
 
 Here's an example of the Facebook permission grant screen, where Zapier would like to access a user's email address:
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/facebook-permissions-screen.png" alt="The Facebook permissions grant screen for Zapier." class="img-fluid" figure=false %}
+![The Facebook permissions grant screen for Zapier.](/img/articles/oauth/modern-guide-oauth/facebook-permissions-screen.png)
 
 After the user has logged into the third-party OAuth server and granted your application permissions, they are redirected back to your application and logged into it.
 
@@ -198,7 +167,7 @@ Second, this mode does not apply to all users of an application. In most cases, 
 
 You might have noticed some login forms only ask for your email on the first step like this:
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/email-requested-at-login.png" alt="For Zapier, the user's email address is requested before any password." class="img-fluid" figure=false %}
+![For Zapier, the user's email address is requested before any password.](/img/articles/oauth/modern-guide-oauth/email-requested-at-login.png)
 
 Knowing a user's email domain allows the OAuth server to determine where to send the user to log in or if they should log in locally. If you work at Example Company, proud purveyors of TWGTL, providing `brian@example.com` to the login screen allows the OAuth server to know you are an employee and should be authenticated against a corporate authentication source. If instead you enter `dan@gmail.com`, you won't be authenticated against that directory.
 
@@ -216,11 +185,11 @@ To hook all of this up, TWGTL needs to add a button to the user's profile page t
 
 Since WUPHF doesn't actually exist, here's an example screenshot from Buffer, a service which posts to your social media accounts such as Twitter.
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/buffer-connect-prompt.png" alt="Buffer would like to connect to your accounts." class="img-fluid" figure=false %}
+![Buffer would like to connect to your accounts.](/img/articles/oauth/modern-guide-oauth/buffer-connect-prompt.png)
 
 When you connect a Twitter account to Buffer, you'll see a screen like this:
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/buffer-connect-twitter.png" alt="Buffer would like to connect to your Twitter account." class="img-fluid" figure=false %}
+![Buffer would like to connect to your Twitter account.](/img/articles/oauth/modern-guide-oauth/buffer-connect-twitter.png)
 
 The workflow for this mode looks like this:
 
@@ -248,7 +217,7 @@ Here, one backend needs to be granted access to the other. We'll call the first 
 
 Using our TWGTL example, let's say that TWGTL has two microservices: one to manage ToDos and another to send WUPHFs. Overengineering is fun! The ToDo microservice needs to call the WUPHF microservice. The WUPHF microservice needs to ensure that any caller is allowed to use its APIs before it WUPHFs. 
 
-{% include _image.liquid src="/assets/img/advice/modern-guide-oauth/client-credentials-grant.svg" alt="The WUPHF microservice needs to ensure the TWGTL microservice is authorized." class="img-fluid" figure=false %}
+![The WUPHF microservice needs to ensure the TWGTL microservice is authorized.](/img/articles/oauth/modern-guide-oauth/client-credentials-grant.svg)
 
 The workflow for this mode looks like:
 
@@ -274,8 +243,6 @@ A good example of this mode is setting up a streaming app on an Apple TV, smart 
 8. A few seconds later, the device is connected to the user's account.
 
 This mode often takes a bit of time to complete because the app on the Apple TV is polling the OAuth server. We won't go over this mode because our [OAuth Device Authorization article](/learn/expert-advice/oauth/oauth-device-authorization) covers it in great detail.
-
-{% include marketing/_login-authentication-flows.liquid %}
 
 ## OAuth Grants
 
