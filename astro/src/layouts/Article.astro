@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import Default from "./Default.astro";
+
+let { frontmatter, section } = Astro.props;
+section = frontmatter.section ? frontmatter.section : section;
+
+const sections = [
+  {
+    "title": "Authentication",
+    "path": "/articles/authentication/",
+    "icon": "fa-lock",
+    "color": "indigo"
+  },
+  {
+    "title": "CIAM",
+    "path": "/articles/ciam/",
+    "icon": "fa-user",
+    "color": "blue"
+  },
+  {
+    "title": "Dev Tools",
+    "path": "/articles/dev-tools/",
+    "icon": "fa-hammer",
+    "color": "orange"
+  },
+  {
+    "title": "Gaming & Entertainment",
+    "path": "/articles/gaming-entertainment/",
+    "icon": "fa-gamepad-modern",
+    "color": "green"
+  },
+  {
+    "title": "Identity Basics",
+    "path": "/articles/identity-basics/",
+    "icon": "fa-id-card",
+    "color": "rose"
+  },
+  {
+    "title": "OAuth",
+    "path": "/articles/oauth/",
+    "icon": "fa-gear-complex-code",
+    "color": "yellow"
+  },
+  {
+    "title": "Security",
+    "path": "/articles/security/",
+    "icon": "fa-lock",
+    "color": "red"
+  },
+  {
+    "title": "Tokens",
+    "path": "/articles/tokens/",
+    "icon": "fa-tag",
+    "color": "indigo"
+  }
+];
+let items = [];
+let sideMenu = [];
+sideMenu.push({
+  "title": section,
+  "items": items
+})
+const articles = await getCollection("articles");
+for (const article of articles) {
+  if (article.data.section === section && !article.data.excludeFromIndex) {
+    items.push({
+      "title": article.data.title,
+      "path": `/articles/${article.slug}`
+    });
+  }
+}
+items.sort((one, two) => one.title < two.title);
+---
+<Default sections={sections} sideMenu={sideMenu} {...Astro.props}>
+  <slot/>
+</Default>
