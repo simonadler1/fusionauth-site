@@ -1,5 +1,4 @@
 ---
-layout: ../../../layouts/Articles.astro
 title: The Modern Guide to OAuth 
 description: Not just another OAuth tutorial. This guide walks you through all of the real use-cases of OAuth in clear and simple detail. 
 author: Brian Pontarelli and Dan Moore
