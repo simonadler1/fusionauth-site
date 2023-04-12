@@ -11,14 +11,14 @@ if [ "x$2" = "x" ]; then
   exit 1
 fi
 
-#mkdir -p astro/src/content/articles/$section
+mkdir -p astro/src/content/articles/$section
 
-#git mv site/learn/expert-advice/oauth/$file astro/src/content/articles/$section
+git mv site/learn/expert-advice/oauth/$file astro/src/content/articles/$section
 
-#mkdir -p astro/public/img/articles/$section/$file_no_md
-#git mv site/assets/img/advice/$file_no_md/  astro/public/img/articles/$section/$file_no_md
+mkdir -p astro/public/img/articles/$section/$file_no_md
+git mv site/assets/img/advice/$file_no_md/  astro/public/img/articles/$section/$file_no_md
 
-#echo "update front matter"
+echo "update front matter, remove layout"
 
 echo "update images"
 
