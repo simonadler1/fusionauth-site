@@ -153,6 +153,13 @@ declare module 'astro:content' {
   collection: "articles",
   data: InferEntrySchema<"articles">
 } & { render(): Render[".md"] },
+"oauth/modern-guide-to-oauth.md": {
+  id: "oauth/modern-guide-to-oauth.md",
+  slug: "oauth/modern-guide-to-oauth",
+  body: string,
+  collection: "articles",
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] },
 },
 
 	};
