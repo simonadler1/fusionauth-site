@@ -3,7 +3,7 @@ title: The Modern Guide to OAuth
 description: Not just another OAuth tutorial. This guide walks you through all of the real use-cases of OAuth in clear and simple detail. 
 author: Brian Pontarelli and Dan Moore
 section: OAuth
-image: articles/modern-guide-oauth/expert-advice-the-modern-guide-to-oauth-header-image.png
+image: articles/oauth/modern-guide-oauth/expert-advice-the-modern-guide-to-oauth-header-image.png
 date: 2022-10-10
 dateModified: 2023-03-24
 ---
