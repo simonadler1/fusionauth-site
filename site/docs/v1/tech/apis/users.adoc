@@ -34,6 +34,7 @@ This page contains all of the APIs for managing users.
 === Forgot Password
 * <<Start Forgot Password Workflow>>
 * link:#change-a-users-password[Change a User's Password]
+* <<Check validity of a changePasswordId>>
 
 
 == Create a User
@@ -1385,3 +1386,58 @@ This JSON response body will only be returned when using a `changePasswordId` or
 include::docs/src/json/users/change-password-response.json[]
 ----
 
+== Check validity of a changePasswordId
+
+=== Request
+
+[.api-authentication]
+link:/docs/v1/tech/apis/authentication#no-authentication-required[icon:unlock-alt[role=green, title="No authentication required"]] Determines if a user's `changePasswordId` is valid.
+
+[.endpoint]
+.URI
+--
+[method]#GET# [uri]#/api/user/change-password/`\{changePasswordId\}`#
+--
+
+==== Request Parameters
+
+[.api]
+[field]#changePasswordId# [type]#[String]# [required]#Required#::
+The `changePasswordId` that is used to identity the user after the Start Forgot Password workflow has been initiated.
++
+If this `changePasswordId` was sent via an email to the User by FusionAuth during User create in order to set up a new password, or as part of a Forgot Password request, then successful use of this identifier to change the User's password will implicitly complete Email Verification if not already verified and the Tenant configuration has enabled implicit email verification.
+
+include::docs/v1/tech/apis/_x-fusionauth-tenant-id-header-scoped-operation.adoc[]
+
+=== Response
+
+[cols="1,9a"]
+.Response Codes
+|===
+|Code |Description
+
+|200
+|The request was successful. Starting in version `1.5.0` a JSON response body will be returned unless the API was called with an API key was used with a `loginId`. Prior to version `1.5.0` a JSON body was not returned.
+
+|400
+|The request was invalid and/or malformed. The response will contain an link:/docs/v1/tech/apis/errors[Errors] JSON Object with the specific errors.
+
+Beginning in version `1.33.0` a status code of `400` may also be used to indicate additional trust is required to complete this request. In this case the following error will be returned.
+
+[source,json]
+.Example Response JSON
+----
+include::docs/src/json/errors/requires-trust-token-response.json[]
+----
+
+To complete this request you must obtain a `trustToken`. To obtain a `trustToken` complete a Two-Factor Login request.
+
+|404
+|The changePasswordId is expired or incorrect.
+
+|500
+|There was an internal error. A stack trace is provided and logged in the FusionAuth log files.
+
+|503
+|The search index is not available or encountered an exception so the request cannot be completed. The response will contain a JSON body.
+|===
