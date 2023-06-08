@@ -93,7 +93,7 @@ Now, update your `Gemfile` to look like this:
 {% remote_include https://raw.githubusercontent.com/FusionAuth/fusionauth-example-rails-api-guide/main/Gemfile %}
 ```
 
-You may need to modify the version of ruby specified in the Gemfile. As long as Rails 7 is supported, you will be fine.
+You may need to modify the version of ruby specified in the `Gemfile`. As long as Rails 7 is supported, you will be fine.
 
 Then, install these new gems.
 

@@ -54,7 +54,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 {% include docs/integration/_add-user.md language=page.language %}
 
-## Set up a Public URL for Fusionauth
+## Set up a Public URL for FusionAuth
 
 Your FusionAuth instance is now running on a different machine (your computer) than the mobile app will run (either a real device or an emulator), which means that it won't be able to access `localhost`.
 
