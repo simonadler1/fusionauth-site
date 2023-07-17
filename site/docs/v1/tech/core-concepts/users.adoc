@@ -174,6 +174,8 @@ You can search for users across tenants using the User Search API.
 An example use case is a private label todo SaaS application, where you want a user to sign up for two or more different instances of your SaaS and not know that there is a shared identity store behind them.
 For example, richard@piedpiper.com can sign up for the Pied Piper Todo application and the Hooli Todo Application with the same email address, but different passwords, MFA methods and more.
 
+Tenants also allow you to segment and limit trust of configured Identity Providers. If an Identity Provider in the Pied Piper tenant is malicious and creating accounts with hooli.com email addresses, there's no chance of gaining access to a user account in the Hooli tenant. Users within a tenant are entirely distinct from users in another tenant. Learn more about link:/docs/v1/tech/identity-providers/#account-security[account security and Identity Providers].
+
 One issue is that if you have admin users, such as customer support representatives, which need cross-tenant access, you can't keep their accounts in sync.
 One option is to set up an administrative identity server, whether that is a second instance of FusionAuth, Google GSuite, or Azure AD.
 Have the customer service representatives authenticate with it.
