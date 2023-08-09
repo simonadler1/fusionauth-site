@@ -31,8 +31,19 @@ Steps:
     * we have a hard-coded cap of 160 characters for the excerpt in most places it is used right now if you forget
     * we exclude any line that starts with `import` at the top of the excerpt so you can add any components you need without worry
   * If there are any `{% raw %}` tags you should remove them, backticks are enough.
-  * If there are any callouts, import and use the astro ones instead. More here: https://inversoft.slack.com/archives/C04DGBXKPGC/p1691171143090139
+  * If there are any callouts, import and use the astro ones instead.
+    * After your frontmatter: `import Aside from '/src/components/Aside.astro';`
+    * Then format the callout with `<Aside type="note">content</Aside>`
+    * More here: https://inversoft.slack.com/archives/C04DGBXKPGC/p1691171143090139
   * If there are any blocks with `{% remote_include` replace them with the [Remote Code](src/components/RemoteCode.astro) component
+  * If you find a `{% plantuml ...` tag
+    * `git mv site/_diagrams/blogs/SUBDIR/DIAGRAM.plantuml astro/src/diagrams/blog/SUBDIR/DIAGRAM.astro`
+    * Look at another sequence diagram to update your diagram to be mermaid compliant
+      * Change `participant` to `actor` for a user initiating some action
+      * Swap the positions of the name and the alias of actors/participants. PlantUML uses `Name as Alias` and Mermaid uses `Alias as Name`
+      * Change `->` to `->>` for requests, and `->` to `-->>` for responses
+      * Change notes of the form `== ... ==` to `Note over Alias1, Alias2: ...` where `Alias1` and `Alias2` are the participants that you want the note to span
+      * Remove any newlines from descriptions
   * If there are any other liquid tags, you should remove them.
   * Update references to adding a comment (usually at bottom of post) to posting in the forum: "If you have any questions about this blog post, please post in the [forum](/community/forum)."
   * Check to see how it renders: http://localhost:3000/blog/fusionauth-website-how-we-do-it
