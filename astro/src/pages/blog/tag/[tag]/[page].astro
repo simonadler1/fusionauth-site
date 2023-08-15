@@ -1,13 +1,14 @@
 ---
 import Layout from '../../../../layouts/BlogIndex.astro';
-import { getStaticTagPaths, startCase } from '../../blog-tools';
+import { getStaticTagPaths } from '../../../../tools/blog';
+import { startCase } from '../../../../tools/string';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({paginate}) {
   return getStaticTagPaths(paginate);
 }
 
-const { page, tagName } = Astro.props;
-const { tag } = Astro.params;
+const {page, tagName} = Astro.props;
+const {tag} = Astro.params;
 ---
 <Layout title={startCase(tagName) + " posts"}
         section="tag"

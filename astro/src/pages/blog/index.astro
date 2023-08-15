@@ -6,7 +6,7 @@ import BlogNav from '../../components/nav/BlogNav.astro';
 import Footer from '../../components/Footer.astro';
 import SubscribeFooter from '../../components/SubscribeFooterCTA.astro';
 import { getCollection } from 'astro:content';
-import { getHref, getDateString, getLatestDateString, parseContent, sortByDate } from './blog-tools';
+import { BlogContent, parseContent, sortByDate } from '../../tools/blog';
 
 const pageData = {
   categoryCallouts: [
@@ -21,7 +21,7 @@ const pageData = {
   ]
 }
 
-const rawBlogs = await getCollection('blog');
+const rawBlogs = await getCollection('blog') as BlogContent[];
 const blogs = rawBlogs.sort(sortByDate).map(parseContent);
 
 const onThePage = [];

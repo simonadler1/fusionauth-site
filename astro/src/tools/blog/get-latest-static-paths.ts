@@ -1,15 +1,19 @@
 import { getCollection } from 'astro:content';
-import { sortByDate } from '../../pages/blog/blog-tools';
-import { PaginateFunction, PaginateOptions } from 'astro';
+import { GetStaticPathsResult, PaginateFunction, PaginateOptions } from 'astro';
+import { sortByDate } from './sort-by-date';
 
 /**
- * Returns data for GetStaticPaths for the blog landing page
- * @param paginate
+ * Returns data for GetStaticPaths for the blog landing page. Paginates them to a default page size of 7
+ *
+ * @param paginate paginate astro function
+ * @return the static paths result from the paginate function
  */
-export const getLatestStaticPaths = async(paginate: PaginateFunction) => {
+export const getLatestStaticPaths = async (paginate: PaginateFunction): Promise<GetStaticPathsResult> => {
   const blogs = await getCollection('blog');
+
   // newest first
   blogs.sort(sortByDate);
+
   return paginate(blogs, {
     pageSize: 7
   } as PaginateOptions);

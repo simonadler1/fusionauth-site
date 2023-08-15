@@ -1,13 +1,14 @@
 ---
 import Layout from '../../../../layouts/BlogIndex.astro';
-import { getStaticCategoryPaths, startCase } from '../../blog-tools';
+import { getStaticCategoryPaths } from '../../../../tools/blog';
+import { startCase } from '../../../../tools/string';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({paginate}) {
   return getStaticCategoryPaths(paginate);
 }
 
-const { page, categoryName } = Astro.props;
-const { category } = Astro.params;
+const {page, categoryName} = Astro.props;
+const {category} = Astro.params;
 ---
 
 <Layout title={startCase(categoryName) + " posts"}

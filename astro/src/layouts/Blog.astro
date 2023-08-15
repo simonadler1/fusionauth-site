@@ -7,11 +7,12 @@ import Footer from '../components/Footer.astro';
 import TwitterLink from '../components/blog/TwitterLink.astro';
 import LinkedInLink from '../components/blog/LinkedInLink.astro';
 import SubscribeFooter from '../components/SubscribeFooterCTA.astro';
-import { getHref, getDateString, mapRelated } from "../pages/blog/blog-tools";
 import { getCollection } from 'astro:content';
+import { BlogContent, getHref, mapRelated } from '../tools/blog';
+import { getDateString } from '../tools/date';
 
-let { frontmatter, title } = Astro.props;
-let { slug } = Astro.params;
+let {frontmatter, title} = Astro.props;
+let {slug} = Astro.params;
 
 title = frontmatter.title ? frontmatter.title : title;
 const description = frontmatter.description ? frontmatter.description : '';
@@ -24,7 +25,7 @@ const tags = frontmatter.tags ? frontmatter.tags.split(',').map(tag => tag.trim(
 const featuredTag = frontmatter.featured_tag ? frontmatter.featured_tag : tags ? tags[0] : 'passwords';
 const featuredCategory = frontmatter.featured_category ? frontmatter.featured_category : categories ? categories[0] : 'tutorials';
 
-const collection = await getCollection('blog');
+const collection = await getCollection('blog') as BlogContent[];
 
 const relatedPosts = mapRelated(collection, 'categories', featuredCategory, slug);
 const relatedTags = mapRelated(collection, 'tags', featuredTag, slug);

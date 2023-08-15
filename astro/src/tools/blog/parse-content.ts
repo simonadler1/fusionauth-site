@@ -12,17 +12,24 @@ import { ParsedBlog } from './parsed-blog';
  * @param blog to be parsed.
  */
 export const parseContent = (blog: BlogContent): ParsedBlog => {
+  // parse the excerpt "blurb"
   const blurbLines: string[] = [];
   const separator = blog.data.excerpt_separator;
   const lines = blog.body.split('\n');
+
   for (let line of lines) {
+    // stop at the excerpt_separator line
     if (separator && line.includes(separator)) {
       break;
     }
+
+    // filter out imports
     if (line && !line.trim().startsWith('import')) {
       blurbLines.push(line);
     }
   }
+
+  // trim the blurb handling any links in the markdown
   let preblurb = blurbLines.join('\n');
   let blurb = preblurb;
   if (preblurb.length > 160) {
@@ -39,9 +46,12 @@ export const parseContent = (blog: BlogContent): ParsedBlog => {
     blurb = blurb + '...';
   }
   blurb = marked.parse(blurb);
+
+  // split frontmatter lists to arrays
   const categories = blog.data.categories.split(',').map(cat => cat.trim());
   const tags = blog.data.tags.split(',').map(tag => tag.trim());
   const authors = blog.data.authors.split(',').map(author => author.trim());
+
   return {
     ...blog.data,
     blurb,

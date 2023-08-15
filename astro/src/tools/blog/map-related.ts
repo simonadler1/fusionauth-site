@@ -1,6 +1,7 @@
-import { parseContent, sortByDate } from '../../pages/blog/blog-tools';
 import { BlogContent } from './blog-content';
 import { ParsedBlog } from './parsed-blog';
+import { sortByDate } from './sort-by-date';
+import { parseContent } from './parse-content';
 
 type MetaSection = 'categories' | 'authors' | 'tags';
 
