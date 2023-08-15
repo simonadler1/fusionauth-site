@@ -28,7 +28,8 @@ const getAllEntries = (blogs: BlogContent[], attribute: keyof BlogFrontmatter) =
  */
 export const getStaticIndexPaths = async (paginate: PaginateFunction, attribute: keyof BlogFrontmatter, paramName: 'tag' | 'category' | 'author'): Promise<GetStaticPathsResult> => {
   const blogs = await getCollection('blog');
-  const allTags = getAllEntries(blogs, attribute)
+  const allTags = getAllEntries(blogs, attribute);
+
   return allTags.map((target) => {
 
     const filteredPosts = blogs.filter((post) => post.data[attribute].includes(target));

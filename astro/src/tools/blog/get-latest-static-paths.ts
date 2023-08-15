@@ -17,4 +17,4 @@ export const getLatestStaticPaths = async (paginate: PaginateFunction): Promise<
   return paginate(blogs, {
     pageSize: 7
   } as PaginateOptions);
-}
+};

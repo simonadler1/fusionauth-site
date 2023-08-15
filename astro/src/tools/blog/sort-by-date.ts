@@ -10,6 +10,7 @@ import { BlogContent } from './blog-content';
 export const sortByDate = (a: BlogContent, b: BlogContent): number => {
   const aDate = a.data.updated_date ? a.data.updated_date : a.data.publish_date;
   const bDate = b.data.updated_date ? b.data.updated_date : b.data.publish_date;
+
   if (aDate > bDate) {
     return -1;
   } else if (aDate == bDate) {
