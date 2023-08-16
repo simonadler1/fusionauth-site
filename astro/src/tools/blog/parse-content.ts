@@ -36,7 +36,7 @@ export const parseContent = (blog: BlogContent): ParsedBlog => {
     blurb = blurb.substring(0, 160);
 
     // don't split mid-word
-    const snapPoint = Math.max(...[' ', '.', ','].map(blurb.lastIndexOf))
+    const snapPoint = Math.max(...[' ', '.'].map(c => blurb.lastIndexOf(c)))
     blurb = blurb.substring(0, snapPoint) + '...';
   }
 
