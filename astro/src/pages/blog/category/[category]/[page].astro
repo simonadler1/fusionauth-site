@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../../layouts/BlogIndex.astro';
 import { getStaticCategoryPaths } from '../../../../tools/blog';
-import { startCase } from '../../../../tools/string';  ]
+import { startCase } from '../../../../tools/string';
 
 export async function getStaticPaths({paginate}) {
   return getStaticCategoryPaths(paginate);
