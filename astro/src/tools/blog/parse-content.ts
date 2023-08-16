@@ -29,23 +29,16 @@ export const parseContent = (blog: BlogContent): ParsedBlog => {
     }
   }
 
-  // trim the blurb handling any links in the markdown
-  let preblurb = blurbLines.join('\n');
-  let blurb = preblurb;
-  if (preblurb.length > 160) {
-    blurb = preblurb.substring(0, 160);
-    // handle when someone put a link in the blurb and it is in the middle of the cutoff. kinda hacky, sorry
-    const linkOpen = blurb.lastIndexOf('[');
-    let linkClose = blurb.lastIndexOf(')');
-    if (linkOpen > 1 && linkClose < linkOpen) {
-      linkClose = preblurb.substring(linkOpen).indexOf(')');
-      if (linkClose > 0) {
-        blurb = preblurb.substring(0, linkOpen + linkClose + 1);
-      }
-    }
-    blurb = blurb + '...';
+  // render the markdown
+  let blurb = marked.parse(blurbLines.join('\n'));
+  // and trim
+  if (blurb.length > 160) {
+    blurb = blurb.substring(0, 160);
+
+    // don't split mid-word
+    const snapPoint = Math.max(...[' ', '.', ','].map(blurb.lastIndexOf))
+    blurb = blurb.substring(0, snapPoint) + '...';
   }
-  blurb = marked.parse(blurb);
 
   // split frontmatter lists to arrays
   const categories = blog.data.categories.split(',').map(cat => cat.trim());
