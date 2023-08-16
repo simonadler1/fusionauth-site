@@ -1,3 +1,4 @@
+//old and busted
 var d="/docs/v1/tech";
 var a="/articles";
 var ex="/learn/expert-advice";
@@ -147,7 +148,7 @@ var redirectsByRegex = [
 var s3Paths = ['/direct-download', '/license'];
 var s3Prefixes = ['/assets/', '/blog/', '/docs/', '/landing/', '/learn/', '/legal/', '/resources/', '/how-to/', '/articles/', '/dev-tools/', '/quickstarts/'];
 
-function handler(event) {
+function oldHandler(event) {
   var req = event.request;
   var hdrs = req.headers;
 
@@ -246,3 +247,53 @@ function calculateURI(uri) {
 function redir(loc) {
   return {statusCode:301,statusDescription:'Moved',headers:{'location':{value: loc}}}
 }
+
+//new hotness
+
+function newHandler(event) {
+  return event.request;
+}
+
+//test
+
+const metaHandler = (event) => {
+  const newResp = newHandler(event);
+  if (newResp.statusCode) {
+    return newResp;
+  } else {
+    const oldResp = oldHandler(event);
+    return {...newResp, ...oldResp};
+  }
+}
+
+const testList = [
+  {
+    requestUri: '/blog/author/brian-pontarelli/1/',
+    expectedUri: '/blog/author/brian-pontarelli/1.html',
+  },
+  {
+    requestUri: '/blog/2021/02/09/single-sign-on-sso-with-fusionauth',
+    expectedUri: '/blog/single-sign-on-sso-with-fusionauth',
+    expectedStatus: 301,
+  },
+  {
+    requestUri: '/docs/v1/tech/apis/authentication',
+    expectedUri: '/docs/v1/tech/apis/authentication.html'
+  },
+  {
+    requestUri: '/docs/v1/tech/tutorials/integrate-angular',
+    expectedUri: '/docs/v1/tech/tutorials/integrate-angular.html'
+  }
+];
+
+testList.map(test => ([{request: {uri: test.requestUri, headers: {}}}, test.expectedUri]))
+        .map(([event, expected]) => [metaHandler(event), expected])
+        .forEach(([response, expected]) => {
+          if (response.uri === expected) {
+            console.log('passed', expected);
+          } else if (response.statusCode === 301 && response?.headers?.location?.value === expected) {
+            console.log('passed with redirect', expected);
+          } else {
+            console.error('failed. got', response.uri, 'expected', expected);
+          }
+        })
