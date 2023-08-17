@@ -65,6 +65,7 @@ ip[d+'/tutorials/gating/']=true;
 ip[d+'/tutorials/two-factor/']=true;
 ip['/how-to/']=true;
 ip['/quickstarts/']=true;
+ip['/blog/latest/']=true;
 
 var rd = {};
 rd['/cognito']=d+'/migration-guide/cognito';
@@ -190,8 +191,8 @@ function oldHandler(event) {
 }
 
 function removeSlash(uri) {
-  return ip[uri] !== true && !uri.startsWith('/blog') &&
-    redirectsByPrefix.find(e => uri.startsWith(e[0])) === undefined;
+  return ip[uri] !== true && (!uri.startsWith('/blog') || (uri.match('^/blog/[\\w\\d-]*/$') && !uri.match('^/blog/latest/$'))) &&
+      redirectsByPrefix.find(e => uri.startsWith(e[0])) === undefined;
 }
 
 function calculateRedirect(uri) {
