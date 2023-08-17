@@ -1296,13 +1296,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".mdx"] },
-"easy-integration-fusionauth-nodejs.mdx": {
-  id: "easy-integration-fusionauth-nodejs.mdx",
-  slug: "easy-integration-fusionauth-nodejs",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
+  "easy-integration-fusionauth-nodejs.mdx": {
+    id: "easy-integration-fusionauth-nodejs.mdx",
+    slug: "easy-integration-fusionauth-nodejs",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
   "easy-integration-of-fusionauth-and-spring.mdx": {
     id: "easy-integration-of-fusionauth-and-spring.mdx",
     slug: "easy-integration-of-fusionauth-and-spring",
@@ -1344,21 +1344,21 @@ declare module 'astro:content' {
     body: string,
     collection: "blog",
     data: any
-} & { render(): Render[".mdx"] },
-"fusionauth-announces-biotech.mdx": {
-  id: "fusionauth-announces-biotech.mdx",
-  slug: "fusionauth-announces-biotech",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
-"fusionauth-codemash.mdx": {
-  id: "fusionauth-codemash.mdx",
-  slug: "fusionauth-codemash",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
+  } & { render(): Render[".mdx"] },
+  "fusionauth-announces-biotech.mdx": {
+    id: "fusionauth-announces-biotech.mdx",
+    slug: "fusionauth-announces-biotech",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
+  "fusionauth-codemash.mdx": {
+    id: "fusionauth-codemash.mdx",
+    slug: "fusionauth-codemash",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
   "fusionauth-colorado-company-to-watch.mdx": {
     id: "fusionauth-colorado-company-to-watch.mdx",
     slug: "fusionauth-colorado-company-to-watch",
@@ -1403,16 +1403,16 @@ declare module 'astro:content' {
   } & { render(): Render[".mdx"] },
   "fusionauth-lambda-http-connect.mdx": {
     id: "fusionauth-lambda-http-connect.mdx",
-  slug: "fusionauth-lambda-http-connect",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
-"fusionauth-learning-from-incidents.mdx": {
-  id: "fusionauth-learning-from-incidents.mdx",
-  slug: "fusionauth-learning-from-incidents",
-  body: string,
-  collection: "blog",
+    slug: "fusionauth-lambda-http-connect",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
+  "fusionauth-learning-from-incidents.mdx": {
+    id: "fusionauth-learning-from-incidents.mdx",
+    slug: "fusionauth-learning-from-incidents",
+    body: string,
+    collection: "blog",
   data: any
 } & { render(): Render[".mdx"] },
 "fusionauth-lets-iot-firm-focus-their-app.mdx": {
@@ -1968,26 +1968,33 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".mdx"] },
-"quick-comparison-ping-identity-and-fusionauth.mdx": {
-  id: "quick-comparison-ping-identity-and-fusionauth.mdx",
-  slug: "quick-comparison-ping-identity-and-fusionauth",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
-"rbac-with-kubernetes-fusionauth.mdx": {
-  id: "rbac-with-kubernetes-fusionauth.mdx",
-  slug: "rbac-with-kubernetes-fusionauth",
-  body: string,
-  collection: "blog",
-  data: any
-} & { render(): Render[".mdx"] },
-"readymag-typescript-apis-support-fusionauth.mdx": {
-  id: "readymag-typescript-apis-support-fusionauth.mdx",
-  slug: "readymag-typescript-apis-support-fusionauth",
-  body: string,
-  collection: "blog",
-  data: any
+  "quick-comparison-ping-identity-and-fusionauth.mdx": {
+    id: "quick-comparison-ping-identity-and-fusionauth.mdx",
+    slug: "quick-comparison-ping-identity-and-fusionauth",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
+  "rbac-with-kubernetes-fusionauth.mdx": {
+    id: "rbac-with-kubernetes-fusionauth.mdx",
+    slug: "rbac-with-kubernetes-fusionauth",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
+  "react-example-application.mdx": {
+    id: "react-example-application.mdx",
+    slug: "react-example-application",
+    body: string,
+    collection: "blog",
+    data: any
+  } & { render(): Render[".mdx"] },
+  "readymag-typescript-apis-support-fusionauth.mdx": {
+    id: "readymag-typescript-apis-support-fusionauth.mdx",
+    slug: "readymag-typescript-apis-support-fusionauth",
+    body: string,
+    collection: "blog",
+    data: any
 } & { render(): Render[".mdx"] },
 "reconinfosec-fusionauth.mdx": {
   id: "reconinfosec-fusionauth.mdx",

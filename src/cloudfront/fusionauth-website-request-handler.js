@@ -6,20 +6,7 @@ var idp="/identity-providers";
 
 var ip = {};
 ip['/']=true;
-ip[a+'/']=true;
-ip[a+'/authentication/']=true;
-ip[a+'/ciam/']=true;
-ip[a+'/gaming-entertainment/']=true;
-ip[a+'/identity-basics/']=true;
-ip[a+'/login-authentication-workflows/']=true;
-ip[a+'/oauth/']=true;
-ip[a+'/security/']=true;
-ip[a+'/tokens/']=true;
-ip['/blog/']=true;
 ip['/community/forum/']=true;
-ip['/dev-tools/']=true;
-ip['/docs/']=true;
-ip['/docs/quickstarts/']=true;
 ip[d+'/']=true;
 ip[d+'/account-management/']=true;
 ip[d+'/admin-guide/']=true;
@@ -64,13 +51,10 @@ ip[d+'/tutorials/']=true;
 ip[d+'/tutorials/gating/']=true;
 ip[d+'/tutorials/two-factor/']=true;
 ip['/how-to/']=true;
-ip['/quickstarts/']=true;
-ip['/blog/latest/']=true;
 
 var rd = {};
 rd['/cognito']=d+'/migration-guide/cognito';
 rd['/cognito/']=d+'/migration-guide/cognito';
-rd[a+'/oauth/what-is-oauth']=a+'/oauth/modern-guide-to-oauth';
 rd[d+'/admin-guide/release-notifications']=d+'/admin-guide/releases';
 rd[d+'/apis/consent']=d+'/apis/consents';
 rd[d+'/common-errors']=d+'/admin-guide/troubleshooting';
@@ -140,16 +124,10 @@ var redirectsByPrefix = [
   ['/learn/expert-advice', '/articles']
 ]
 
-// order matters
-var redirectsByRegex = [
-  ['^/blog/(category|tag|author)/([^/]*)$', '$&/'],
-  ['/blog/\\d\\d\\d\\d/\\d\\d/\\d\\d/', '/blog/']
-]
-
 var s3Paths = ['/direct-download', '/license'];
 var s3Prefixes = ['/assets/', '/blog/', '/docs/', '/landing/', '/learn/', '/legal/', '/resources/', '/how-to/', '/articles/', '/dev-tools/', '/quickstarts/'];
 
-function oldHandler(event) {
+function handler(event) {
   var req = event.request;
   var hdrs = req.headers;
 
@@ -191,8 +169,7 @@ function oldHandler(event) {
 }
 
 function removeSlash(uri) {
-  return ip[uri] !== true && (!uri.startsWith('/blog') || (uri.match('^/blog/[\\w\\d-]*/$') && !uri.match('^/blog/latest/$'))) &&
-      redirectsByPrefix.find(e => uri.startsWith(e[0])) === undefined;
+  return ip[uri] !== true && redirectsByPrefix.find(e => uri.startsWith(e[0])) === undefined;
 }
 
 function calculateRedirect(uri) {
@@ -248,53 +225,3 @@ function calculateURI(uri) {
 function redir(loc) {
   return {statusCode:301,statusDescription:'Moved',headers:{'location':{value: loc}}}
 }
-
-//new hotness
-
-function newHandler(event) {
-  return event.request;
-}
-
-//test
-
-const metaHandler = (event) => {
-  const newResp = newHandler(event);
-  if (newResp.statusCode) {
-    return newResp;
-  } else {
-    const oldResp = oldHandler(event);
-    return {...newResp, ...oldResp};
-  }
-}
-
-const testList = [
-  {
-    requestUri: '/blog/author/brian-pontarelli/1/',
-    expectedUri: '/blog/author/brian-pontarelli/1.html',
-  },
-  {
-    requestUri: '/blog/2021/02/09/single-sign-on-sso-with-fusionauth',
-    expectedUri: '/blog/single-sign-on-sso-with-fusionauth',
-    expectedStatus: 301,
-  },
-  {
-    requestUri: '/docs/v1/tech/apis/authentication',
-    expectedUri: '/docs/v1/tech/apis/authentication.html'
-  },
-  {
-    requestUri: '/docs/v1/tech/tutorials/integrate-angular',
-    expectedUri: '/docs/v1/tech/tutorials/integrate-angular.html'
-  }
-];
-
-testList.map(test => ([{request: {uri: test.requestUri, headers: {}}}, test.expectedUri]))
-        .map(([event, expected]) => [metaHandler(event), expected])
-        .forEach(([response, expected]) => {
-          if (response.uri === expected) {
-            console.log('passed', expected);
-          } else if (response.statusCode === 301 && response?.headers?.location?.value === expected) {
-            console.log('passed with redirect', expected);
-          } else {
-            console.error('failed. got', response.uri, 'expected', expected);
-          }
-        })
