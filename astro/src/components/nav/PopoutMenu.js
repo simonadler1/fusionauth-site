@@ -1,5 +1,3 @@
-'use strict';
-
 export default class PopoutMenu {
   #outState = ['ease-out', 'duration-100', 'opacity-0', 'scale-95'];
   #inState = ['ease-in', 'duration-75', 'opacity-100', 'scale-100'];

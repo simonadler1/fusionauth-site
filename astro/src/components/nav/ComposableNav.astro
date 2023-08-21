@@ -7,16 +7,19 @@ import Search from "../Search.astro";
 interface HeaderItem {
   name: string;
   href: string;
-  foldsIntoMenu: boolean;
-  hideOnMobile: boolean;
 }
 
-const { sectionTitle, sectionTitleHref, headerItems, buttons, mobileAfterBreakItems, colorThemeOverride }
-    : { sectionTitle: string, sectionTitleHref: string, headerItems: HeaderItem[], buttons: string[], mobileAfterBreakItems: HeaderItem[], colorThemeOverride: string}
-    = Astro.props;
+interface NavProps {
+  sectionTitle: string,
+  sectionTitleHref: string,
+  categoryItems: HeaderItem[],
+  moreItems: HeaderItem[],
+  categoryLabel: string,
+  buttons: string[],
+  colorThemeOverride: string
+}
 
-const moreIndex = headerItems.findIndex(headerItem => headerItem.foldsIntoMenu);
-const moreMenuItems = headerItems.filter(headerItem => headerItem.foldsIntoMenu);
+const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, buttons, colorThemeOverride}: NavProps = Astro.props;
 ---
 <!-- Header w/ border on bottom, full width and is sticky -->
 <nav class="bg-slate-900 block border-slate-700 border-b border-solid h-auto sticky text-left top-0 z-50 xl:shadow-lg">
@@ -50,37 +53,48 @@ const moreMenuItems = headerItems.filter(headerItem => headerItem.foldsIntoMenu)
     <div
       class="absolute bg-white dark:bg-slate-900 h-screen hidden left-0 lg:bg-transparent lg:dark:bg-transparent lg:flex lg:h-auto lg:items-center lg:ml-auto lg:p-0 lg:static p-6 right-0 top-0">
       <ul class="space-y-6 lg:flex lg:items-center lg:space-y-0">
-        { headerItems && headerItems.map((headerItem, idx) =>
-          <div>
-            {idx == moreIndex && <MoreMenu menuLabel="More" menuItems={moreMenuItems}/>}
-            <li class:list={[headerItem.foldsIntoMenu ? 'lg:hidden xl:block' : '', 'ease-in font-bold hover:text-indigo-500 text-base text-white transition-colors lg:mx-3 lg:text-sm']}>
-              <a href={ headerItem.href }>{ headerItem.name }</a>
-            </li>
-          </div>
-        )}
+        <MoreMenu elemId="category" menuLabel="Blog Categories" menuItems={categoryItems}/>
+        <MoreMenu elemId="more" menuLabel="More" menuItems={moreItems}/>
       </ul>
       <div class="flex items-center">
-        { buttons && buttons.map(button => <NavButton name={button}/> )}
+        {buttons && buttons.map(button =>
+          <NavButton name={button}/>)}
       </div>
     </div>
   </div>
-  <div class="block md:shadow-md lg:hidden hidden transition-height duration-700" id="mobile-menu-nav">
-    <div class="group-hover:duration-200 pb-3 pt-2 px-2 shadow-2xl space-y-1">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      {headerItems && headerItems.filter(headerItem => !headerItem.hideOnMobile).map((headerItem, idx, list) =>
-        <a href={ headerItem.href }
-           class:list={[idx == list.length -1 ? "pb-4" : "", "block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 rounded-md text-base text-white"]}>
-          { headerItem.name }
-        </a>
-      )}
-      <hr class="border-slate-700 border-t-2 h-px my-12""/>
-      { mobileAfterBreakItems && mobileAfterBreakItems.map(item =>
-        <a href={ item.href } class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors pb-2 pt-4 px-3 rounded-md text-base text-white">
-          { item.name }
-        </a>
-      )}
+  <div class="block shadow-md md:shadow-md lg:hidden" id="mobile-menu">
+    <p class="block font-semibold px-3 py-2 text-lg text-white">{categoryLabel}</p>
+    <div class="group-hover:duration-200 p-2 space-y-1">
+      <div class="mb-5 ml-2">
+        {categoryItems && categoryItems.map(cat =>
+          <a href={cat.href}
+             class="block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white">{cat.name}</a>
+        )}
+      </div>
+    </div>
+    <p class="block font-semibold pb-2 px-3 text-lg text-white">More</p>
+    <div class="group-hover:duration-200 p-2 shadow-2xl space-y-1">
+      <div class="mb-5 ml-2">
+        {moreItems && moreItems.map(more =>
+          <a href={more.href}
+             class="block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white">{more.name}</a>
+        )}
+      </div>
+      <hr class="border-slate-700 border-t-2 h-px"/>
+      <div>
+        <a href="/contact"
+           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 rounded-md text-base text-white">Talk
+          To An Expert</a>
+        <a href="/account"
+           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 rounded-md text-base text-white">Login</a>
+      </div>
     </div>
   </div>
 </nav>
 <Search/>
-<script src="/js/PopoutMenu-0.1.0.js" type="text/javascript"></script>
+<script>
+  import PopoutMenu from './PopoutMenu.js';
+
+  new PopoutMenu('category');
+  new PopoutMenu('more');
+</script>
