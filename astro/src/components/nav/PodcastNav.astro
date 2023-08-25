@@ -1,0 +1,18 @@
+---
+import Nav from "./ComposableNav.astro";
+
+const headerItems = [{ name: "News", href: "/podcasts/category/news/" }];
+
+const buttons = ["expert", "search"];
+
+const mobileAfterBreakItems = [{ name: "Talk To An Expert", href: "/contact" }];
+---
+
+<Nav
+  sectionTitle="Podcast"
+  sectionTitleHref="/podcasts/"
+  headerItems={headerItems}
+  buttons={buttons}
+  mobileAfterBreakItems={mobileAfterBreakItems}
+  colorThemeOverride="dark"
+/>

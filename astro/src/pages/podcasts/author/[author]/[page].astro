@@ -1,20 +1,21 @@
 ---
 import Layout from "../../../../layouts/BlogIndex.astro";
-import { getStaticAuthorPaths } from "../../blog-tools";
-import { AUTHORS } from "../../mappings";
+import { getStaticAuthorPaths } from "../../../blog/blog-tools";
+import { AUTHORS } from "../../../blog/mappings";
 
 export async function getStaticPaths({ paginate }) {
-  return getStaticAuthorPaths(paginate, "blog");
+  return getStaticAuthorPaths(paginate, "podcasts");
 }
 
 const { page, authorName } = Astro.props;
 const { author } = Astro.params;
+console.log("author", author);
 ---
 
 <Layout
-  title={"Posts authored by " + authorName}
+  title={"Podcasts authored by " + authorName}
   section="author"
-  sectionTitle="Posts By"
+  sectionTitle="Podcasts By"
   subjectRef={author}
   subjectName={authorName}
   page={page}
@@ -23,5 +24,5 @@ const { author } = Astro.params;
     text: AUTHORS[authorName]?.linkText,
     href: AUTHORS[authorName]?.linkUrl,
   }}
-  type="blog"
+  type="podcasts"
 />

@@ -20,18 +20,18 @@ export const getDateString = (date) => months[date.getUTCMonth()] + " " + date.g
 
 export const getLatestDateString = (post) => getDateString(post.updated_date ? post.updated_date : post.publish_date);
 
-export const getHref = (name, section) => !!name && !!section
-    ? '/blog/' + section + '/' + name.replaceAll(' ', '-').toLowerCase() + '/'
-    : '';
+export const getHref = (name, section, type) => !!name && !!section
+  ? `/${type}/` + section + '/' + name.replaceAll(' ', '-').toLowerCase() + '/'
+  : '';
 
 export const mapRelated = (collection, metaSection, target, currentSlug) => collection ? collection
-    .filter(blog => blog.data
-        && blog.data[metaSection]
-        && blog.data[metaSection].split(',').includes(target)
-        && blog.slug !== currentSlug)
-    .sort(sortByDate)
-    .slice(0, 3)
-    .map(parseContent) : [];
+  .filter(blog => blog.data
+    && blog.data[metaSection]
+    && blog.data[metaSection].split(',').includes(target)
+    && blog.slug !== currentSlug)
+  .sort(sortByDate)
+  .slice(0, 3)
+  .map(parseContent) : [];
 
 export const parseContent = (blog) => {
   // grab the excerpt text
@@ -80,13 +80,13 @@ const getAllEntries = (blogs, attribute) => {
     return entries;
   }
   return blogs.flatMap(blog => blog.data[attribute]
-      .split(',')
-      .map(entry => entry.trim()))
-      .filter(entry => !!entry)
-      .reduce(reducer, []);
+    .split(',')
+    .map(entry => entry.trim()))
+    .filter(entry => !!entry)
+    .reduce(reducer, []);
 };
 
-export const sortByDate = (a,b) => {
+export const sortByDate = (a, b) => {
   const aDate = a.data.updated_date ? a.data.updated_date : a.data.publish_date;
   const bDate = b.data.updated_date ? b.data.updated_date : b.data.publish_date;
   if (aDate > bDate) {
@@ -98,8 +98,8 @@ export const sortByDate = (a,b) => {
   }
 };
 
-export const getLatestStaticPaths = async(paginate) => {
-  const blogs = await getCollection('blog');
+export const getLatestStaticPaths = async (paginate, type) => {
+  const blogs = await getCollection(type);
   // newest first
   blogs.sort(sortByDate);
   return paginate(blogs, {
@@ -108,11 +108,11 @@ export const getLatestStaticPaths = async(paginate) => {
 }
 
 export const startCase = (inputString) => inputString
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-export const getStaticIndexPaths = async (paginate, attribute, paramName) => {
-  const blogs = await getCollection('blog');
+  .split(' ')
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
+export const getStaticIndexPaths = async (paginate, attribute, paramName, type) => {
+  const blogs = await getCollection(type);
   const allTags = getAllEntries(blogs, attribute)
   return allTags.map((target) => {
 
@@ -134,6 +134,6 @@ export const getStaticIndexPaths = async (paginate, attribute, paramName) => {
   });
 }
 
-export const getStaticTagPaths = async (paginate) => getStaticIndexPaths(paginate, 'tags', 'tag');
-export const getStaticCategoryPaths = async (paginate) => getStaticIndexPaths(paginate, 'categories', 'category');
-export const getStaticAuthorPaths = async (paginate) => getStaticIndexPaths(paginate, 'authors', 'author');
+export const getStaticTagPaths = async (paginate, type) => getStaticIndexPaths(paginate, 'tags', 'tag', type);
+export const getStaticCategoryPaths = async (paginate, type) => getStaticIndexPaths(paginate, 'categories', 'category', type);
+export const getStaticAuthorPaths = async (paginate, type) => getStaticIndexPaths(paginate, 'authors', 'author', type);

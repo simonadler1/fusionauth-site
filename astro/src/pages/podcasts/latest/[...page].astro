@@ -1,20 +1,20 @@
 ---
 import Layout from "../../../layouts/BlogIndex.astro";
-import { getLatestStaticPaths } from "../blog-tools";
+import { getLatestStaticPaths } from "../../blog/blog-tools";
 
 export async function getStaticPaths({ paginate }) {
-  return getLatestStaticPaths(paginate, "blog");
+  return getLatestStaticPaths(paginate, "podcasts");
 }
 
 const { page } = Astro.props;
 ---
 
 <Layout
-  title="Latest blog posts"
+  title="Latest podcasts"
   section="latest"
-  sectionTitle="Blogs"
-  subjectName="Latest Posts"
+  sectionTitle="Podcasts"
+  subjectName="Latest Podcasts"
   page={page}
   showCategories={false}
-  type="blog"
+  type="podcasts"
 />

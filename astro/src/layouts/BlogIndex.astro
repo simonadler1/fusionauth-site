@@ -1,13 +1,14 @@
 ---
 import '../css/style.css';
 import HeadComponent from '../components/Head.astro';
-import Nav from '../components/nav/BlogNav.astro';
+import BlogNav from '../components/nav/BlogNav.astro';
+import PodcastNav from '../components/nav/PodcastNav.astro';
 import Footer from '../components/Footer.astro';
 import SubscribeFooter from '../components/SubscribeFooterCTA.astro';
 import Icon from '../components/icon/Icon.astro';
 import { getHref, getLatestDateString, parseContent } from '../pages/blog/blog-tools';
 
-const { title, section, sectionTitle, subjectRef, subjectName, page, showCategories, path, personalLink } = Astro.props;
+const { title, section, sectionTitle, subjectRef, subjectName, page, showCategories, path, personalLink, type } = Astro.props;
 const blogs = page.data.map(parseContent);
 const first = blogs[0];
 const theRest = blogs.slice(1, blogs.length);
@@ -38,14 +39,14 @@ const getPaginationRef = (stop) => {
   if (section === 'latest') {
     return "/blog/latest/" + stop;
   } else {
-    return getHref(subjectRef, section) + stop;
+    return getHref(subjectRef, section, type) + stop;
   }
 }
 ---
 <html class="antialiased" lang="en">
 <HeadComponent title={title}/>
 <body class="antialiased leading-tight" data-pagefind-ignore="all">
-<Nav/>
+{type === 'blog' ? <BlogNav /> : <PodcastNav />}
 <section class="container mb-14 mx-auto px-7 md:mb-20 md:mt-7 lg:mt-9 xl:mt-14 2xl:mb-24 2xl:mt-10">
   <div class="mt-6 mb-11 sm:mb-8">
     <p class="font-medium text-lg text-slate-500">{sectionTitle}</p>
@@ -59,27 +60,27 @@ const getPaginationRef = (stop) => {
   <div class="grid sm:gap-x-6 sm:grid-cols-2 lg:gap-x-10 lg:grid-cols-3 xl:gap-x-12 2xl:grid">
     { first &&
       <article class="border-slate-200 border-solid border-t-2 pt-6 sm:col-span-2 md:flex md:flex-row-reverse md:pt-8 lg:col-span-3 lg:flex lg:flex-row-reverse lg:pt-11 2xl:flex-row-reverse">
-        <a href={"/blog/" + first.slug} class="2xl:grid 2xl:row-span-2">
+        <a href={`/${type}/` + first.slug} class="2xl:grid 2xl:row-span-2">
           <img class="rounded-2xl" src={first.image}>
         </a>
         <div class="mt-7 md:pr-7 lg:basis-10/12 lg:flex lg:flex-col lg:mt-0 lg:pl-0 lg:place-content-start lg:pr-7 xl:basis-6/12 xl:mt-9 2xl:grid 2xl:row-span-1">
           {showCategories &&
             <div>
               {first.categories && first.categories.map(cat =>
-                <a href={ getHref(cat, 'category') }>
+                <a href={ getHref(cat, 'category', type) }>
                   <li class="ease-in duration-75 hover:text-indigo-300 hover:underline capitalize font-bold inline-block mb-3 mr-3 text-base text-indigo-500">{ cat }</li>
                 </a>
               )}
             </div>
           }
           <h3 class="capitalize font-extrabold leading-tight mb-3 text-2xl text-slate-900 md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-4xl">
-            <a href={"/blog/" + first.slug } class="2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">{ first.title }</a>
+            <a href={`/${type}/` + first.slug } class="2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">{ first.title }</a>
           </h3>
           <p class="font-Inter leading-6 text-slate-600 sm:text-base md:leading-7 md:text-lg break-words" set:html={first.blurb}></p>
           <div class="flex flex-row justify-start mt-7">
             <div class="flex flex-col sm:flex-row">
               {first.authors.map(author =>
-                <a href={getHref(author, 'author')}
+                <a href={getHref(author, 'author', type)}
                    class="font-bold text-base text-slate-800 2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">
                   <div class="leading-tight mr-4 sm:leading-tight">{author}</div>
                 </a>
@@ -96,28 +97,28 @@ const getPaginationRef = (stop) => {
     }
     { theRest && theRest.map(blog =>
       <article class="border-slate-200 border-solid border-t-2 mt-10 pt-10 md:mt-8 md:pt-6">
-        <a href={"/blog/" + blog.slug}>
+        <a href={`/${type}/` + blog.slug}>
           <img class="rounded-lg" src={blog.image} alt={blog.title}>
         </a>
         <div class="mt-7">
           {showCategories &&
             <div>
               {blog.categories && blog.categories.map(cat =>
-                <a href={ getHref(cat, 'category') }>
+                <a href={ getHref(cat, 'category', type) }>
                   <li class="ease-in duration-75 hover:text-indigo-300 hover:underline capitalize font-bold inline-block mb-3 mr-3 text-base text-indigo-500">{ cat }</li>
                 </a>
               )}
             </div>
           }
           <h3 class="capitalize font-extrabold leading-6 mb-3 text-slate-900 text-xl sm:leading-tight sm:text-lg md:text-xl lg:text-xl xl:leading-7 xl:text-2xl">
-            <a href={ "/blog/" + blog.slug } class="2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">{ blog.title }</a>
+            <a href={ `/${type}/` + blog.slug } class="2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">{ blog.title }</a>
           </h3>
           <p class="font-Inter leading-6 text-slate-600 sm:text-base md:leading-7 md:text-lg break-words" set:html={ blog.blurb }></p>
           <div class="flex flex-row max-w-8xl mt-8 mx-auto relative lg:mx-auto xl:container 2xl:ml-auto" id="responsive-container">
             <div class="flex flex-row justify-between">
               <div class="flex flex-col sm:flex-row">
                 { blog.authors && blog.authors.map(author =>
-                  <a href={ getHref(author, 'author') } class="font-bold text-base text-slate-800 2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">
+                  <a href={ getHref(author, 'author', type) } class="font-bold text-base text-slate-800 2xl:hover:decoration-auto 2xl:hover:text-indigo-600 2xl:hover:underline 2xl:hover:underline-offset-2">
                     <div class="leading-tight mr-4 sm:leading-tight">{ author }</div>
                   </a>
                 )}

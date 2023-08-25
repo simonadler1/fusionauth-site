@@ -2538,6 +2538,22 @@ declare module 'astro:content' {
   data: InferEntrySchema<"dev-tools">
 } & { render(): Render[".mdx"] },
 },
+"podcasts": {
+"0.mdx": {
+  id: "0.mdx",
+  slug: "0",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
+"1.mdx": {
+  id: "1.mdx",
+  slug: "1",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
+},
 "quickstarts": {
 "quickstart-golang-web.mdx": {
   id: "quickstart-golang-web.mdx",
