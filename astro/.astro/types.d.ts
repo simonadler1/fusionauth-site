@@ -2553,6 +2553,34 @@ declare module 'astro:content' {
   collection: "podcasts",
   data: any
 } & { render(): Render[".mdx"] },
+"2.mdx": {
+  id: "2.mdx",
+  slug: "2",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
+"3.mdx": {
+  id: "3.mdx",
+  slug: "3",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
+"4.mdx": {
+  id: "4.mdx",
+  slug: "4",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
+"5.mdx": {
+  id: "5.mdx",
+  slug: "5",
+  body: string,
+  collection: "podcasts",
+  data: any
+} & { render(): Render[".mdx"] },
 },
 "quickstarts": {
 "quickstart-golang-web.mdx": {

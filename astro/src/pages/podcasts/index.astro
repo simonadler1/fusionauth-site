@@ -14,7 +14,7 @@ import {
 } from "../blog/blog-tools";
 
 const pageData = {
-  categoryCallouts: [],
+  categoryCallouts: ["News", "Fun"],
   // use slug
   pinnedPosts: ["0", "1"],
 };
@@ -28,14 +28,17 @@ const pinnedPosts = podcasts.filter((podcast) =>
   pageData.pinnedPosts.includes(podcast.slug)
 );
 onThePage.push(...pinnedPosts);
-const callouts = pageData.categoryCallouts.map((cat) => {
-  const callout = podcasts.find(
-    (podcast) =>
-      podcast.categories.includes(cat) && !onThePage.includes(podcast)
-  );
-  onThePage.push(callout);
-  return callout;
-});
+const callouts = pageData.categoryCallouts
+  .map((cat) => {
+    const callout = podcasts.find(
+      (podcast) =>
+        podcast.categories.includes(cat) && !onThePage.includes(podcast)
+    );
+    onThePage.push(callout);
+    return callout;
+  })
+  .filter((c) => c !== undefined); // Add filter if these are the only items
+
 const latestPosts = podcasts
   .filter((podcast) => !onThePage.includes(podcast))
   .slice(0, 4);
@@ -131,7 +134,7 @@ const latestPosts = podcasts
                 }
               >
                 <div class="2xl:mr-6 2xl:w-auto flex lg:w-36 place-content-start w-3/4 xl:mr-6 xl:w-52">
-                  <a href={"/podcasts/" + callout.slug}>
+                  <a href={"/podcasts/" + callout?.slug}>
                     <img
                       src={callout.image}
                       alt={callout.title}
