@@ -1,18 +1,21 @@
 ---
 import Icon from './icon/Icon.astro';
-const {elemId, menuLabel, menuItems} = Astro.props;
+const {elemId, menuLabel, menuItems, side} = Astro.props;
+const menuId = elemId + '-menu';
+const buttonId = elemId + '-button';
 ---
-<div class="inline-block relative lg:mx-3 z-50">
+<div class="group float-left menu-container inline-block relative lg:mx-3 z-50">
   <div class="mb-1 text-base lg:mb-0">
-    <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white" id={elemId + "-button"}
+    <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white" id={buttonId}
             aria-expanded="true" aria-haspopup="true">
       <label class="ease-in font-bold group-hover:text-indigo-500 text-sm">{menuLabel}</label>
       <Icon name="down-chevron"/>
     </button>
   </div>
   <div
-    class="transition-opacity transition-scale bg-white opacity-0 -mt-1 absolute outline-none origin-top-right right-0  rounded-md shadow-xl text-base top-10 w-48 z-10"
-    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id={elemId + "-menu"}>
+    style={side === "left" ? "right: 0;" : "left: 0;"}
+    class:list={[side === "left" ? "origin-top-right" : "origin-top-left", "opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-[.25] z-10 mr-3 absolute duration-300 menu-content transition bg-white -mt-1 outline-none right-0 rounded-md shadow-xl text-base top-10 w-48"]}
+    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id={menuId}>
     <div role="none" class="py-2">
       <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
       {menuItems && menuItems.map(menuItem =>
@@ -23,3 +26,4 @@ const {elemId, menuLabel, menuItems} = Astro.props;
     </div>
   </div>
 </div>
+

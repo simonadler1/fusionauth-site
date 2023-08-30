@@ -53,8 +53,8 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
     <div
       class="absolute bg-white dark:bg-slate-900 h-screen hidden left-0 lg:bg-transparent lg:dark:bg-transparent lg:flex lg:h-auto lg:items-center lg:ml-auto lg:p-0 lg:static p-6 right-0 top-0">
       <ul class="space-y-6 lg:flex lg:items-center lg:space-y-0">
-        <MoreMenu elemId="category" menuLabel="Blog Categories" menuItems={categoryItems}/>
-        <MoreMenu elemId="more" menuLabel="More" menuItems={moreItems}/>
+        <MoreMenu elemId="category" side="left" menuLabel="Blog Categories" menuItems={categoryItems}/>
+        <MoreMenu elemId="more" side="right" menuLabel="More" menuItems={moreItems}/>
       </ul>
       <div class="flex items-center">
         {buttons && buttons.map(button =>
