@@ -33,6 +33,7 @@ class PopoutMenu {
       elem.classList.remove(...this.#inState);
       elem.classList.add(...this.#outState);
     }
+
     this.#toggleMap[id] = !this.#toggleMap[id];
   }
 }
