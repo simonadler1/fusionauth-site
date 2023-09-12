@@ -1,7 +1,6 @@
 ---
 import Icon from '../icon/Icon.astro';
 import NavButton from './NavButton.astro';
-import MoreMenu from '../MoreMenu.astro';
 import Search from "../Search.astro";
 
 interface HeaderItem {
@@ -21,10 +20,9 @@ interface NavProps {
 
 const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, buttons, colorThemeOverride}: NavProps = Astro.props;
 ---
-<!-- Header w/ border on bottom, full width and is sticky -->
-<nav class="bg-slate-900 block border-slate-700 border-b border-solid h-auto sticky text-left top-0 z-50 xl:shadow-lg">
-  <div class="flex justify-between max-w-8xl mx-auto lg:px-4 py-2 lg:container">
-    <!-- Logo -->
+<div class="bg-slate-900 block border-slate-700 border-b border-solid h-auto sticky text-left top-0 z-50 xl:shadow-lg">
+  <div class="flex justify-between max-w-8xl mx-auto px-4 py-2 lg:container">
+
     <div class="flex place-items-center">
       <a href="/" class="ease-in mr-1 opacity-100 hover:opacity-70 transition-opacity">
         <img src="/img/logo/fa_logo_purple_orange.svg" alt="Logo" class={"h-12 " + (colorThemeOverride === "light" ? "inline" : colorThemeOverride === "dark" ? "hidden": "dark:hidden")}>
@@ -37,101 +35,98 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
       </a>
     </div>
 
-    <div class="bg-slate-900 absolute top-16 w-full lg:flex items-center lg:ml-64 block shadow-md md:shadow-md" id="composable-nav-list">
+    <nav id="header-nav"
+         class="absolute hidden left-0 right-0 top-16 p-0 bg-slate-900 lg:bg-transparent lg:flex lg:h-auto lg:items-center lg:ml-auto lg:p-0 lg:static lg:dark:bg-transparent">
 
       <div class="menu-group-container group lg:float-left lg:inline-block lg:relative lg:mx-3 lg:z-50">
-
         <div class="menu-button-container hidden lg:block">
           <div class="mb-1 text-base lg:mb-0">
             <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white"
-                    aria-expanded="true" aria-haspopup="true">
-              <label class="ease-in font-bold group-hover:text-indigo-500 text-sm">First</label>
+                    aria-expanded="true" aria-haspopup="true" data-widget="popout-button" data-element="category-menu">
+              <label class="ease-in font-bold group-hover:text-indigo-500 text-sm"> {categoryLabel}</label>
               <Icon name="down-chevron"/>
             </button>
           </div>
         </div>
 
-        <div style="right: 0;"
-             class="menu-content-container origin-top-left opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-[.25] z-10 mr-3 absolute duration-300 menu-content transition bg-white -mt-1 outline-none right-0 rounded-md shadow-xl text-base top-10 w-48"
-             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-          <ul class="flex flex-col">
-            <li class="">One</li>
-            <li class="">Two</li>
+        <div class="lg:hidden">
+          <p class="block font-semibold py-2 px-3 text-lg text-white">{categoryLabel}</p>
+        </div>
+
+        <div
+          class="menu-content-container lg:origin-top-left lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:scale-100 lg:scale-[.25] lg:z-10 lg:mr-3 lg:absolute lg:duration-300 menu-content lg:transition lg:bg-white lg:-mt-1 lg:outline-none lg:right-0 lg:rounded-md lg:shadow-xl lg:text-base lg:top-10 lg:w-48"
+          role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="category-menu">
+          <ul class="mb-5 ml-4 lg:mb-0 lg:ml-0 lg:space-y-0 lg:flex lg:flex-col">
+            {categoryItems && categoryItems.map(item =>
+              <li class:list={[
+                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-semibold lg:hover:text-indigo-600 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-sm",
+                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white"
+              ]}><a href={item.href}>{item.name}</a></li>
+            )}
+          </ul>
+        </div>
+      </div>
+
+      <div class="menu-group-container group lg:float-right lg:inline-block lg:relative lg:mx-3 lg:z-50">
+
+        <div class="menu-button-container hidden lg:block">
+          <div class="mb-1 text-base lg:mb-0">
+            <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white"
+                    aria-expanded="true" aria-haspopup="true" data-widget="popout-button" data-element="more-menu">
+              <label class="ease-in font-bold group-hover:text-indigo-500 text-sm">More</label>
+              <Icon name="down-chevron"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:hidden">
+          <p class="block font-semibold py-2 px-3 text-lg text-white">More</p>
+        </div>
+
+        <div
+          class="menu-content-container lg:origin-top-right lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:scale-100 lg:scale-[.25] lg:z-10 lg:mr-3 lg:absolute lg:duration-300 menu-content lg:transition lg:bg-white lg:-mt-1 lg:outline-none lg:right-0 lg:rounded-md lg:shadow-xl lg:text-base lg:top-10 lg:w-48"
+          role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="more-menu">
+          <ul class="mb-5 ml-4 lg:mb-0 lg:ml-0 lg:space-y-0 lg:flex lg:flex-col">
+            {moreItems && moreItems.map(item =>
+              <li class:list={[
+                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-semibold lg:hover:text-indigo-600 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-sm",
+                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white"
+              ]}><a href={item.href}>{item.name}</a></li>
+            )}
           </ul>
         </div>
 
       </div>
 
-      <div>
-        <ul class="flex">
-          <li class="text-white">Three</li>
-          <li class="text-white">Four</li>
-        </ul>
-      </div>
+      <hr class="border-slate-700 border-t-2 h-px lg:hidden"/>
 
+      <div class="lg:hidden">
+        <a href="/contact"
+           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-5 py-4 rounded-md text-base text-white">Talk
+          To An Expert</a>
+        <a href="/account"
+           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-5 rounded-md text-base text-white">Login</a>
+      </div>
+    </nav>
+
+    <div class="lg:flex items-center hidden">
+      {buttons && buttons.map(button =>
+        <NavButton name={button}/>)}
     </div>
 
-
-    <!-- Mobile Menu Button-->
     <div class="flex items-center lg:hidden">
       <!-- Mobile menu button -->
       <button class="mx-3" data-widget="search-button">
         <span class="sr-only">Open search</span>
         <Icon name="search"/>
       </button>
-      <button type="button" id="mobile-menu-btn" data-widget="visibility-button" data-element="composable-nav-list"
+      <button type="button" id="mobile-menu-btn" data-widget="visibility-button" data-element="header-nav"
               class="focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hover:bg-gray-700 hover:text-white inline-flex items-center justify-center p-2 rounded-md text-gray-400"
               aria-controls="mobile-menu" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <Icon name="mobile-menu"/>
       </button>
     </div>
-    <!-- Lg Menu -->
-    <div
-      class="absolute bg-white dark:bg-slate-900 h-screen hidden left-0 lg:bg-transparent lg:dark:bg-transparent lg:flex lg:h-auto lg:items-center lg:ml-auto lg:p-0 lg:static p-6 right-0 top-0">
-      <ul class="space-y-6 lg:flex lg:items-center lg:space-y-0">
-        <MoreMenu elemId="category" side="left" menuLabel={categoryLabel} menuItems={categoryItems}/>
-        <MoreMenu elemId="more" side="right" menuLabel="More" menuItems={moreItems}/>
-      </ul>
-      <div class="flex items-center">
-        {buttons && buttons.map(button =>
-          <NavButton name={button}/>)}
-      </div>
-    </div>
   </div>
-  <!--<div class="block shadow-md md:shadow-md lg:hidden" id="mobile-menu">-->
-  <!--  <p class="block font-semibold px-3 py-2 text-lg text-white">{categoryLabel}</p>-->
-  <!--  <div class="group-hover:duration-200 p-2 space-y-1">-->
-  <!--    <div class="mb-5 ml-2">-->
-  <!--      {categoryItems && categoryItems.map(cat =>-->
-  <!--        <a href={cat.href}-->
-  <!--           class="block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white">{cat.name}</a>-->
-  <!--      )}-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--  <p class="block font-semibold pb-2 px-3 text-lg text-white">More</p>-->
-  <!--  <div class="group-hover:duration-200 p-2 shadow-2xl space-y-1">-->
-  <!--    <div class="mb-5 ml-2">-->
-  <!--      {moreItems && moreItems.map(more =>-->
-  <!--        <a href={more.href}-->
-  <!--           class="block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white">{more.name}</a>-->
-  <!--      )}-->
-  <!--    </div>-->
-  <!--    <hr class="border-slate-700 border-t-2 h-px"/>-->
-  <!--    <div>-->
-  <!--      <a href="/contact"-->
-  <!--         class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 rounded-md text-base text-white">Talk-->
-  <!--        To An Expert</a>-->
-  <!--      <a href="/account"-->
-  <!--         class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 rounded-md text-base text-white">Login</a>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
-</nav>
+</div>
 <Search/>
-<script>
-  import PopoutMenu from './PopoutMenu.js';
-
-  new PopoutMenu('category');
-  new PopoutMenu('more');
-</script>
