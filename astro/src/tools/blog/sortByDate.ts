@@ -1,4 +1,4 @@
-import { BlogContent } from './blog-content';
+import { BlogContent } from "./BlogContent";
 
 /**
  * Sort function for blog posts by checking first updated_date if it exists or publish_date otherwise

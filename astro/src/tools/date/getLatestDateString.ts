@@ -1,5 +1,5 @@
-import { getDateString } from './get-date-string';
-import { ParsedBlog } from '../blog/parsed-blog';
+import { getDateString } from "./getDateString";
+import { ParsedBlog } from "src/tools/blog";
 
 /**
  * Returns either the updated date if available or the publish date if not in Month Day, Year format (ex, January 1, 1970)

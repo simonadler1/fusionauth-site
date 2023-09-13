@@ -1,6 +1,6 @@
-import { BlogContent } from './blog-content';
 import { marked } from 'marked';
-import { ParsedBlog } from './parsed-blog';
+import { BlogContent } from "./BlogContent";
+import { ParsedBlog } from "./ParsedBlog";
 
 /**
  * Takes in the blog content as returned from getCollection and parses it to a friendly object for the blog pages to use.

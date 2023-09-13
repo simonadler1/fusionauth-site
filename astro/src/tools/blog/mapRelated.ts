@@ -1,9 +1,9 @@
-import { BlogContent } from './blog-content';
-import { ParsedBlog } from './parsed-blog';
-import { sortByDate } from './sort-by-date';
-import { parseContent } from './parse-content';
+import { BlogContent } from "./BlogContent";
+import { ParsedBlog } from "./ParsedBlog";
+import { sortByDate } from "./sortByDate";
+import { parseContent } from "./parseContent";
 
-type MetaSection = 'categories' | 'authors' | 'tags';
+type MetaSection = "categories" | "authors" | "tags";
 
 /**
  * Maps raw blog content to parsed content for related posts, filtering to top three and ordering by date

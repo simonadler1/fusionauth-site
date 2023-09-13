@@ -1,7 +1,6 @@
 ---
-import Layout from '../../../../layouts/BlogIndex.astro';
-import { AUTHORS } from '../../mappings';
-import { getStaticAuthorPaths } from '../../../../tools/blog';
+import Layout from 'src/layouts/BlogIndex.astro';
+import { getStaticAuthorPaths, AUTHORS } from 'src/tools/blog';
 
 export async function getStaticPaths({ paginate }) {
   return getStaticAuthorPaths(paginate);

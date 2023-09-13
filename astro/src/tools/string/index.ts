@@ -1,1 +1,1 @@
-export * from './start-case';
+export * from "./startCase";

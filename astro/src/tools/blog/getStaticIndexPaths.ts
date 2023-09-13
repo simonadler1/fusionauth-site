@@ -1,21 +1,25 @@
-import { getCollection } from 'astro:content';
-import { GetStaticPathsResult, PaginateFunction, PaginateOptions } from 'astro';
-import { sortByDate } from './sort-by-date';
-import { BlogContent } from './blog-content';
-import { BlogFrontmatter } from './blog-frontmatter';
+import { GetStaticPathsResult, PaginateFunction, PaginateOptions } from "astro";
+import { getCollection } from "astro:content";
+import { BlogContent } from "./BlogContent";
+import { BlogFrontmatter } from "./BlogFrontmatter";
+import { sortByDate } from "./sortByDate";
 
-const getAllEntries = (blogs: BlogContent[], attribute: keyof BlogFrontmatter) => {
+export const getAllEntries = (
+  blogs: BlogContent[],
+  attribute: keyof BlogFrontmatter
+) => {
   const reducer = (entries, entry) => {
     if (!entries.includes(entry)) {
       entries.push(entry);
     }
     return entries;
-  }
-  return blogs.flatMap(blog => (blog.data[attribute] as string)
-      .split(',')
-      .map(entry => entry.trim()))
-      .filter(entry => !!entry)
-      .reduce(reducer, []);
+  };
+  return blogs
+    .flatMap((blog) =>
+      (blog.data[attribute] as string).split(",").map((entry) => entry.trim())
+    )
+    .filter((entry) => !!entry)
+    .reduce(reducer, []);
 };
 
 /**

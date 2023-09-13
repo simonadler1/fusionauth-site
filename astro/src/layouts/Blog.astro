@@ -1,15 +1,15 @@
 ---
-import '../css/style.css';
-import BlogNewsletterCTA from '../components/BlogNewsletterCTA.astro';
-import HeadComponent from '../components/Head.astro';
-import Nav from '../components/nav/BlogNav.astro';
-import Footer from '../components/Footer.astro';
-import TwitterLink from '../components/blog/TwitterLink.astro';
-import LinkedInLink from '../components/blog/LinkedInLink.astro';
-import SubscribeFooter from '../components/SubscribeFooterCTA.astro';
+import 'src/css/style.css';
+import BlogNewsletterCTA from 'src/components/BlogNewsletterCTA.astro';
+import HeadComponent from 'src/components/Head.astro';
+import Nav from 'src/components/nav/BlogNav.astro';
+import Footer from 'src/components/Footer.astro';
+import TwitterLink from 'src/components/blog/TwitterLink.astro';
+import LinkedInLink from 'src/components/blog/LinkedInLink.astro';
+import SubscribeFooter from 'src/components/SubscribeFooterCTA.astro';
 import { getCollection } from 'astro:content';
-import { BlogContent, getHref, mapRelated } from '../tools/blog';
-import { getDateString } from '../tools/date';
+import { BlogContent, getHref, mapRelated } from 'src/tools/blog';
+import { getDateString } from 'src/tools/date';
 
 let {frontmatter, title} = Astro.props;
 let {slug} = Astro.params;

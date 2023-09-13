@@ -51,7 +51,7 @@ Steps:
   * Check to see how it renders: http://localhost:3000/blog/fusionauth-website-how-we-do-it
   * If there are any filename collisions, add a `-2` to the filename and note it in the `Notes` column.
 * On the blog landing page the category callouts and pinned posts are defined [near the top of the file](src/pages/blog/index.astro) (this may move)
-* You can add an author's link to personal site (such as Twitter) in the [mappings file](src/pages/blog/mappings.ts) (this may move)
+* You can add an author's link to personal site (such as Twitter) in the [mappings file](src/tools/blog/mappings.ts) (this may move)
 * If you discover any widespread issues, file them here: https://inversoft.slack.com/archives/C04DGBXKPGC/p1691424115389019
 * If you have any questions, ask in #documentation-project or add it to the `Notes` column.
 * When you are done migrating the 5-10 posts, submit a PR. Open it against `development`.
