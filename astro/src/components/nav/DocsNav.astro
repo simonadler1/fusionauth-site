@@ -2,13 +2,13 @@
 import Nav from './ComposableNav.astro';
 
 const categoryItems = [
-  {name: 'SDKs', href: '/docs/v1/tech/client-libraries'},
-  {name: 'Product Updates', href: '/'},
-  {name: 'Features', href: '/blog/category/product/'},
-  {name: 'Comparison', href: '/blog/category/compare/'},
-  {name: 'Community', href: '/blog/category/community/'},
-  {name: 'News', href: '/blog/category/news/'},
-  {name: 'Tech Docs', href: '/docs/'},
+  {name: 'Technical Docs', href: '/docs/v1/tech'},
+  {name: 'Getting Started', href: '/docs/v1/tech/getting-started/'},
+  {name: 'Installation', href: '/docs/v1/tech/installation-guide'},
+  {name: 'Migration Guide', href: '/docs/v1/tech/migration-guide/'},
+  {name: 'Admin Guide', href: '/docs/v1/tech/admin-guide/'},
+  {name: 'Developer Guide', href: '/docs/v1/tech/developer-guide/'},
+  {name: 'Premium Features', href: '/docs/v1/tech/premium-features/'},
 ];
 
 const moreItems = [
@@ -22,7 +22,11 @@ const moreItems = [
   {name: 'Developer Tools', href: '/dev-tools/'},
 ];
 
-const buttons = ['divider', 'dark-mode', 'expert', 'search'];
+const buttons = ['divider'];
+if (Astro.url.pathname.includes('quickstarts')) {
+  buttons.push('dark-mode');
+}
+buttons.push('expert', 'search');
 ---
 <Nav sectionTitle="Docs"
      sectionTitleHref="/docs/"

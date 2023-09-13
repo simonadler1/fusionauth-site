@@ -41,9 +41,9 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
       <div class="menu-group-container group lg:float-left lg:inline-block lg:relative lg:mx-3 lg:z-50">
         <div class="menu-button-container hidden lg:block">
           <div class="mb-1 text-base lg:mb-0">
-            <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white"
+            <button type="button" class="font-medium gap-x-1.5 group hover:text-orange-500 inline-flex text-base text-white"
                     aria-expanded="true" aria-haspopup="true" data-widget="popout-button" data-element="category-menu">
-              <label class="ease-in font-bold group-hover:text-indigo-500 text-sm"> {categoryLabel}</label>
+              <label class="ease-in font-medium group-hover:text-orange-500 text-xs">{categoryLabel}</label>
               <Icon name="down-chevron"/>
             </button>
           </div>
@@ -59,9 +59,11 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
           <ul class="mb-5 ml-4 lg:mb-0 lg:ml-0 lg:space-y-0 lg:flex lg:flex-col">
             {categoryItems && categoryItems.map(item =>
               <li class:list={[
-                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-semibold lg:hover:text-indigo-600 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-sm",
-                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white"
-              ]}><a href={item.href}>{item.name}</a></li>
+                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-medium lg:hover:text-orange-500 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-xs",
+                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-orange-500 hover:transition-colors px-3 py-2 relative text-base text-white"
+              ]}>
+                <a href={item.href}>{item.name}</a>
+              </li>
             )}
           </ul>
         </div>
@@ -71,9 +73,9 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
 
         <div class="menu-button-container hidden lg:block">
           <div class="mb-1 text-base lg:mb-0">
-            <button type="button" class="font-medium gap-x-1.5 group hover:text-indigo-500 inline-flex text-base text-white"
+            <button type="button" class="font-medium gap-x-1.5 group hover:text-orange-500 inline-flex text-base text-white"
                     aria-expanded="true" aria-haspopup="true" data-widget="popout-button" data-element="more-menu">
-              <label class="ease-in font-bold group-hover:text-indigo-500 text-sm">More</label>
+              <label class="ease-in font-medium group-hover:text-orange-500 text-xs">More</label>
               <Icon name="down-chevron"/>
             </button>
           </div>
@@ -89,9 +91,11 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
           <ul class="mb-5 ml-4 lg:mb-0 lg:ml-0 lg:space-y-0 lg:flex lg:flex-col">
             {moreItems && moreItems.map(item =>
               <li class:list={[
-                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-semibold lg:hover:text-indigo-600 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-sm",
-                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-indigo-500 hover:transition-colors px-3 py-2 relative text-base text-white"
-              ]}><a href={item.href}>{item.name}</a></li>
+                "lg:border-l-0 lg:hover:border-l-0 lg:block lg:font-medium lg:hover:text-orange-500 lg:px-4 lg:py-2 lg:text-slate-700 lg:text-xs",
+                "block border-l-2 border-slate-700 border-solid font-semibold hover:border-indigo-500 hover:border-l-2 hover:border-solid hover:ease-linear hover:text-orange-500 hover:transition-colors px-3 py-2 relative text-base text-white"
+              ]}>
+                <a href={item.href}>{item.name}</a>
+              </li>
             )}
           </ul>
         </div>
@@ -102,16 +106,20 @@ const {sectionTitle, sectionTitleHref, categoryItems, moreItems, categoryLabel, 
 
       <div class="lg:hidden">
         <a href="/contact"
-           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-5 py-4 rounded-md text-base text-white">Talk
-          To An Expert</a>
+           class="block font-semibold hover:ease-linear hover:text-orange-500 hover:transition-colors px-5 py-4 rounded-md text-base text-white">
+          Talk To An Expert
+        </a>
         <a href="/account"
-           class="block font-semibold hover:ease-linear hover:text-indigo-500 hover:transition-colors px-5 rounded-md text-base text-white">Login</a>
+           class="block font-semibold hover:ease-linear hover:text-orange-500 hover:transition-colors px-5 rounded-md text-base text-white">
+          Login
+        </a>
       </div>
     </nav>
 
     <div class="lg:flex items-center hidden">
       {buttons && buttons.map(button =>
-        <NavButton name={button}/>)}
+        <NavButton name={button}/>
+      )}
     </div>
 
     <div class="flex items-center lg:hidden">

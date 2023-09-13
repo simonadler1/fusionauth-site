@@ -3,12 +3,13 @@ import Nav from './ComposableNav.astro';
 
 const categoryItems = [
   {name: 'Tutorials', href: '/blog/category/tutorial/'},
-  {name: 'Product Updates', href: '/'},
+  {name: 'Product Updates', href: '/blog/category/release-updates/'},
   {name: 'Features', href: '/blog/category/product/'},
   {name: 'Comparison', href: '/blog/category/compare/'},
   {name: 'Community', href: '/blog/category/community/'},
+  {name: 'Education', href: '/blog/category/education/'},
   {name: 'News', href: '/blog/category/news/'},
-  {name: 'Tech Docs', href: '/docs/'},
+  {name: 'Tech Docs', href: '/docs/v1/tech/'},
 ];
 
 const moreItems = [
@@ -23,7 +24,6 @@ const moreItems = [
 ];
 
 const buttons = ['divider', 'expert', 'search'];
-
 ---
 <Nav sectionTitle="Blog"
      sectionTitleHref="/blog/"
