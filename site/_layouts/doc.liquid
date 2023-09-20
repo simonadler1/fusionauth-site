@@ -37,36 +37,64 @@
                   <a href="#" class="sub-menu"><i class="fal fa-fw fa-road"></i> Get Started <i
                             class="fal fa-chevron-{% if page.section == "get started" %}up{% else %}down{% endif %} fa-fw"></i></a>
                   <ul>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/setup-wizard.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/setup-wizard">Setup Wizard & First Login</a></li>
+                    <li {% if page.url == "/docs/v1/tech/installation-guide/system-requirements.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/installation-guide/system-requirements">System Requirements</a></li>
+                    <li {% if page.url == "/docs/v1/tech/installation-guide/common-configuration.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/installation-guide/common-configuration">Common Configuration</a></li>
                     <li {% if page.subcategory == "download and install" %} class="open"{% endif %}>
                       <a href="#" class="sub-menu">Download and Install <i
                                 class="fal fa-chevron-{% if page.subcategory == "download and install" %}up{% else %}down{% endif %} fa-fw"></i></a>
                       <ul>
+                        <li {% if page.url == "/docs/v1/tech/tutorials/start-and-stop.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/tutorials/start-and-stop">Start and Stop FusionAuth</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/server-layout.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/server-layout">Server Layout</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/docker.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/docker">Docker</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/fast-path.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/fast-path">Fast Path</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/homebrew.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/homebrew">Homebrew</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/packages.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/packages">Packages</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/database.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/database">Database</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/fusionauth-app.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/fusionauth-app">FusionAuth App</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/fusionauth-search.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/fusionauth-search">FusionAuth Search</a></li>
+                        <li {% if page.url == "/docs/v1/tech/guides/silent-mode.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/guides/silent-mode">Silent Mode</a></li>
                         <li {% if page.tertcategory == "k8s" %} class="open"{% endif %}>
                           <a href="#" class="sub-menu">Kubernetes <i
                                     class="fal fa-chevron-{% if page.tertcategory == "k8s" %}up{% else %}down{% endif %} fa-fw"></i></a>
                           <ul>
                             <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
                                       href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/fusionauth-deployment.html" %}class="active"{% endif %}>
+                              <a href="/docs/v1/tech/installation-guide/kubernetes/fusionauth-deployment">Deployment Guide</a></li>
+                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/setup/minikube.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/installation-guide/kubernetes/setup/minikube">Minikube Setup</a></li>
+                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/setup/eks.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/installation-guide/kubernetes/setup/eks">Amazon EKS Setup</a></li>
+                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/setup/gke.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/installation-guide/kubernetes/setup/gke">Google GKE Setup</a></li>
+                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/setup/aks.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/installation-guide/kubernetes/setup/aks">Microsoft AKS Setup</a></li>
                           </ul>
                         </li>
-                        <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                  href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
                       </ul>
                     </li>
                     <li {% if page.subcategory == "run in the cloud" %} class="open"{% endif %}>
                       <a href="#" class="sub-menu">Run in the Cloud <i
                                 class="fal fa-chevron-{% if page.subcategory == "run in the cloud" %}up{% else %}down{% endif %} fa-fw"></i></a>
                       <ul>
-                        <li {% if page.tertcategory == "k8s" %} class="open"{% endif %}>
-                          <a href="#" class="sub-menu">Kubernetes <i
-                                    class="fal fa-chevron-{% if page.tertcategory == "k8s" %}up{% else %}down{% endif %} fa-fw"></i></a>
-                          <ul>
-                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                      href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
-                          </ul>
-                        </li>
-                        <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                  href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/cloud.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/cloud">Cloud</a></li>
+                        <li {% if page.url == "/docs/v1/tech/installation-guide/marketplaces.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/installation-guide/marketplaces">Marketplaces</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -358,6 +386,10 @@
                       <a href="#" class="sub-menu">Customize Code <i
                                 class="fal fa-chevron-{% if page.subcategory == "customize code" %}up{% else %}down{% endif %} fa-fw"></i></a>
                       <ul>
+                        <li {% if page.url == "/docs/v1/tech/reference/data-types.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/reference/data-types">Data Types</a></li>
+                        <li {% if page.url == "/docs/v1/tech/core-concepts/entity-management.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/core-concepts/entity-management">Entity Management</a></li>
                         <li {% if page.tertcategory == "deprecated" %} class="open"{% endif %}>
                           <a href="#" class="sub-menu">Deprecated <i
                                     class="fal fa-chevron-{% if page.tertcategory == "deprecated" %}up{% else %}down{% endif %} fa-fw"></i></a>
@@ -586,52 +618,102 @@
                   <a href="#" class="sub-menu"><i class="fal fa-fw fa-cogs"></i> Operate <i
                             class="fal fa-chevron-{% if page.section == "operate" %}up{% else %}down{% endif %} fa-fw"></i></a>
                   <ul>
-                    <li {% if page.subcategory == "troubleshooting" %} class="open"{% endif %}>
-                      <a href="#" class="sub-menu">Troubleshooting <i
-                                class="fal fa-chevron-{% if page.subcategory == "troubleshooting" %}up{% else %}down{% endif %} fa-fw"></i></a>
-                      <ul>
-                        <li {% if page.tertcategory == "k8s" %} class="open"{% endif %}>
-                          <a href="#" class="sub-menu">Kubernetes <i
-                                    class="fal fa-chevron-{% if page.tertcategory == "k8s" %}up{% else %}down{% endif %} fa-fw"></i></a>
-                          <ul>
-                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                      href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
-                          </ul>
-                        </li>
-                        <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                  href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
-                      </ul>
-                    </li>
+                    <li {% if page.url == "/docs/v1/tech/installation-guide/cluster.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/installation-guide/cluster">Cluster</a></li>
+                    <li {% if page.url == "/docs/v1/tech/admin-guide/account-portal.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/admin-guide/account-portal">Account Portal</a></li>
+                    <li {% if page.url == "/docs/v1/tech/admin-guide/configuration-management.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/admin-guide/configuration-management">Config Management</a></li>
+                    <li {% if page.url == "/docs/v1/tech/admin-guide/monitor.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/admin-guide/monitor">Monitoring</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/prometheus.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/prometheus">Prometheus Setup</a></li>
+                    <li {% if page.url == "/docs/v1/tech/reference/configuration.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/reference/configuration">Configuration</a></li>
+                    <li {% if page.url == "/docs/v1/tech/reference/cookies.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/reference/cookies">Hosted Login Pages Cookies</a></li>
+                    <li {% if page.url == "/docs/v1/tech/admin-guide/upgrade.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/admin-guide/upgrade">Upgrading</a></li>
+                    <li {% if page.url == "/docs/v1/tech/integrations/cleanspeak.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/integrations/cleanspeak">CleanSpeak</a></li>
+                    <li {% if page.url == "/docs/v1/tech/integrations/kafka.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/integrations/kafka">Kafka</a></li>
                     <li {% if page.subcategory == "deploy" %} class="open"{% endif %}>
                       <a href="#" class="sub-menu">Deploy <i
                                 class="fal fa-chevron-{% if page.subcategory == "deploy" %}up{% else %}down{% endif %} fa-fw"></i></a>
                       <ul>
-                        <li {% if page.tertcategory == "k8s" %} class="open"{% endif %}>
-                          <a href="#" class="sub-menu">Kubernetes <i
-                                    class="fal fa-chevron-{% if page.tertcategory == "k8s" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                        <li {% if page.tertcategory == "releases" %} class="open"{% endif %}>
+                          <a href="#" class="sub-menu">Releases <i
+                                    class="fal fa-chevron-{% if page.tertcategory == "releases" %}up{% else %}down{% endif %} fa-fw"></i></a>
                           <ul>
-                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                      href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                            <li {% if page.url == "/docs/v1/tech/release-notes.html" or page.url == "/docs/v1/tech/archive/release-notes.html" %}class="active"{% endif %}>
+                              <a href="/docs/v1/tech/release-notes"><i class="fal fa-fw fa-list-ol"></i> Release Notes</a>
+                            <li {% if page.url == "/docs/v1/tech/admin-guide/releases.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/admin-guide/releases">Releases</a></li>
+                            <li {% if page.url == "/docs/v1/tech/core-concepts/roadmap.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/core-concepts/roadmap">Roadmap</a></li>
                           </ul>
                         </li>
-                        <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                  href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                        <li {% if page.tertcategory == "search" %} class="open"{% endif %}>
+                          <a href="#" class="sub-menu">Search <i
+                                    class="fal fa-chevron-{% if page.tertcategory == "search" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                          <ul>
+                            <li {% if page.url == "/docs/v1/tech/core-concepts/search.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/core-concepts/search">Search And FusionAuth</a></li>
+                            <li {% if page.url == "/docs/v1/tech/tutorials/switch-search-engines.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/tutorials/switch-search-engines">Switch Search Engines</a></li>
+                            <li {% if page.url == "/docs/v1/tech/guides/user-search-with-elasticsearch.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/guides/user-search-with-elasticsearch">Searching With Elasticsearch</a></li>
+                          </ul>
+                        </li>
                       </ul>
                     </li>
                     <li {% if page.subcategory == "secure" %} class="open"{% endif %}>
                       <a href="#" class="sub-menu">Secure <i
                                 class="fal fa-chevron-{% if page.subcategory == "secure" %}up{% else %}down{% endif %} fa-fw"></i></a>
                       <ul>
-                        <li {% if page.tertcategory == "k8s" %} class="open"{% endif %}>
-                          <a href="#" class="sub-menu">Kubernetes <i
-                                    class="fal fa-chevron-{% if page.tertcategory == "k8s" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                        <li {% if page.url == "/docs/v1/tech/tutorials/key-rotation.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/tutorials/key-rotation">Key Rotation</a></li>
+                        <li {% if page.url == "/docs/v1/tech/admin-guide/proxy-setup.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/admin-guide/proxy-setup">Proxy Setup</a></li>
+                        <li {% if page.url == "/docs/v1/tech/reference/cors.html" %}class="active"{% endif %}><a href="/docs/v1/tech/reference/cors">CORS</a>
+                        </li>
+                        <li {% if page.url == "/docs/v1/tech/admin-guide/securing.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/admin-guide/securing">Securing</a></li>
+                        <li {% if page.url == "/docs/v1/tech/core-concepts/key-master.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/core-concepts/key-master">Key Master</a></li>
+                        <li {% if page.url == "/docs/v1/tech/advanced-threat-detection/" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/advanced-threat-detection/">Advanced Threat Detection</a></li>
+                        <li {% if page.url == "/docs/v1/tech/guides/breached-password-detection.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/guides/breached-password-detection">Breached Password Detection</a></li>
+                        <li {% if page.tertcategory == "apis" %} class="open"{% endif %}>
+                          <a href="#" class="sub-menu">APIs <i
+                                    class="fal fa-chevron-{% if page.tertcategory == "apis" %}up{% else %}down{% endif %} fa-fw"></i></a>
                           <ul>
-                            <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                      href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                            <li {% if page.url == "/docs/v1/tech/developer-guide/api-gateways/" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/developer-guide/api-gateways/">Overview</a></li>
+                            <li {% if page.url == "/docs/v1/tech/developer-guide/api-gateways/aws-api-gateway.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/developer-guide/api-gateways/aws-api-gateway">Amazon API Gateway</a></li>
+                            <li {% if page.url == "/docs/v1/tech/developer-guide/api-gateways/haproxy-api-gateway.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/developer-guide/api-gateways/haproxy-api-gateway">HAProxy</a></li>
+                            <li {% if page.url == "/docs/v1/tech/developer-guide/api-gateways/kong-gateway.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/developer-guide/api-gateways/kong-gateway">Kong Gateway</a></li>
+                            <li {% if page.url == "/docs/v1/tech/developer-guide/api-gateways/ngrok-cloud-edge.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/developer-guide/api-gateways/ngrok-cloud-edge">ngrok Cloud Edge</a></li>
+                            <li {% if page.url == "/docs/v1/tech/guides/api-authorization.html" %}class="active"{% endif %}><a
+                                      href="/docs/v1/tech/guides/api-authorization">Securing Your APIs</a></li>
                           </ul>
                         </li>
-                        <li {% if page.url == "/docs/v1/tech/installation-guide/kubernetes/" %}class="active"{% endif %}><a
-                                  href="/docs/v1/tech/installation-guide/kubernetes/">Overview</a></li>
+                      </ul>
+                    </li>
+                    <li {% if page.subcategory == "troubleshooting" %} class="open"{% endif %}>
+                      <a href="#" class="sub-menu">Troubleshooting <i
+                                class="fal fa-chevron-{% if page.subcategory == "troubleshooting" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                      <ul>
+                        <li {% if page.url == "/docs/v1/tech/admin-guide/technical-support.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/admin-guide/technical-support">Technical Support</a></li>
+                        <li {% if page.url == "/docs/v1/tech/admin-guide/troubleshooting.html" %}class="active"{% endif %}><a
+                                  href="/docs/v1/tech/admin-guide/troubleshooting">Troubleshooting</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -812,20 +894,91 @@
                 <li {% if page.section == "sdks" %} class="open"{% endif %}>
                   <a href="#" class="sub-menu"><i class="fal fa-fw fa-palette"></i> SDKs <i
                             class="fal fa-chevron-{% if page.section == "sdks" %}up{% else %}down{% endif %} fa-fw"></i></a>
-                </li>
-
-                <li {% if page.section == "integration library" %} class="open"{% endif %}>
-                  <a href="#" class="sub-menu"><i class="fal fa-fw fa-dollar-sign"></i> Integration library <i
-                            class="fal fa-chevron-{% if page.navcategory == "integration library" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                  <ul>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/dart.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/dart">Dart</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/go.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/go">Go</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/java.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/java">Java</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/javascript.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/javascript">JavaScript</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/netcore.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/netcore">.NET Core</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/php.html" %}class="active"{% endif %}><a href="/docs/v1/tech/example-apps/php">PHP</a>
+                    </li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/python.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/python">Python</a></li>
+                    <li {% if page.url == "/docs/v1/tech/example-apps/ruby.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/example-apps/ruby">Ruby</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/" %}class="active"{% endif %}><a href="/docs/v1/tech/client-libraries/">Overview</a>
+                    </li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/angular-sdk.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/angular-sdk">Angular</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/dart.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/dart">Dart</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/go.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/go">Go</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/java.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/java">Java</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/javascript.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/javascript">JavaScript</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/netcore.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/netcore">.NET Core</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/node.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/node">Node</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/openapi.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/openapi">OpenAPI</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/php.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/php">PHP</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/python.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/python">Python</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/react-sdk.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/react-sdk">React</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/ruby.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/ruby">Ruby</a></li>
+                    <li {% if page.url == "/docs/v1/tech/client-libraries/typescript.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/client-libraries/typescript">Typescript</a></li>
+                  </ul>
                 </li>
 
 
                 <li {% if page.section == "quickstarts" %} class="open"{% endif %}>
                   <a href="#" class="sub-menu"><i class="fal fa-fw fa-code"></i> Quickstarts <i
                             class="fal fa-chevron-{% if page.section == "quickstarts" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                  <ul>
+                    <li {% if page.url == "/docs/v1/tech/5-minute-setup-guide.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/5-minute-setup-guide">Overview</a></li>
+                    <li {% if page.url == "/docs/v1/tech/getting-started/5-minute-docker.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/getting-started/5-minute-docker">Docker</a></li>
+                    <li {% if page.url == "/docs/v1/tech/getting-started/5-minute-fastpath.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/getting-started/5-minute-fastpath">Fast Path</a></li>
+                    <li {% if page.url == "/docs/v1/tech/getting-started/5-minute-sandbox.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/getting-started/5-minute-sandbox">Sandbox</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-dotnet.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-dotnet">C# .NET</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-dotnet-api.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-dotnet-api">.NET Core API</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-expressjs.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-expressjs">Express.js</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-flutter.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-flutter">Flutter</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-java-spring.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-java-spring">Java Spring</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-laravel-api.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-laravel-api">Laravel API</a></li>
+                    <li {% if page.url == "/docs/quickstarts/quickstart-python-django-web.html" %}class="active"{% endif %}><a
+                              href="/docs/quickstarts/quickstart-python-django-web">Python Django</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-python-flask.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-python-flask">Python Flask</a></li>
+                    <li {% if page.url == "/docs/quickstarts/quickstart-javascript-react-web.html" %}class="active"{% endif %}><a
+                              href="/docs/quickstarts/quickstart-javascript-react-web">React</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-ruby-rails.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-ruby-rails">Ruby on Rails</a></li>
+                    <li {% if page.url == "/docs/v1/tech/tutorials/integrate-ruby-rails-api.html" %}class="active"{% endif %}><a
+                              href="/docs/v1/tech/tutorials/integrate-ruby-rails-api">Ruby on Rails API</a></li>
+                  </ul>
                 </li>
-
-                <li {% if page.url == "/docs/v1/tech/release-notes.html" or page.url == "/docs/v1/tech/archive/release-notes.html"  %}class="active"{% endif %}><a href="/docs/v1/tech/release-notes"><i class="fal fa-fw fa-list-ol"></i> Release Notes</a>
               </ul>
             </nav>
           </aside>
