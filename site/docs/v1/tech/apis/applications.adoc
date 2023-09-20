@@ -2,6 +2,7 @@
 layout: doc
 title: Application APIs
 description: The APIs for creating, retrieving, updating and deleting Applications
+section: apis
 ---
 
 == Overview

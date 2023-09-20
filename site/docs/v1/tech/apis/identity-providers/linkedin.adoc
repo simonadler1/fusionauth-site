@@ -2,6 +2,8 @@
 layout: doc
 title: LinkedIn Identity Provider APIs
 description: APIs for creating, retrieving, updating and disabling the LinkedIn identity provider
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 12300
 

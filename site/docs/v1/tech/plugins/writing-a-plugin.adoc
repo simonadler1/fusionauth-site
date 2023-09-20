@@ -3,6 +3,8 @@ layout: doc
 title: Writing a Plugin
 description: Learn how to write a FusionAuth Plugin
 navcategory: developer
+section: authenticate
+subcategory: provision users
 ---
 
 

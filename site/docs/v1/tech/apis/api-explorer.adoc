@@ -2,6 +2,7 @@
 layout: doc
 title: API Explorer
 description: Explore the API for FusionAuth
+section: apis
 ---
 
 ++++

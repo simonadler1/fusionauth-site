@@ -2,6 +2,8 @@
 layout: doc
 title: External JWT Identity Provider APIs
 description: APIs for creating, retrieving, updating and deleting external JWT identity providers
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 10100
 

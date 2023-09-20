@@ -2,6 +2,8 @@
 layout: doc
 title: Generic Connector APIs
 description: APIs for creating, retrieving, and updating the Generic Connector
+section: apis
+subcategory: connectors
 ---
 
 == Overview

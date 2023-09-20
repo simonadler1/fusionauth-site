@@ -3,7 +3,9 @@ layout: doc
 title: Register a User and Login
 description: Learn how to register a User and log them in
 navcategory: getting-started
-
+section: authenticate
+subcategory: provision users
+tertcategory: registration
 ---
 
 == Overview

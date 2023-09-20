@@ -2,6 +2,7 @@
 layout: doc
 title: User Registration APIs
 description: APIs for creating, retrieving, updating and deleting User Registrations
+section: apis
 ---
 
 == Overview

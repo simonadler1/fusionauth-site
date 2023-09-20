@@ -2,6 +2,9 @@
 layout: doc
 title: Migration From Microsoft Azure AD B2C
 description: How to migrate your users to FusionAuth from Microsoft Azure AD B2C.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

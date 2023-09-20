@@ -3,6 +3,9 @@ layout: doc
 title: SAML v2 IdP Initiated With Okta
 description: Configure SAML v2 IdP Initiated SSO With Okta
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: saml
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

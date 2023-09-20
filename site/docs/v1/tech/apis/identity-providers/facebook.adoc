@@ -2,6 +2,8 @@
 layout: doc
 title: Facebook Identity Provider APIs
 description: APIs for creating, retrieving, updating and disabling the Facebook identity provider
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 10100
 

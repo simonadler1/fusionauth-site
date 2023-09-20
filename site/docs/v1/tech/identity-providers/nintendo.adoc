@@ -3,6 +3,9 @@ layout: doc
 title: Nintendo Identity Provider
 description: Login with Nintendo using the Nintendo Identity Provider
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: gaming
 ---
 
 :sectnumlevels: 0

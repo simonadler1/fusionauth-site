@@ -3,6 +3,9 @@ layout: doc
 title: SAML v2 with ADFS
 description: Configure SAML v2 for Active Directory Federation Services (ADFS)
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: saml
 ---
 
 :sectnumlevels: 0

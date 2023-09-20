@@ -2,6 +2,7 @@
 layout: doc
 title: Keys APIs
 description: APIs for generating, importing, retrieving, updating and deleting keys
+section: apis
 ---
 
 == Overview

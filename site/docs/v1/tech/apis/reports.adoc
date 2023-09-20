@@ -2,6 +2,7 @@
 layout: doc
 title: Report APIs
 description: APIs for retrieving various reports from FusionAuth
+section: apis
 ---
 
 == Overview

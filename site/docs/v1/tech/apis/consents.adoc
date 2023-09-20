@@ -2,6 +2,7 @@
 layout: doc
 title: Consent APIs
 description: APIs for creating, retrieving, updating and deleting consents
+section: apis
 ---
 :page-liquid:
 

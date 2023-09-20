@@ -3,6 +3,9 @@ layout: doc
 title: Azure AD SCIM Client
 description: Configure Azure AD as a SCIM client
 navcategory: premium
+section: authenticate
+subcategory: provision users
+tertcategory: scim
 ---
 
 :sectnumlevels: 0

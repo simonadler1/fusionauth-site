@@ -3,6 +3,9 @@ layout: doc
 title: OAuth Endpoints
 description: A description of each of the OAuth endpoints provided by FusionAuth
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: oauth
 ---
 
 == Overview

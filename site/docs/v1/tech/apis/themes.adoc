@@ -2,6 +2,7 @@
 layout: doc
 title: Themes APIs
 description: APIs for creating, retrieving, updating, and deleting UI login themes
+section: apis
 ---
 :page-liquid:
 

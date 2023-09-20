@@ -3,6 +3,9 @@ layout: doc
 title: Generic Connector
 description: Connect to an arbitrary user data source over HTTP
 navcategory: premium
+section: authenticate
+subcategory: add login
+tertcategory: connectors
 ---
 
 :sectnumlevels: 0

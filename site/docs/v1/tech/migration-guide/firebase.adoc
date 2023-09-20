@@ -2,6 +2,9 @@
 layout: doc
 title: Migration From Firebase
 description: How to migrate your users to FusionAuth from Firebase.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

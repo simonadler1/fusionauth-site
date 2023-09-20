@@ -2,6 +2,7 @@
 layout: doc
 title: User Comment APIs
 description: APIs for creating and retrieving comments on users
+section: apis
 ---
 
 == Overview

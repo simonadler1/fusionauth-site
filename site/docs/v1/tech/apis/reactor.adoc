@@ -2,6 +2,7 @@
 layout: doc
 title: Reactor APIs
 description: APIs for activating, deactivating, and retrieving the status of a FusionAuth Reactor license.
+section: apis
 ---
 
 == Overview

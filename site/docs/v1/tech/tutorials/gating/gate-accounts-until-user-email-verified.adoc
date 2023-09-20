@@ -3,6 +3,9 @@ layout: doc
 title: Gate Users Until They Verify Their Email
 description: How to gate users' email accounts until verified.
 navcategory: developer
+section: authenticate
+subcategory: manage users
+tertcategory: gating
 ---
 
 == Overview

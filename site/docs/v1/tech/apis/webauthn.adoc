@@ -2,6 +2,7 @@
 layout: doc
 title: WebAuthn APIs
 description: APIs for starting and completing WebAuthn ceremonies and retrieving, importing and deleting WebAuthn passkeys
+section: apis
 ---
 
 include::docs/v1/tech/shared/_advanced-edition-blurb.adoc[]

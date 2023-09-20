@@ -3,6 +3,9 @@ layout: doc
 title: SAML v2 with Okta
 description: Configure SAML v2 for Okta
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: saml
 ---
 
 :sectnumlevels: 0

@@ -2,6 +2,7 @@
 layout: doc
 title: Login APIs
 description: APIs for authenticating users (logging them in) or tracking an SSO login (login ping) and multi-factor authentication
+section: apis
 ---
 
 == Overview

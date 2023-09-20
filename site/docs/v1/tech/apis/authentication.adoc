@@ -2,6 +2,7 @@
 layout: doc
 title: API Authentication
 description: Learn how the FusionAuth APIs authenticate requests
+section: apis
 ---
 
 == Overview

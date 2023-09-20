@@ -2,6 +2,8 @@
 layout: doc
 title: Generic Messenger APIs
 description: APIs for creating, retrieving, and updating the Generic Messenger
+section: apis
+subcategory: messengers
 ---
 
 == Overview

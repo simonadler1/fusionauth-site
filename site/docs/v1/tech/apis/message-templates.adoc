@@ -2,6 +2,7 @@
 layout: doc
 title: Message Template APIs
 description: APIs for creating, retrieving, updating and deleting message templates
+section: apis
 ---
 
 == Overview

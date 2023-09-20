@@ -2,6 +2,7 @@
 layout: doc
 title: Lambdas APIs
 description: APIs for creating, retrieving, updating and deleting lambdas
+section: apis
 ---
 :page-liquid:
 

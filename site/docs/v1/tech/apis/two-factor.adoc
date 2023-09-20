@@ -2,6 +2,8 @@
 layout: doc
 title: Multi-Factor/Two Factor APIs
 description: APIs for enabling and disabling multi-factor authentication
+section: apis
+subcategory: messengers
 ---
 
 [.paid-edition]

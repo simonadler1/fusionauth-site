@@ -2,6 +2,9 @@
 layout: doc
 title: Migration From Auth0
 description: How to migrate your users to FusionAuth from Auth0.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

@@ -3,6 +3,8 @@ layout: doc
 title: Authentication and Authorization
 description: Authentication and authorization in FusionAuth
 navcategory: getting-started
+section: authenticate
+subcategory: add login
 ---
 
 :sectnumlevels: 0

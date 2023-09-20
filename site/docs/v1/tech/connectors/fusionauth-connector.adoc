@@ -3,6 +3,9 @@ layout: doc
 title: FusionAuth Connector
 description: FusionAuth Connector
 navcategory: premium
+section: authenticate
+subcategory: add login
+tertcategory: connectors
 ---
 
 :sectnumlevels: 0

@@ -3,6 +3,7 @@ layout: doc
 title: Applications
 description: An overview of FusionAuth Applications
 navcategory: getting-started
+section: core concepts
 ---
 
 :sectnumlevels: 0

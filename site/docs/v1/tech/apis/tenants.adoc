@@ -2,6 +2,7 @@
 layout: doc
 title: Tenant APIs
 description: APIs for creating, retrieving, updating and deleting tenants
+section: apis
 ---
 :page-liquid:
 

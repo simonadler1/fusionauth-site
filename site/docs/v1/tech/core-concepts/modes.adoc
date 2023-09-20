@@ -3,6 +3,9 @@ layout: doc
 title: OAuth Modes
 description: An overview of OAuth modes
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: oauth
 ---
 
 :sectnumlevels: 0

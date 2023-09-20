@@ -3,6 +3,9 @@ layout: doc
 title: SAML v2 & PagerDuty
 description: Setting up PagerDuty to login using FusionAuth via SAML v2
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: saml
 ---
 
 == PagerDuty + FusionAuth Integration Benefits

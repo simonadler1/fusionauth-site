@@ -2,6 +2,8 @@
 layout: doc
 title: OpenID Connect Identity Provider APIs
 description: APIs for creating, retrieving, updating and deleting OpenID Connect identity providers
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 10100
 

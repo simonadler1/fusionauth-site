@@ -2,6 +2,7 @@
 layout: doc
 title: API Overview
 description: An overview of the FusionAuth APIs
+section: apis
 ---
 
 == Overview

@@ -3,7 +3,9 @@ layout: doc
 title: Self-service Registration
 description: Basic Self-service Registration Forms
 navcategory: getting-started
-
+section: authenticate
+subcategory: provision users
+tertcategory: registration
 ---
 :page-liquid:
 

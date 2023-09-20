@@ -3,6 +3,8 @@ layout: doc
 title: Add WebAuthn Passkey
 description: How to add a WebAuthn passkey
 navcategory: premium
+section: authenticate
+subcategory: manage users
 ---
 
 include::docs/v1/tech/shared/_advanced-edition-blurb.adoc[]

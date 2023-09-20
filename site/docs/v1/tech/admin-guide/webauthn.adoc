@@ -3,6 +3,8 @@ layout: doc
 title: Configure WebAuthn
 description: Learn how to configure WebAuthn for FusionAuth
 navcategory: admin
+section: authenticate
+subcategory: add login
 ---
 
 include::docs/v1/tech/shared/_advanced-edition-blurb.adoc[]

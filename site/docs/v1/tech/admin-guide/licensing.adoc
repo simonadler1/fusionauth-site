@@ -3,6 +3,7 @@ layout: doc
 title: Licensing 
 description: Licensing information
 navcategory: admin
+section: core concepts
 ---
 :page-liquid:
 

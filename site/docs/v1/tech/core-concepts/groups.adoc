@@ -3,6 +3,7 @@ layout: doc
 title: Groups
 description: An overview of FusionAuth Groups
 navcategory: getting-started
+section: core concepts
 ---
 
 :sectnumlevels: 0

@@ -3,6 +3,7 @@ layout: doc
 title: Limitations
 description: FusionAuth built in limitations
 navcategory: admin
+section: core concepts
 ---
 
 == Overview

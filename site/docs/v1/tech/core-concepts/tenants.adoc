@@ -3,6 +3,7 @@ layout: doc
 title: Tenants
 description: An overview of FusionAuth Tenants
 navcategory: getting-started
+section: core concepts
 ---
 
 :sectnumlevels: 0

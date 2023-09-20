@@ -2,6 +2,8 @@
 layout: doc
 title: SCIM EnterpriseUser APIs
 description: APIs for provisioning SCIM EnterpriseUsers in FusionAuth using a SCIM Client
+section: apis
+subcategory: scim
 ---
 
 include::docs/v1/tech/shared/_enterprise-edition-blurb.adoc[]

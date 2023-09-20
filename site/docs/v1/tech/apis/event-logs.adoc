@@ -2,6 +2,7 @@
 layout: doc
 title: Event Logs
 description: The APIs for searching the event logs
+section: apis
 ---
 
 == Overview

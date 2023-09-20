@@ -2,6 +2,7 @@
 layout: doc
 title: Hosted Backend APIs
 description: APIs that you to perform OAuth2 Authorization Code Flow login, logout, and refresh for applications
+section: apis
 ---
 
 :page-liquid:

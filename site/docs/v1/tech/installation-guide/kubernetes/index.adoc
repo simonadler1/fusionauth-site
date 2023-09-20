@@ -4,6 +4,9 @@ title: Using FusionAuth in Kubernetes
 description: Deploy and test FusionAuth using Kubernetes.
 keywords: docker kubernetes k8s container aks eks gke
 navcategory: installation
+section: get started
+subcategory: download and install
+tertcategory: k8s
 ---
 
 :page-liquid:

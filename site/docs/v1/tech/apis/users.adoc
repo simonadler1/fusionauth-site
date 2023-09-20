@@ -2,6 +2,7 @@
 layout: doc
 title: User APIs
 description: APIs for creating, retrieving, updating, deleting, importing, searching for and verifying users
+section: apis
 ---
 
 == Overview

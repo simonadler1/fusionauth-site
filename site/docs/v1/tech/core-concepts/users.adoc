@@ -3,6 +3,7 @@ layout: doc
 title: Users
 description: An overview of FusionAuth Users
 navcategory: getting-started
+section: core concepts
 ---
 
 :sectnumlevels: 0

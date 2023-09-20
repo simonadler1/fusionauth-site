@@ -2,6 +2,8 @@
 layout: doc
 title: Twitter Identity Provider APIs
 description: APIs for creating, retrieving, updating and disabling the Twitter identity providers
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 10100
 

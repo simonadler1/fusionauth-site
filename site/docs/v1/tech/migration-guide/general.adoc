@@ -2,6 +2,9 @@
 layout: doc
 title: General Migration Guide
 description: How to migrate your users to FusionAuth.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

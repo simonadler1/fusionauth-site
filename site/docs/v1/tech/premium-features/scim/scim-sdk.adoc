@@ -3,6 +3,9 @@ layout: doc
 title: SCIM-SDK
 description: How to set up SCIM with a SCIM-SDK client
 navcategory: premium
+section: authenticate
+subcategory: provision users
+tertcategory: scim
 ---
 
 :sectnumlevels: 0

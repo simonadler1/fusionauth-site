@@ -2,6 +2,7 @@
 layout: doc
 title: API Key APIs
 description: APIs for creating, retrieving, updating and deleting API Keys
+section: apis
 ---
 
 :enterprise_feature: IP ACLs

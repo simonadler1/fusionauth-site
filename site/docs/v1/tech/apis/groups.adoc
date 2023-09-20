@@ -2,6 +2,7 @@
 layout: doc
 title: Group APIs
 description: APIs for creating, retrieving, updating and deleting groups
+section: apis
 ---
 
 == Overview

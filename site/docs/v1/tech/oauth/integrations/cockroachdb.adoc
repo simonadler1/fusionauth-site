@@ -3,6 +3,9 @@ layout: doc
 title: "OAuth Integrations: CockroachDB"
 description: A practical approach of using FusionAuth SSO capabilities to log in to your Cockroach DB Console
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: integration
 ---
 
 == Overview

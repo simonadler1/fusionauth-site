@@ -3,6 +3,9 @@ layout: doc
 title: Advanced Registration Forms
 description: Advanced Registration Forms
 navcategory: premium
+section: authenticate
+subcategory: provision users
+tertcategory: registration
 ---
 :page-liquid:
 

@@ -2,6 +2,8 @@
 layout: doc
 title: Entity APIs
 description: APIs for creating, retrieving, updating and deleting entities, as well as searching them
+section: apis
+subcategory: entities
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

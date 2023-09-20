@@ -3,6 +3,9 @@ layout: doc
 title: URL Validation
 description: OAuth URL validation policies in FusionAuth
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: oauth
 ---
 
 [NOTE.since]

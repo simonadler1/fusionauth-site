@@ -2,6 +2,9 @@
 layout: doc
 title: Migration From Supabase
 description: How to migrate your users to FusionAuth from Supabase.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

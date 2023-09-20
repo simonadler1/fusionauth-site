@@ -3,6 +3,9 @@ layout: doc
 title: SCIM
 description: SCIM Support Overview
 navcategory: premium
+section: authenticate
+subcategory: provision users
+tertcategory: scim
 ---
 
 :page-liquid:

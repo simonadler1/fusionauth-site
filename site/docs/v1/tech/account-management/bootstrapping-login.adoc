@@ -2,6 +2,8 @@
 layout: doc
 title: Bootstrapping Login For Self-Service Account Management
 description: Allow users to access self-service account management from external applications
+section: authenticate
+subcategory: manage users
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

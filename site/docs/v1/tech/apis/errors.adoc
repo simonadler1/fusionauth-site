@@ -2,6 +2,7 @@
 layout: doc
 title: API Errors
 description: Learn about the error response that is sent back from FusionAuth APIs
+section: apis
 ---
 
 == API Errors

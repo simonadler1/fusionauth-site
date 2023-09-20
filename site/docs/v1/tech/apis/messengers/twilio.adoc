@@ -2,6 +2,8 @@
 layout: doc
 title: Twilio Messenger APIs
 description: APIs for creating, retrieving, and updating the Twilio Messenger
+section: apis
+subcategory: messengers
 ---
 
 == Overview

@@ -3,6 +3,7 @@ layout: doc
 title: Editions and Features
 description: An explanation of editions and features
 navcategory: admin
+section: core concepts
 ---
 :page-liquid:
 

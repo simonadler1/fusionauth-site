@@ -2,6 +2,8 @@
 layout: doc
 title: Link APIs
 description: The APIs for creating, retrieving, and deleting Identity Provider Links
+section: apis
+subcategory: identity providers
 ---
 
 == Overview

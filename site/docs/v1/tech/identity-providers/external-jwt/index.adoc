@@ -3,6 +3,9 @@ layout: doc
 title: External JWT Identity Provider
 description: Complete a FusionAuth login with an external JWT from a third party Identity Provider.
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: social
 ---
 
 :sectnumlevels: 0

@@ -2,6 +2,8 @@
 layout: doc
 title: SAML v2 IdP Initiated Identity Provider APIs
 description: APIs for creating, retrieving, updating and deleting SAML v2 IdP Initiated identity providers
+section: apis
+subcategory: identity providers
 ---
 :idp_since: 12600
 :idp_display_name: SAML v2 IdP Initiated

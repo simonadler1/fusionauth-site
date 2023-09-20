@@ -2,6 +2,8 @@
 layout: doc
 title: Form APIs
 description: APIs for creating, retrieving, updating and deleting forms
+section: apis
+subcategory: custom forms
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

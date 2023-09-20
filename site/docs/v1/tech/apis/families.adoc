@@ -2,6 +2,7 @@
 layout: doc
 title: Family APIs
 description: APIs for creating, retrieving, updating and deleting families
+section: apis
 ---
 
 :page-liquid:

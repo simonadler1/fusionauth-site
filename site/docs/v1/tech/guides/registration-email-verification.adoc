@@ -3,6 +3,8 @@ layout: doc
 title: Registration-based Email Verification
 description: How to setup per-application email verification for newly registered users
 navcategory: developer
+section: authenticate
+subcategory: provision users
 ---
 
 == Overview

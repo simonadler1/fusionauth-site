@@ -2,6 +2,7 @@
 layout: doc
 title: Integration APIs
 description: APIs for retrieving and updating integrations
+section: apis
 ---
 
 == Overview

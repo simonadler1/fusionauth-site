@@ -2,6 +2,9 @@
 layout: doc
 title: Migration From Keycloak
 description: How to migrate your users to FusionAuth from Keycloak.
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 :page-liquid:
 

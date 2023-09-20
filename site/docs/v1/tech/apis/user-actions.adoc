@@ -2,6 +2,7 @@
 layout: doc
 title: User Action APIs
 description: APIs for creating, retrieving, updating and deleting user actions
+section: apis
 ---
 
 == Overview

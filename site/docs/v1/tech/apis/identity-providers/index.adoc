@@ -2,6 +2,7 @@
 layout: doc
 title: Identity Provider API Overview
 description: APIs for creating, retrieving, updating and deleting identity providers
+section: apis
 ---
 
 == Overview

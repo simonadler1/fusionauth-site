@@ -2,6 +2,7 @@
 layout: doc
 title: Entity Management API Overview
 description: APIs for creating, retrieving, updating and deleting entities and entity types
+section: apis
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

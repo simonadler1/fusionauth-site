@@ -3,6 +3,9 @@ layout: doc
 title: Okta SCIM Client
 description: Configure Okta as a SCIM client
 navcategory: premium
+section: authenticate
+subcategory: provision users
+tertcategory: scim
 ---
 
 :sectnumlevels: 0

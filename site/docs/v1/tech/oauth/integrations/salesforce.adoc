@@ -3,6 +3,9 @@ layout: doc
 title: "OAuth Integrations: Salesforce"
 description: Setting up Sales to log in using FusionAuth via OIDC
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: integration
 ---
 
 == Overview

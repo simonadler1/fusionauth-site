@@ -3,6 +3,8 @@ layout: doc
 title: Application Authentication Tokens
 description: Leverage Application specific authentication tokens to speed up certain authentication tasks
 navcategory: developer
+section: authenticate
+subcategory: add login
 ---
 
 == Application Authentication Tokens

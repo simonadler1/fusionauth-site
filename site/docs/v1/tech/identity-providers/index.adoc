@@ -3,6 +3,8 @@ layout: doc
 title: FusionAuth Identity Providers
 description: FusionAuth Identity Providers
 navcategory: login-methods
+section: authenticate
+subcategory: add login
 ---
 
 :sectnumlevels: 0

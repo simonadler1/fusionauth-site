@@ -2,6 +2,9 @@
 layout: doc
 title: Migration Tutorial
 description: Learn how to migrate users from an existing database into FusionAuth
+section: authenticate
+subcategory: provision users
+tertcategory: migrate
 ---
 
 == Overview

@@ -3,6 +3,9 @@ layout: doc
 title: SAML v2 & Google
 description: Setting up Google to login using FusionAuth via SAML v2
 navcategory: login-methods
+section: authenticate
+subcategory: add login
+tertcategory: saml
 ---
 
 == Overview

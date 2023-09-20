@@ -2,6 +2,8 @@
 layout: doc
 title: Steam Identity Provider APIs
 description: APIs for creating, retrieving, updating and disabling the Steam identity provider
+section: apis
+subcategory: identity providers
 ---
 
 include::docs/v1/tech/shared/_premium-edition-blurb.adoc[]

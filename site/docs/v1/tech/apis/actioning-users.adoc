@@ -2,6 +2,7 @@
 layout: doc
 title: Actioning Users
 description: Learn how the FusionAuth API can be used to take actions on users
+section: apis
 ---
 
 == Overview
