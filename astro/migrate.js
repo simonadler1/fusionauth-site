@@ -6,9 +6,18 @@ Migrate a docs file. Will move all images and includes as best it can. Inspect i
 Usage migrate.js [options]
   -s, --source                The source file to migrate. Relative to 'site/v1/tech' (ex: getting-started/5-minute-docker.adoc)
   -t, --target                The target directory to migrate to. Relative 'astro/src/content/docs' (ex: get-started/download-and-install)
+  -d, --debug                 Debug mode. Will log extra info. (optional)
 `;
 
 const state = {};
+
+const debugLog = (...stuff) => {
+  if (state.debug) {
+    console.log(...stuff);
+  }
+}
+
+const trickyUrlRegex = RegExp(/http[^ ]*\[(.*)]/);
 
 const validateArgs = () => {
   try {
@@ -38,6 +47,10 @@ const setState = () => {
   const t = process.argv.findIndex(arg => ['-t', '--target'].includes(arg));
   state.target = process.argv[t + 1];
 
+  if (process.argv.find(arg => ['-d', '--debug'].includes(arg))) {
+     state.debug = true;
+  }
+
   const parts = state.target.split('/').map(part => part.split('-').join(' '));
 
   state.category = parts[0];
@@ -48,7 +61,7 @@ const setState = () => {
     state.tertiary = parts[2];
   }
 
-  console.log('state', JSON.stringify(state, null, 2));
+  debugLog('state', JSON.stringify(state, null, 2));
 };
 
 const gitMoveFile = (oldPath, newPath) => {
@@ -85,6 +98,10 @@ const convert = (filePath, partial = false) => {
     if (!prev.find(l => l === line)) {
       outLines.splice(importIdx, 0, line);
       importIdx++;
+    }
+    if (outLines[importIdx] !== '') {
+      // add a blank line after imports
+      outLines.splice(importIdx, 0, '');
     }
   }
 
@@ -146,11 +163,16 @@ const convert = (filePath, partial = false) => {
     // WATCH IT there's several different ways for asciidoc to shove meta in around code blocks.
     const headerParts  = header.replace('[', '').replace(']', '').split(',');
     let lang = '';
+    let title = '';
     if (headerParts.length > 1) {
       lang = headerParts[1].trim();
     }
+    if (headerParts.length > 2) {
+      title = ` title="${headerParts[2].trim().replace('title=', '')}"`;
+    }
+
     let meta = lines.shift(); //might be a dash might not
-    let title = '';
+
     if (meta.startsWith('.')) {
        meta = meta.substring(1, meta.length);
        lines.shift(); // skip the dashes
@@ -160,7 +182,8 @@ const convert = (filePath, partial = false) => {
 
     const next = () => {
       const line = lines.shift();
-      if (line === '----') {
+      debugLog(`source line`, line, lines.length);
+      if (line.startsWith('----')) {
         outLines.push('```');
         return false;
       } else {
@@ -208,13 +231,30 @@ const convert = (filePath, partial = false) => {
     if (line.startsWith('=')) {
       line = line.replaceAll('=', '#');
     }
-    while (line.includes('link:')) {
-      const idx = line.indexOf('link:');
-      let start = line.substring(idx, line.length);
-      const text = start.substring(start.indexOf('[') + 1, start.indexOf(']'));
-      start = start.replace(`[${text}]`, ')');
-      start = start.replace('link:', `[${text}](`);
-      line = line.substring(0, idx) + start;
+    const linkMatches = line.matchAll(/link:([^ ]*)\[([^:]*)]/g);
+    if (linkMatches) {
+      for (const match of linkMatches) {
+        const old = match[0];
+        const url = match[1];
+        const label = match[2];
+        if (label.includes('window="_blank"')) {
+          const realLabel = label.split(',')[0];
+          const a = `<a href="${url}" target="_blank">${realLabel}</a>`;
+          line = line.replace(old, a);
+        } else {
+          const link = `[${label}](${url})`;
+          line = line.replace(old, link);
+        }
+      }
+    }
+    const crumbMatches = line.matchAll(/\[breadcrumb]#([\w ]*)#/g);
+    if (crumbMatches) {
+      for (const match of crumbMatches) {
+        const old = match[0];
+        const label = match[1];
+        const crumb = `<strong>${label}</strong>`;
+        line = line.replace(old, crumb);
+      }
     }
     while (line.includes('<<')) {
       const idx = line.indexOf('link:');
@@ -223,6 +263,17 @@ const convert = (filePath, partial = false) => {
       start = start.replace(`<<${text}>>`, `<ScrollRef target="${text}" />`);
       line = line.substring(0, idx) + start;
       addImport(`import ScrollRef from 'src/components/ScrollRef.astro';`);
+    }
+    // please don't explode, please don't explode
+    const matches = line.matchAll(/http[^ ]*\[([\w ]*)]/g);
+    if (matches) {
+      for (const match of matches) {
+        const fragment = line.slice(match.index, match.index + match[0].length);
+        const label = fragment.slice(fragment.indexOf('[') + 1, fragment.indexOf(']'));
+        const url = fragment.slice(0, fragment.indexOf('['));
+        const replacement = `[${label}](${url})`;
+        line = line.replace(fragment, replacement);
+      }
     }
     return line;
   }
@@ -260,6 +311,7 @@ const convert = (filePath, partial = false) => {
       return [false, frontDone];
     }
     let line = lines.shift();
+    debugLog(`working line`, line, lines.length, outLines.length);
     if (!line.trim()) {
       // empty line
       outLines.push(line);

@@ -1247,6 +1247,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".mdx"] },
+"digitalocean-oneclick-installation.mdx": {
+  id: "digitalocean-oneclick-installation.mdx",
+  slug: "digitalocean-oneclick-installation",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".mdx"] },
 "disclosure-conference-report.mdx": {
   id: "disclosure-conference-report.mdx",
   slug: "disclosure-conference-report",
@@ -1369,6 +1376,13 @@ declare module 'astro:content' {
 "fusionauth-family-model-consent-management.mdx": {
   id: "fusionauth-family-model-consent-management.mdx",
   slug: "fusionauth-family-model-consent-management",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".mdx"] },
+"fusionauth-g2-fall23.mdx": {
+  id: "fusionauth-g2-fall23.mdx",
+  slug: "fusionauth-g2-fall23",
   body: string,
   collection: "blog",
   data: any
@@ -1537,6 +1551,13 @@ declare module 'astro:content' {
 "fusionauth-website-how-we-do-it.mdx": {
   id: "fusionauth-website-how-we-do-it.mdx",
   slug: "fusionauth-website-how-we-do-it",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".mdx"] },
+"get-more-value-out-of-fusionauth.mdx": {
+  id: "get-more-value-out-of-fusionauth.mdx",
+  slug: "get-more-value-out-of-fusionauth",
   body: string,
   collection: "blog",
   data: any
@@ -2185,6 +2206,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".mdx"] },
+"soc2-matrix.mdx": {
+  id: "soc2-matrix.mdx",
+  slug: "soc2-matrix",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".mdx"] },
 "softozor-fusionauth-hasura-kubernetes.mdx": {
   id: "softozor-fusionauth-hasura-kubernetes.mdx",
   slug: "softozor-fusionauth-hasura-kubernetes",
@@ -2272,6 +2300,13 @@ declare module 'astro:content' {
 "top-forum-posts-may-2021.mdx": {
   id: "top-forum-posts-may-2021.mdx",
   slug: "top-forum-posts-may-2021",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".mdx"] },
+"treefort-uses-fusionauth-for-all-auth.mdx": {
+  id: "treefort-uses-fusionauth-for-all-auth.mdx",
+  slug: "treefort-uses-fusionauth-for-all-auth",
   body: string,
   collection: "blog",
   data: any
@@ -2538,6 +2573,113 @@ declare module 'astro:content' {
   data: InferEntrySchema<"dev-tools">
 } & { render(): Render[".mdx"] },
 },
+"docs": {
+"get-started/common-configuration.mdx": {
+  id: "get-started/common-configuration.mdx",
+  slug: "get-started/common-configuration",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/database.mdx": {
+  id: "get-started/download-and-install/database.mdx",
+  slug: "get-started/download-and-install/database",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/docker.mdx": {
+  id: "get-started/download-and-install/docker.mdx",
+  slug: "get-started/download-and-install/docker",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/fast-path.mdx": {
+  id: "get-started/download-and-install/fast-path.mdx",
+  slug: "get-started/download-and-install/fast-path",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/fusionauth-app.mdx": {
+  id: "get-started/download-and-install/fusionauth-app.mdx",
+  slug: "get-started/download-and-install/fusionauth-app",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/fusionauth-search.mdx": {
+  id: "get-started/download-and-install/fusionauth-search.mdx",
+  slug: "get-started/download-and-install/fusionauth-search",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/homebrew.mdx": {
+  id: "get-started/download-and-install/homebrew.mdx",
+  slug: "get-started/download-and-install/homebrew",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/packages.mdx": {
+  id: "get-started/download-and-install/packages.mdx",
+  slug: "get-started/download-and-install/packages",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/server-layout.mdx": {
+  id: "get-started/download-and-install/server-layout.mdx",
+  slug: "get-started/download-and-install/server-layout",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/silent-mode.mdx": {
+  id: "get-started/download-and-install/silent-mode.mdx",
+  slug: "get-started/download-and-install/silent-mode",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/download-and-install/start-and-stop.mdx": {
+  id: "get-started/download-and-install/start-and-stop.mdx",
+  slug: "get-started/download-and-install/start-and-stop",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/run-in-the-cloud/cloud.mdx": {
+  id: "get-started/run-in-the-cloud/cloud.mdx",
+  slug: "get-started/run-in-the-cloud/cloud",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/run-in-the-cloud/marketplaces.mdx": {
+  id: "get-started/run-in-the-cloud/marketplaces.mdx",
+  slug: "get-started/run-in-the-cloud/marketplaces",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/setup-wizard.mdx": {
+  id: "get-started/setup-wizard.mdx",
+  slug: "get-started/setup-wizard",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+"get-started/system-requirements.mdx": {
+  id: "get-started/system-requirements.mdx",
+  slug: "get-started/system-requirements",
+  body: string,
+  collection: "docs",
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] },
+},
 "quickstarts": {
 "quickstart-dotnet-web.mdx": {
   id: "quickstart-dotnet-web.mdx",
@@ -2546,9 +2688,44 @@ declare module 'astro:content' {
   collection: "quickstarts",
   data: InferEntrySchema<"quickstarts">
 } & { render(): Render[".mdx"] },
+"quickstart-golang-api.mdx": {
+  id: "quickstart-golang-api.mdx",
+  slug: "quickstart-golang-api",
+  body: string,
+  collection: "quickstarts",
+  data: InferEntrySchema<"quickstarts">
+} & { render(): Render[".mdx"] },
 "quickstart-golang-web.mdx": {
   id: "quickstart-golang-web.mdx",
   slug: "quickstart-golang-web",
+  body: string,
+  collection: "quickstarts",
+  data: InferEntrySchema<"quickstarts">
+} & { render(): Render[".mdx"] },
+"quickstart-javascript-angular-web.mdx": {
+  id: "quickstart-javascript-angular-web.mdx",
+  slug: "quickstart-javascript-angular-web",
+  body: string,
+  collection: "quickstarts",
+  data: InferEntrySchema<"quickstarts">
+} & { render(): Render[".mdx"] },
+"quickstart-javascript-nextjs-web.mdx": {
+  id: "quickstart-javascript-nextjs-web.mdx",
+  slug: "quickstart-javascript-nextjs-web",
+  body: string,
+  collection: "quickstarts",
+  data: InferEntrySchema<"quickstarts">
+} & { render(): Render[".mdx"] },
+"quickstart-javascript-react-web.mdx": {
+  id: "quickstart-javascript-react-web.mdx",
+  slug: "quickstart-javascript-react-web",
+  body: string,
+  collection: "quickstarts",
+  data: InferEntrySchema<"quickstarts">
+} & { render(): Render[".mdx"] },
+"quickstart-javascript-vue-web.mdx": {
+  id: "quickstart-javascript-vue-web.mdx",
+  slug: "quickstart-javascript-vue-web",
   body: string,
   collection: "quickstarts",
   data: InferEntrySchema<"quickstarts">
