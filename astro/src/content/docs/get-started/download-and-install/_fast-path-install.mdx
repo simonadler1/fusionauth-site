@@ -1,0 +1,59 @@
+### macOS
+
+Please feel free to read these install scripts before running them. Always a good idea.
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages</i>
+
+```sh
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh"
+```
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages and include Elasticsearch</i>
+
+```sh
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh -s - -s"
+```
+
+### Linux
+
+Please feel free to read these install scripts before running them. Always a good idea.
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages</i>
+```sh
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh -s - -z"
+```
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages and include Elasticsearch</i>
+
+```sh
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh -s - -z -s"
+```
+
+<i class="text-sm pb-0">Install for all users on the system using DEB or RPM packages, requires sudo access</i>
+
+```
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh"
+```
+
+<i class="text-sm pb-0">Install for all users on the system using DEB or RPM packages and include Elasticsearch, requires sudo access</i>
+
+```sh
+sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh -s - -s"
+```
+
+### Windows
+Please note, that versions equal to `1.37.0` and less than `1.40.0` did not have a native Windows install option. It is recommended to plan to install version `1.40.0` or later.
+
+Please feel free to read these install scripts before running them. Always a good idea.
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages. Install using Windows PowerShell</i>
+
+```sh
+. { iwr -useb https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.ps1 } | iex; install
+```
+
+<i class="text-sm pb-0">Install in your current working directory using ZIP packages and include Elasticsearch. Install using Windows PowerShell</i>
+
+```sh
+. { iwr -useb https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.ps1 } | iex; install -includeSearch 1
+```

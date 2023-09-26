@@ -1,0 +1,12 @@
+---
+import Layout from "../../../../layouts/Docs.astro";
+import { getStaticDocPaths } from '../../doc-tools';
+
+export const getStaticPaths = getStaticDocPaths('get-started/run-in-the-cloud/');
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+---
+<Layout frontmatter={entry.data} {headings}>
+  <Content />
+</Layout>

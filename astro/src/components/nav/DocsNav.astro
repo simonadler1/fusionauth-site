@@ -23,7 +23,8 @@ const moreItems = [
 ];
 
 const buttons = ['divider'];
-if (Astro.url.pathname.includes('quickstarts')) {
+console.log(Astro.url.pathname);
+if (Astro.url.pathname !== '/docs/') {
   buttons.push('dark-mode');
 }
 buttons.push('search', 'login', 'expert');

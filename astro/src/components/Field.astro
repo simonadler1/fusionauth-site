@@ -1,0 +1,12 @@
+---
+// TODO we need this for APIs but for inline fields I don't think we need itam just going to use html
+export interface FieldProps {
+  type?: string;
+  optional?: boolean;
+  default?: string;
+}
+const { type }: FieldProps = Astro.props;
+---
+<span>
+  <slot/>
+</span>
