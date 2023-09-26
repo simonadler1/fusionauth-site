@@ -1,12 +1,6 @@
 ---
-// TODO we need this for APIs but for inline fields I don't think we need itam just going to use html
-export interface FieldProps {
-  type?: string;
-  optional?: boolean;
-  default?: string;
-}
-const { type }: FieldProps = Astro.props;
+const { label } = Astro.props;
 ---
-<span>
-  <slot/>
+<span class="bg-gray-100 border-b border-solid border-orange-600 text-sm dark:bg-gray-700 py-1 px-1 mx-1">
+    {label}
 </span>
