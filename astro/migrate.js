@@ -194,6 +194,72 @@ const convert = (filePath, partial = false) => {
     outLines.push(`<${alias} />`);
   }
 
+  const convertApiField = (header) => {
+    debugLog('working line', header);
+    let name = '';
+    let type = '';
+    let required = '';
+    let optional = '';
+    let since = '';
+    let defaults = '';
+    const nameMatch = header.match(/\[field]#([\w\. ]*)#/);
+    if (nameMatch) {
+      name = ` name="${nameMatch[1]}"`;
+    }
+    const typeMatch = header.match(/\[type]#\[(\w*)]#/);
+    if (typeMatch) {
+      type = ` type="${typeMatch[1]}"`;
+    }
+    const requiredMatch = header.match(/\[required]/);
+    if (requiredMatch) {
+      required = ` required`;
+    }
+    const optionalMatch = header.match(/\[optional]/);
+    if (optionalMatch) {
+      optional = ` optional`;
+    }
+    const defaultsMatch = header.match(/\[default]#defaults to `([\w]*)`#/);
+    if (defaultsMatch) {
+      defaults = ` defaults="${defaultsMatch[1]}"`;
+    }
+    const sinceMatch = header.match(/\[since]#Available since ([\w\.]*)#/);
+    if (sinceMatch) {
+      since = ` since="${sinceMatch[1]}"`;
+    }
+    outLines.push(`  <APIField${name}${type}${required}${optional}${defaults}${since}>`);
+    const next = () => {
+      let line = lines.shift();
+      debugLog('working line', line)
+      if (line.trim() !== '') {
+        if (line.trim() === '+') {
+          outLines.push('');
+          next();
+        } else {
+           line = `    ${convertLine(line)}`;
+           outLines.push(line);
+           next();
+        }
+      }
+    }
+    next();
+    outLines.push('  </APIField>');
+  }
+
+  const convertAPIBlock = () => {
+    addImport(`import APIBlock from 'src/components/api/APIBlock.astro';`);
+    addImport(`import APIField from 'src/components/api/APIField.astro';`);
+    outLines.push('<APIBlock>');
+    const next = () => {
+      if (lines[0].startsWith('[field')) {
+        convertApiField(lines.shift());
+        next();
+      }
+    }
+    next();
+    outLines.push('</APIBlock>');
+    outLines.push('')
+  }
+
   const convertSourceBlock = (header) => {
     // WATCH IT there's several different ways for asciidoc to shove meta in around code blocks.
     const headerParts  = header.replace('[', '').replace(']', '').split(',');
@@ -401,6 +467,9 @@ const convert = (filePath, partial = false) => {
       return [true, frontDone];
     } else if (line.startsWith('image::')) {
       handleImage(line);
+      return [true, frontDone];
+    } else if (line.startsWith('[.api]')) {
+      convertAPIBlock();
       return [true, frontDone];
     } else {
       line = convertLine(line)
