@@ -15,9 +15,7 @@ const debugLog = (...stuff) => {
   if (state.debug) {
     console.log(...stuff);
   }
-}
-
-const trickyUrlRegex = RegExp(/http[^ ]*\[(.*)]/);
+};
 
 const validateArgs = () => {
   try {
@@ -74,10 +72,44 @@ const gitMoveFile = (oldPath, newPath) => {
   });
 }
 
+const setUpDirectories = () => {
+  const dirs = state.target.split('/');
+  dirs.forEach((dir, idx) => {
+    const parts = [];
+    for (let i = 0; i < idx + 1; i++) {
+      parts.push(dirs[i]);
+    }
+    const subPath = parts.join('/');
+    const contentPath = 'src/content/docs/' + subPath;
+    if (!fs.existsSync(contentPath)) {
+      console.log(`${contentPath} does not exist yet. Creating it.`);
+      fs.mkdirSync(contentPath);
+    }
+    const imagesPath = 'public/img/docs/' + subPath;
+    if (!fs.existsSync(imagesPath)) {
+      console.log(`${imagesPath} does not exist yet. Creating it.`);
+      fs.mkdirSync(imagesPath);
+    }
+    const pagesPath = 'src/pages/docs/' + subPath;
+    if (!fs.existsSync(pagesPath)) {
+      console.log(`${pagesPath} does not exist yet. Creating it.`);
+      fs.mkdirSync(pagesPath);
+    }
+    if (!fs.existsSync(pagesPath + '/[...slug].astro')) {
+      console.log(`${pagesPath}/[...slug].astro does not exist yet. Creating it.`);
+      fs.cpSync('src/pages/docs/get-started/[...slug].astro', pagesPath + '/[...slug].astro');
+      let content = fs.readFileSync(pagesPath + '/[...slug].astro', 'utf8');
+      content = content.replace('get-started', subPath);
+      fs.writeFileSync(pagesPath + '/[...slug].astro', content, 'utf8');
+    }
+  });
+};
+
 const move = () => {
   const fileName = state.source.split('/').pop();
   const oldPath = '../site/docs/v1/tech/' + state.source;
-  state.newPath = 'src/content/docs/' + state.target + '/' + fileName.replace('.adoc', '.mdx');
+  state.fileName = fileName.replace('.adoc', '.mdx');
+  state.newPath = 'src/content/docs/' + state.target + '/' + state.fileName;
 
   if (!fs.existsSync(oldPath)) {
     throw Error(`${state.source} does not exist!`);
@@ -143,9 +175,12 @@ const convert = (filePath, partial = false) => {
     }
     const fileName = line.split('/').pop();
     const oldPath = '../site/' + line;
-    const newPath = newDir + fileName.replace('.adoc', '.mdx');
+    let newPath = newDir + fileName.replace('.adoc', '.mdx');
     if (fs.existsSync(newPath)) {
       console.log(`Looks like ${newPath} already exists!`);
+    } else if (fs.existsSync(newPath.replace('.mdx', '.astro'))) {
+      console.log(`Looks like ${newPath.replace('.mdx', '.astro')} already exists!`);
+      newPath = newPath.replace('.mdx', '.astro');
     } else {
       gitMoveFile(oldPath, newPath);
       convert(newPath, true);
@@ -178,23 +213,50 @@ const convert = (filePath, partial = false) => {
        lines.shift(); // skip the dashes
        title = ` title="${meta}"`;
     }
-    outLines.push('```' + lang + title);
 
-    const next = () => {
-      const line = lines.shift();
-      debugLog(`source line`, line, lines.length);
-      if (line.startsWith('----')) {
-        outLines.push('```');
-        return false;
+    if (lines[0].match(/include::(.*)\.json/)) {
+      // this is a json include block
+      const jsonFile = lines.shift().replace('include::', '').replace('\[\]', '');
+      const paths = jsonFile.split('/');
+      const newPath = `src/json/${jsonFile.replace('docs/src/json/', '')}`;
+      if (fs.existsSync(newPath)) {
+        console.log(`Looks like ${newPath} already exists! Awesome.`);
       } else {
-        outLines.push(line)
-        return true;
+        for (let i = 3; i < paths.length - 1; i++) {
+          const parts = [];
+          for (let j = 3; j < i + 1; j++) {
+            parts.push(paths[j]);
+          }
+          if (!fs.existsSync(`src/json/${parts.join('/')}`)) {
+            console.log(`Creating directory src/json/${parts.join('/')}`);
+            fs.mkdirSync(`src/json/${parts.join('/')}`);
+          }
+        }
+        gitMoveFile(`../site/${jsonFile}`, newPath);
+      }
+      lines.shift();
+      addImport(`import JSON from 'src/components/JSON.astro';`);
+      outLines.push(`<JSON ${title.trim()} src="${jsonFile.replace('docs/src/json/', '')}" />`);
+    } else {
+      outLines.push('```' + lang + title);
+
+      const next = () => {
+        const line = lines.shift();
+        debugLog(`source line`, line, lines.length);
+        if (line.startsWith('----')) {
+          outLines.push('```');
+          return false;
+        } else {
+          outLines.push(line)
+          return true;
+        }
+      }
+      let keepGoing = true;
+      while (keepGoing) {
+        keepGoing = next();
       }
     }
-    let keepGoing = true;
-    while (keepGoing) {
-      keepGoing = next();
-    }
+
   };
 
   const handleAside = (line) => {
@@ -202,7 +264,8 @@ const convert = (filePath, partial = false) => {
         'NOTE': 'note',
         'TIP': 'tip',
         'IMPORTANT': 'caution',
-        'WARNING': 'caution'
+        'WARNING': 'caution',
+        'since': 'version',
     };
     let oldType = line.substring(1, line.indexOf(']'));
     const splits = oldType.split('.');
@@ -211,7 +274,7 @@ const convert = (filePath, partial = false) => {
       oldType = splits[0];
       subType = splits[1];
     }
-    const newType = types[oldType];
+    const newType = types[subType] ? types[subType] : types[oldType];
     outLines.push(`<Aside type="${newType}">`);
     lines.shift(); // skip the dashes
     const next = () => {
@@ -368,6 +431,8 @@ console.log(`
 console.log('\n\n');
 validateArgs();
 setState();
+setUpDirectories()
 move();
 convert(state.newPath);
 console.log('\nALL DONE BRO! PLEASE CHECK MY WORK!');
+console.log(`You should be able to see it here: http://localhost:3000/docs/${state.target}/${state.fileName.replace('.mdx', '')}`);
