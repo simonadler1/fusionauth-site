@@ -4,8 +4,12 @@ import { execSync } from 'child_process';
 const usage = `
 Migrate a docs file. Will move all images and includes as best it can. Inspect it when done!
 Usage migrate.js [options]
-  -s, --source                The source file to migrate. Relative to 'site/v1/tech' (ex: getting-started/5-minute-docker.adoc)
-  -t, --target                The target directory to migrate to. Relative 'astro/src/content/docs' (ex: get-started/download-and-install)
+  -s, --source                The source file to migrate. Needs to be one of:
+                                * Relative to 'site/v1/tech/docs' (ex: getting-started/5-minute-docker.adoc)
+                                * Relative to '/astro' (ex: ../site/docs/v1/tech/getting-started/5-minute-docker.adoc)
+  -t, --target                The target directory to migrate to. Needs to be one of:
+                                * Relative 'astro/src/content/docs' (ex: get-started/download-and-install)
+                                * Relative to '/astro' (ex: src/content/docs/get-started/download-and-install)
   -d, --debug                 Debug mode. Will log extra info. (optional)
 `;
 
@@ -42,8 +46,14 @@ const setState = () => {
   const s = process.argv.findIndex(arg => ['-s', '--source'].includes(arg));
   state.source = process.argv[s + 1];
 
+  if (!state.source.startsWith("../site/docs/v1/tech/")) {
+    state.source = "../site/docs/v1/tech/" + state.source;
+  }
+
   const t = process.argv.findIndex(arg => ['-t', '--target'].includes(arg));
   state.target = process.argv[t + 1];
+
+  state.target = state.target.replace(/^src\/content\/docs\//, "")
 
   if (process.argv.find(arg => ['-d', '--debug'].includes(arg))) {
      state.debug = true;
@@ -107,14 +117,13 @@ const setUpDirectories = () => {
 
 const move = () => {
   const fileName = state.source.split('/').pop();
-  const oldPath = '../site/docs/v1/tech/' + state.source;
   state.fileName = fileName.replace('.adoc', '.mdx');
   state.newPath = 'src/content/docs/' + state.target + '/' + state.fileName;
 
-  if (!fs.existsSync(oldPath)) {
+  if (!fs.existsSync(state.source)) {
     throw Error(`${state.source} does not exist!`);
   }
-  gitMoveFile(oldPath, state.newPath);
+  gitMoveFile(state.source, state.newPath);
 };
 
 const convert = (filePath, partial = false) => {
@@ -123,6 +132,8 @@ const convert = (filePath, partial = false) => {
   const fileString = fs.readFileSync('./'+ filePath, 'utf8');
   const lines = fileString.split('\n');
   const outLines = [];
+  const adocVariablePattern = /^:([a-zA-Z_]+)(!?): *(.*)$/;
+  let adocVars = {};
   let importIdx = 0;
 
   const addImport = (line) => {
@@ -140,7 +151,7 @@ const convert = (filePath, partial = false) => {
   const doFrontMatter = () => {
     const next = () => {
       const line = lines.shift();
-      if (line.startsWith('layout') || line.startsWith('navcategory')) {
+      if (['section', 'subcategory', 'tertcategory', 'layout', 'navcategory'].find(e => !!line.startsWith(e))) {
         //skip
         next();
       } else if (line.trim() === '---') {
@@ -161,37 +172,74 @@ const convert = (filePath, partial = false) => {
     importIdx = outLines.length;
   };
 
-  const moveInclude = (line) => {
+  const camelCase = (str) => {
+    const arr = Array.from(str);
+    let result = [];
+    let ucase = false;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === '-' || arr[i] === '_') {
+        ucase = true;
+      } else {
+
+        if (ucase) {
+          result.push(arr[i].toUpperCase())
+          ucase = false;
+        } else {
+          result.push(arr[i].toLowerCase());
+        }
+      }
+    }
+
+    return result.join('');
+  };
+
+  const moveInclude = (line, vars) => {
     line = line.replace('include::', '').replace('\[\]', '');
     let newDir = '';
+    const sharedPath = 'src/content/docs/_shared/';
     let targetPath = state.target.split('/').pop();
     if (line.startsWith('docs/v1/tech/shared')) {
-      newDir = 'src/content/docs/_shared/';
+      newDir = sharedPath;
     } else if ('src/content/docs/' + state.target + '/') {
       newDir = 'src/content/docs/' + state.target + '/';
     } else {
       console.error(`I don't know where to put this!`, line);
       return;
     }
-    const fileName = line.split('/').pop();
+    const fileName = line.split('/').pop().replace('.adoc', '.mdx');
     const oldPath = '../site/' + line;
-    let newPath = newDir + fileName.replace('.adoc', '.mdx');
+    let newPath = newDir + fileName;
+
     if (fs.existsSync(newPath)) {
       console.log(`Looks like ${newPath} already exists!`);
     } else if (fs.existsSync(newPath.replace('.mdx', '.astro'))) {
       console.log(`Looks like ${newPath.replace('.mdx', '.astro')} already exists!`);
       newPath = newPath.replace('.mdx', '.astro');
+    } else if (fs.existsSync(newPath.replace(newDir, sharedPath).replace(fileName, fileName[0] + fileName.slice(1).replaceAll('_', '-')))) {
+      console.log(`Looks like ${newPath.replace(newDir, sharedPath)} already exists!`);
+      newPath = newPath.replace(newDir, sharedPath).replace(fileName, fileName[0] + fileName.slice(1).replaceAll('_', '-'));
+    } else if (fs.existsSync(newPath.replace(newDir, sharedPath).replace(fileName, fileName[0] + fileName.slice(1).replaceAll('_', '-')).replace('.mdx', '.astro'))) {
+      console.log(`Looks like ${newPath.replace(newDir, sharedPath).replace('.mdx', '.astro')} already exists!`);
+      newPath = newPath.replace(newDir, sharedPath).replace(fileName, fileName[0] + fileName.slice(1).replaceAll('_', '-')).replace('.mdx', '.astro');
     } else {
       gitMoveFile(oldPath, newPath);
       convert(newPath, true);
     }
-    const alias = fileName.replace('.adoc', '')
-                          .replace('_', '')
-                          .split('-')
-                          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                          .join('');
+    let alias = camelCase(fileName.replace('.mdx', ''));
+    alias = alias.charAt(0).toUpperCase() + alias.slice(1);
+
     addImport(`import ${alias} from '${newPath}';`);
-    outLines.push(`<${alias} />`);
+
+    let outLine = `<${alias}`;
+
+    for (const k of Object.keys(vars)) {
+      outLine = outLine + ` ${k}="${vars[k]}"`
+    }
+
+    outLine = outLine + ' />';
+
+    outLines.push(outLine);
   }
 
   const convertApiField = (header) => {
@@ -432,23 +480,33 @@ const convert = (filePath, partial = false) => {
     moveImage(imageLocation, imageFile);
   };
 
-  const skipLeads = [':code_id', ':sectnumlevels', '- <<', '* <<', '** <<'];
+  const handleAdocVar = (line) => {
+    const match = line.match(adocVariablePattern);
+
+    if (match !== null) {
+      if (match[2] === '!') {
+        delete adocVars[match[1]];
+      } else {
+        adocVars[match[1]] = match[3];
+      }
+    }
+  };
+
+  const skipLeads = [':code_id', ':sectnumlevels', '- <<', '* <<', '** <<', '{empty} +', '//'];
   const asides = ['[NOTE', '[TIP', '[IMPORTANT', '[WARNING'];
 
   const nextLine = (frontDone = false) => {
     if (lines.length === 0) {
       return [false, frontDone];
     }
+
     let line = lines.shift();
     debugLog(`working line`, line, lines.length, outLines.length);
+
     if (!line.trim()) {
       // empty line
       outLines.push(line);
       return [true, frontDone];
-    } else if (line.trim() === '---' && !frontDone) {
-      outLines.push(line);
-      doFrontMatter();
-      return [true, true]
     } else if (skipLeads.find(lead => line.startsWith(lead))) {
       // skip
       if (lines.length > 0 && lines[0].trim() === '') {
@@ -456,25 +514,41 @@ const convert = (filePath, partial = false) => {
         lines.shift();
       }
       return [true, frontDone];
-    } else if (line.startsWith('[source')) {
-      convertSourceBlock(line);
-      return [true, frontDone];
-    } else if (line.startsWith('include::')) {
-      moveInclude(line);
-      return [true, frontDone];
-    } else if (asides.find(aside => line.startsWith(aside))) {
-      handleAside(line);
-      return [true, frontDone];
-    } else if (line.startsWith('image::')) {
-      handleImage(line);
-      return [true, frontDone];
-    } else if (line.startsWith('[.api]')) {
-      convertAPIBlock();
+    } else if (line.startsWith('include::') || line.startsWith(':')) {
+      if (line.startsWith(':')) {
+        handleAdocVar(line);
+      }
+      else {
+        moveInclude(line, adocVars);
+      }
       return [true, frontDone];
     } else {
-      line = convertLine(line)
-      outLines.push(line);
-      return [true, frontDone];
+      if (Object.keys(adocVars).length > 0) {
+        console.log('Whoa, I expected ZERO variables in the adocVars object, but there are ' + Object.keys(adocVars) + '!!!')
+        adocVars = {};
+      }
+
+      if (line.trim() === '---' && !frontDone) {
+        outLines.push(line);
+        doFrontMatter();
+        return [true, true]
+      } else if (line.startsWith('[source')) {
+        convertSourceBlock(line);
+        return [true, frontDone];
+      } else if (asides.find(aside => line.startsWith(aside))) {
+        handleAside(line);
+        return [true, frontDone];
+      } else if (line.startsWith('image::')) {
+        handleImage(line);
+        return [true, frontDone];
+      } else if (line.startsWith('[.api]')) {
+        convertAPIBlock();
+        return [true, frontDone];
+      } else {
+        line = convertLine(line)
+        outLines.push(line);
+        return [true, frontDone];
+      }
     }
   };
 
