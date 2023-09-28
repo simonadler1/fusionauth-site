@@ -298,14 +298,49 @@ const convert = (filePath, partial = false) => {
     addImport(`import APIField from 'src/components/api/APIField.astro';`);
     outLines.push('<APIBlock>');
     const next = () => {
-      if (lines[0].startsWith('[field')) {
+      if (lines[0] && lines[0].startsWith('[field')) {
         convertApiField(lines.shift());
         next();
       }
     }
     next();
     outLines.push('</APIBlock>');
-    outLines.push('')
+    outLines.push('');
+  }
+
+  const convertAPIAuthentication = () => {
+    addImport(`import APIAuthentication from 'src/components/api/APIAuthentication.astro'`);
+    const line =  lines.shift();
+    const iconMatch = line.match(/icon:(.*)\[/);
+    let icon = '';
+    if (iconMatch) {
+      icon = ' icon="' + {
+        'id-badge': 'badge',
+        'lock': 'lock',
+        'unlock': 'unlock',
+        'server': 'server',
+        'shield': 'shield',
+      }[iconMatch[1]] + '"';
+    }
+    let textMatch = line.match(/fas]] (.*)/);
+    let text = '';
+    if (textMatch) {
+      text = textMatch[1];
+    }
+    outLines.push(`<APIAuthentication${icon}>${text}</APIAuthentication>`);
+  };
+
+  const convertEndpoint = () => {
+    addImport(`import APIURI from 'src/components/api/APIURI.astro'`);
+    //skip two
+    lines.shift();
+    lines.shift();
+    const line = lines.shift();
+    const methodMatch = line.match(/method]#(\w*)#/);
+    const method = ` method="${methodMatch[1]}"`;
+    const uriMatch = line.match(/uri]#(.*)#/);
+    const uri = uriMatch[1];
+    outLines.push(`<APIURI${method}>${uri}</APIURI>`);
   }
 
   const convertSourceBlock = (header) => {
@@ -330,7 +365,12 @@ const convert = (filePath, partial = false) => {
 
     if (lines[0].match(/include::(.*)\.json/)) {
       // this is a json include block
-      const jsonFile = lines.shift().replace('include::', '').replace('\[\]', '');
+      debugLog('working json include line', lines[0]);
+      let jsonFile = lines.shift().replace('include::', '').replace('\[\]', '');
+      const relativeMatch = jsonFile.match(/((?:\.\.\/)+src\/json)/);
+      if (relativeMatch) {
+        jsonFile = jsonFile.replace(relativeMatch[1], 'docs/src/json');
+      }
       const paths = jsonFile.split('/');
       const newPath = `src/json/${jsonFile.replace('docs/src/json/', '')}`;
       if (fs.existsSync(newPath)) {
@@ -521,6 +561,12 @@ const convert = (filePath, partial = false) => {
       else {
         moveInclude(line, adocVars);
       }
+      return [true, frontDone];
+    } else if (line.startsWith('[.api-authentication]')) {
+      convertAPIAuthentication();
+      return [true, frontDone];
+    } else if (line.startsWith('[.endpoint]')) {
+      convertEndpoint();
       return [true, frontDone];
     } else {
       if (Object.keys(adocVars).length > 0) {
