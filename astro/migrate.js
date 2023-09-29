@@ -482,6 +482,14 @@ const convert = (filePath, partial = false) => {
       }
     }
 
+    const inlineFieldMatches = line.matchAll(/\[field]#([^#]*)#/g);
+    if (inlineFieldMatches) {
+      addImport(`import InlineField from 'src/components/InlineField.astro';`);
+      for (const match of inlineFieldMatches) {
+        line = line.replace(match[0], `<InlineField>${match[1]}</InlineField>`);
+      }
+    }
+
     while (line.includes('<<')) {
       const idx = line.indexOf('link:');
       let start = line.substring(idx, line.length);
