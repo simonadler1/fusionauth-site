@@ -464,7 +464,7 @@ const convert = (filePath, partial = false) => {
         }
       }
     }
-    const crumbMatches = line.matchAll(/\[breadcrumb]#([\w ]*)#/g);
+    const crumbMatches = line.matchAll(/\[breadcrumb]#([^#]*)#/g);
     if (crumbMatches) {
       for (const match of crumbMatches) {
         const old = match[0];
@@ -473,6 +473,15 @@ const convert = (filePath, partial = false) => {
         line = line.replace(old, crumb);
       }
     }
+
+    const complexLinkMatches = line.matchAll(/(http[s]*:\/\/[\w./?&-]*)\[([^\],]*), *([^\]]*)]/g);
+    if (complexLinkMatches) {
+      for (const match of complexLinkMatches) {
+        const targetAttr = match[3] === 'window="_blank"' ? ' target="_blank"' : '';
+        line = line.replace(match[0], `<a href="${match[1]}"${targetAttr}>${match[2]}</a>`);
+      }
+    }
+
     while (line.includes('<<')) {
       const idx = line.indexOf('link:');
       let start = line.substring(idx, line.length);
