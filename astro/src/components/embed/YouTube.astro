@@ -1,0 +1,6 @@
+---
+import { isURL } from '../../tools/string';
+const { id, title, poster, params } = Astro.props;
+const src = isURL(id) ? id : `https://www.youtube.com/embed/${id}`;
+---
+<iframe {src} {title} {poster} {params} class="w-full aspect-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
